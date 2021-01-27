@@ -1,0 +1,80 @@
+.navbar {
+    position: absolute;
+    background-color: black;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 2px solid #f04800;
+}
+
+.navbar-brand{
+    margin-left: 2%;
+    padding: 0 !important;
+}
+
+.logo {
+    width: 47px;
+    height: 47px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f04800 !important;
+}
+
+.navbar-light .navbar-toggler {
+    background-color: #f04800 ;
+}
+
+.left-menu {
+    font-family: 'Bungee Inline', cursive;
+    font-size: 20px;
+    font-weight: 200;
+    margin-bottom: 0;
+    margin-left: 3%;
+    width: 100%;
+}
+
+.material-icons {
+    font-size: 24px;
+}
+
+.right-icons .nav-link{
+    margin-right: 15px;
+    text-align: center;
+}
+
+a:hover{
+    background-color: #E6AC00 !important;
+}
+
+.active {
+    background-color: #E6AC00 !important;
+}
+
+.search-bar {
+    position: relative;
+    z-index: 1;
+    width: 35%;
+    margin-left: 3%;
+}
+
+.input-group>.form-control:focus{
+    box-shadow: none;
+}
+
+.btn-search {
+    background-color: #f04800 !important;
+    color: black !important;
+    padding-bottom: 30px;
+}
+
+.form-control {
+    margin-top: 2px;
+    margin-right: 1px;
+}
+
+.input-group-append button {
+    border-width: 0;
+}
+
