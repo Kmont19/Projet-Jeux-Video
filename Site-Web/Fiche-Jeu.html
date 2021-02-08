@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fiche de jeu</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="Style-Fiche-Jeu.css">
+    </head>
+
+    <body>
+        <div style="background-color: #393e46; margin-top:5%;  border: 2px solid #ffd369; width: 70%; height: 100%; margin-left: 15%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: flex; justify-content: space-between; padding: 3%;">
+            <div style="width: 40%; height: 100%;">
+                <img src="Kingdom-Hearts-III.jpg" style="width: 50%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-left: 25%; border: 2px solid #ffd369; margin-top: 10%; margin-bottom: 10%;">
+                <input type="submit" style="padding: 2%; margin-left: 40%; margin-bottom: 1%; font-size: 15px; border: 2px solid #ffd369; background-color: #3f5fb5; color:white;" value="Louer ce jeu">
+            </div>
+            <div style="width: 60%; height: 100%;">
+                <button class="tablink" onclick="openCity('Description', this, '#393e46')" id="defaultOpen">Description</button>
+                <button class="tablink" onclick="openCity('Critiques', this, '#393e46')">Critiques</button>
+
+                <div id="Description" class="tabcontent">
+                    <p style="text-align: justify; margin-top: 10%;">Kingdom Hearts III (キングダム ハーツIII, Kingudamu Hātsu Surī?) est un jeu vidéo d'action-RPG développé et édité par Square Enix, sorti sur PlayStation 4 et Xbox One le 25 janvier 2019 au Japon et le 29 janvier 2019 dans le reste du monde. L'histoire prend place directement après Dream Drop Distance et Sora part à la recherche de la « clé pour faire revenir les cœurs », pendant que Riku et Mickey cherchent des porteurs de la Keyblade. Le jeu est le dernier volet de la « saga Xehanort », mais ne sera pas l'épisode final de la série6.
+                    </p>
+                    <p>Le jeu est le dixième épisode de la série Kingdom Hearts.</p>
+
+
+                </div>
+
+                <div id="Critiques" class="tabcontent">
+                    <span class="fa fa-star checked" style="margin-top:3%;"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p>J'ai aimé le jeu même si c'étais trop simple.... rip....</p>
+                    <p>RE:MIND WAS BETTER :P</p>
+                </div>
+            </div>
+
+
+
+        </div>
+    </body>
+
+    <script>
+        function openCity(cityName,elmnt,color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(cityName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</html>
