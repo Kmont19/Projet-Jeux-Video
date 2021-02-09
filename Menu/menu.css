@@ -18,11 +18,11 @@
     height: 47px;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-dark .navbar-nav .nav-link {
     color: black !important;
 }
 
-.navbar-light .navbar-toggler {
+.navbar-dark .navbar-toggler {
     background-color: black ;
 }
 
@@ -92,3 +92,4 @@
     margin-right: 15px;
     text-align: center;
 }
+
