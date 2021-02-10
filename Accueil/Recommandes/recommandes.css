@@ -1,0 +1,66 @@
+.bloc-recommandes h2 {
+    font-family: 'Bungee Inline', cursive;
+    text-align: center;
+    color: #f04800;
+    margin: 0 auto;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background-color: black;
+    padding: 2%;
+    width: 90%;
+    border: 2px solid #f04800;
+}
+
+.bloc-recommandes .card{
+    width: 300px;
+    height: 450px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: calc(.25rem - 1px) !important;
+}
+
+.bloc-recommandes .card:not(:last-of-type){
+    margin-right: 2%;
+}
+
+.bloc-recommandes .card:hover {
+    box-shadow: 0 0 2px 2px #f04800;
+}
+
+
+.bloc-recommandes .card-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 450px;
+}
+
+.bloc-recommandes .discount-badge {
+    font-family: 'Bungee Inline', cursive;
+    position: absolute;
+    top: -23px;
+    left: -23px;
+    z-index: 2;
+    border-radius: 50%;
+    padding: 10px 4px;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    background-color: #f04800;
+}
+
+.bloc-recommandes .btn {
+    font-family: 'Bungee Inline', cursive;
+    width: 50%;
+    position: absolute;
+    top: 390px;
+    height: 10%;
+    background-color: black;
+    border: 2px solid #f04800;
+    font-size: 12px;
+    color: #f04800;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
