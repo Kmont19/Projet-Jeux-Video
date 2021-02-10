@@ -1,0 +1,49 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+  }
+
+img {
+    width:270px;
+    height:400px;
+}
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+  
+  .divTable{
+      display: table;
+      width: 270px;
+  }
+  .divTableRow {
+      display: table-row;
+  }
+  .divTableHeading {
+      background-color: #EEE;
+      display: table-header-group;
+  }
+  .divTableCell, .divTableHead {
+      border: 1px solid #999999;
+      display: table-cell;
+      padding: 3px 10px;
+  }
+  .divTableHeading {
+      background-color: #EEE;
+      display: table-header-group;
+      font-weight: bold;
+  }
+  .divTableFoot {
+      background-color: #EEE;
+      display: table-footer-group;
+      font-weight: bold;
+  }
+  .divTableBody {
+      display: table-row-group;
+  }
