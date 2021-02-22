@@ -5,3 +5,15 @@ html body {
 .row {
     width: 100%;
 }
+
+.bloc-menu-recommandes {
+    padding: 0 10%;  
+}
+
+.bloc-promotions {
+    border-bottom: 2px solid #f04800;
+}
+
+.bloc-varies {
+    padding: 0 10%;
+}

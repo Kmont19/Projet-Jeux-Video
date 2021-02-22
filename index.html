@@ -20,18 +20,19 @@
         <link rel="stylesheet" type="text/css" href="Accueil/Menu-Categories/menu-categories.css"/>
         <link rel="stylesheet" type="text/css" href="Accueil/Recommandes/recommandes.css"/>
         <link rel="stylesheet" type="text/css" href="Accueil/Promotions/promotions.css"/>
+        <link rel="stylesheet" type="text/css" href="Accueil/Jeux-Varies/jeux-varies.css"/>
         <link rel="stylesheet" type="text/css" href="index.css"/>
         <link rel="stylesheet" type="text/css" href="Footer/footer.css"/>   
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
         <div id="menu"></div>
-        <div class="bloc-corps pt-5">
-            <div class="row d-flex flex-wrap justify-content-around m-0">
-                <div class="col-xl-3" id="menu-categories"></div>
-                <div class="col-xl-9 col-lg-12" id="recommandes"></div>
-            </div>
-            <div id="promotions"></div>
+        <div class="bloc-corps pb-5">            
+                <!-- <div class="col-xl-3" id="menu-categories"></div> -->
+            <div class="bloc-recommandes" id="recommandes"></div>
+            <div class="bloc-promotions" id="promotions"></div>
+            <div class="bloc-varies pt-5" id="jeux-varies">
+            </div>            
         </div>
         <div id="footer"></div>
     </body>
@@ -44,5 +45,6 @@
         $("#menu-categories").load("Accueil/Menu-Categories/menu-categories.html")
         $("#recommandes").load("Accueil/Recommandes/recommandes.html")
         $("#promotions").load("Accueil/Promotions/promotions.html")
+        $("#jeux-varies").load("Accueil/Jeux-Varies/jeux-varies.html")
     })
 </script>

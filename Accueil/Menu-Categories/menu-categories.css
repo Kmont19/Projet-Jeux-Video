@@ -14,15 +14,16 @@
     color: #f04800;
     margin: 0 auto;
     background-color: black;
+    font-size: 20px;
 }
 
 .menu-categories .nav-link {
     font-family: 'Bungee Inline', cursive;
-    font-weight: 500;
-    color: white;
+    font-weight: 600;
+    color: black;
     border-bottom: 2px solid black !important;
     padding-bottom: 7px !important;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     background-color: #f04800;
 }
 

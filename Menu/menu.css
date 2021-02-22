@@ -5,6 +5,7 @@
     padding-top: 0 !important;
     width: 100%;
     z-index: 10;
+    border-bottom: 2px solid black;
 }
 
 .navbar-brand{
@@ -18,7 +19,8 @@
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: white !important;
+    color: black !important;
+    font-weight: 600;
 }
 
 .navbar-dark .navbar-toggler {
@@ -28,7 +30,7 @@
 .menu .left-menu {
     font-family: 'Bungee Inline', cursive;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 3px;
     margin-bottom: 0;
     margin-left: 3%;
