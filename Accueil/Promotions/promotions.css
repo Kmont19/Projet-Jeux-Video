@@ -3,10 +3,10 @@
 }
 
 .discount-section h2 {
+    width: 100%;
     font-family: 'Bungee Inline', cursive;
     font-weight: 600;
-    text-align: center;
-    padding: 2% 0;
+    padding: 2% 0 2% 5%;
     color: #f04800;
     margin: 0 auto;
     background-color: black;
@@ -16,8 +16,8 @@
 }
 
 .discount-section .card{
-    width: 250px;
-    max-width: 250px;
+    width: 300px;
+    max-height: 450px;
     padding: 0;
     background-color: black;
     
@@ -25,13 +25,13 @@
 
 .discount-section .card:hover {
     box-shadow: 0 0 2px 2px #f04800;
+    cursor: pointer;
 }
 
 .discount-section .card-img-top {
+    display: block;
     width: 100%;
-    height: 300px;
     max-height: 300px;
-    max-width: 100%;
 }
 
 .discount-section .card-title {
@@ -39,13 +39,13 @@
     font-size: 20px;
 }
 
-.discount-section .discount-price {
+.discount-section .current-price {
     color: #f04800;
     font-weight: 600;
     font-size: 18px;
 }
 
-.discount-section .discount-currency {
+.discount-section .current-currency {
     color: #f04800;
     font-weight: 600;
     font-size: 10px;
@@ -54,7 +54,7 @@
     left: 2px;
 }
 
-.discount-section .regular-price {
+.discount-section .previous-price {
     color: white;
     font-weight: 400;
     font-size: 14px;
@@ -62,7 +62,7 @@
     font-style: italic;
 }
 
-.discount-section .regular-currency {
+.discount-section .previous-currency {
     color: white;
     font-weight: 400;
     font-size: 8px;
