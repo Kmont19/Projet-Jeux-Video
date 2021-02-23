@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestion des jeux</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="Style-Gestion-Jeu.css">
+    </head>
+
+    <body>
+
+    <div id="wrapper" class="wrapper-content">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    Menu administratif
+                </li>
+                <li>
+                    <a href="Menu-Administration.html">Menu Administratif</a>
+                </li>
+                <li>
+                    <a href="Gestion-Jeu.html">Gestion des Jeux</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <button class="tablink" onclick="openCity('visualisation', this, '#fff')" id="defaultOpen">Visualisation</button>
+                        <button class="tablink" onclick="openCity('creation', this, '#fff')">Création</button>
+                        <button class="tablink" onclick="openCity('modification', this, '#fff')">Modification</button>
+
+                        <div id="visualisation" class="tabcontent">
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive project-list">
+                                                    <table class="table project-table table-centered table-nowrap" style="color:black;">
+
+
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Image</th>
+                                                            <th scope="col">Nom</th>
+                                                            <th scope="col">Studio</th>
+                                                            <th scope="col">Éditeur</th>
+                                                            <th scope="col">À supprimer?</th>
+
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <!-- Chaque Nouvelle entrée -->
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td width="20%;">
+                                                                <img src="Kingdom-Hearts-III.jpg" style="width: 50%;"/>
+                                                            </td>
+                                                            <td>Kingdom Hearts 3</td>
+                                                            <td>Square Enix</td>
+                                                            <td>Square Enix</td>
+                                                            <td>
+                                                                <a style="color:red; font-size: 2vw;">
+                                                                    X
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td width="20%;">
+                                                                <img src="Kingdom-Hearts-III.jpg" style="width: 50%;"/>
+                                                            </td>
+                                                            <td>Kingdom Hearts 3</td>
+                                                            <td>Square Enix</td>
+                                                            <td>Square Enix</td>
+                                                            <td>
+                                                                <a style="color:red; font-size: 2vw;">
+                                                                    X
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td width="20%;">
+                                                                <img src="Kingdom-Hearts-III.jpg" style="width: 50%;"/>
+                                                            </td>
+                                                            <td>Kingdom Hearts 3</td>
+                                                            <td>Square Enix</td>
+                                                            <td>Square Enix</td>
+                                                            <td>
+                                                                <a style="color:red; font-size: 2vw;">
+                                                                    X
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- end project-list -->
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+
+                        <div id="creation" class="tabcontent">
+
+                            <div style="display: flex; justify-content: center; margin-top: 3%;">
+                                <div style="width: 30%;">
+                                    <img src="inconnu.jpg" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> <br>
+                                    <button type="button" class="btn btn-block btn-lg btn-primary waves-effect waves-light">Changer la photo de couverture</button>
+                                </div>
+                                <div style="width: 60%; margin-left: 15%; color:black; display: flex; justify-content: center;">
+                                    <div style="width: 20%; display: flex; justify-content: space-between; flex-direction: column;">
+
+                                        <div>
+                                            <label for="nom">Nom du jeu: </label>
+                                        </div>
+                                        <div>
+                                            <label for="date">Date de sortie: </label>
+                                        </div>
+                                        <div>
+                                            <label for="studio">Nom du studio: </label>
+                                        </div>
+                                        <div>
+                                            <label for="editeur">Nom du l'éditeur: </label>
+                                        </div>
+                                        <div>
+                                            <p>Description: </p>
+                                        </div>
+
+                                    </div>
+                                    <div style="width: 60%; display: flex; justify-content: space-between; flex-direction: column;">
+
+                                        <div>
+                                            <input type="text" id="nom" placeholder="Entrez le nom du jeu" style="width: 100%;">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="date" placeholder="Entrez la date de sortie du jeu" style="width: 100%;">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="studio" placeholder="Entrez le nom du studio du jeu" style="width: 100%;">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="editeur" placeholder="Entrez le nom de l'éditeur du jeu" style="width: 100%;">
+                                        </div>
+                                        <div>
+                                            <textarea id="description" placeholder="Entrez la description du jeu" style="resize: vertical; height: 100%; width: 100%;"></textarea>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <input type="submit" value="Confirmer la création de la fiche de jeu" style="padding: 2%; margin-top: 3%; margin-left: 35%; margin-bottom: 1%; font-size: 15px; background-color: #3f5fb5; color:white;">
+                        </div>
+
+                        <div id="modification" class="tabcontent">
+                            <p style="color:black;">3</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+    <script>
+        function openCity(cityName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(cityName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+</html>
