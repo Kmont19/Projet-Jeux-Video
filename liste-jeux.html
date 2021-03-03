@@ -13,10 +13,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="Menu/menu.css"/>
-        <link rel="stylesheet" type="text/css" href="Accueil/Menu-Categories/menu-categories.css"/>
-        <!--<link rel="stylesheet" type="text/css" href="Accueil/Jeu-Affiche/jeu-affiche.css"/>-->
         <link rel="stylesheet" type="text/css" href="index.css"/>
         <link rel="stylesheet" type="text/css" href="Footer/footer.css"/>
         <link rel="stylesheet" type="text/css" href="Tous_les_Jeux/touslesjeux.css"/>   
@@ -25,9 +24,7 @@
     <body>
         <div id="menu"></div>
         <div class="bloc-corps pt-5">
-            <div class="row">
-                <div id="tous-les-jeux"></div>
-            </div>
+            <div class="liste-jeux" id="tous-les-jeux"></div>
         </div>
         <div id="footer"></div>
     </body>
@@ -35,8 +32,8 @@
 
 <script>
     $(document).ready(function() {
-        $("#menu").load("Menu/menu.html")
-        $("#footer").load("Footer/footer.html")
+        $("#menu").load("menu.html")
+        $("#footer").load("footer.html")
         //$("#menu-categories").load("Accueil/Menu-Categories/menu-categories.html")
         //$("#jeu-affiche").load("Accueil/Jeu-Affiche/jeu-affiche.html")
         $("#tous-les-jeux").load("Tous_Les_Jeux/touslesjeux.html")

@@ -2,10 +2,6 @@ html body {
     background-color: white;
 }
 
-.row {
-    width: 100%;
-}
-
 .bloc-menu-recommandes {
     padding: 0 10%;  
 }
@@ -16,4 +12,8 @@ html body {
 
 .bloc-varies {
     padding: 0 10%;
+}
+
+.liste-jeux {
+    padding-left: 10%;
 }

@@ -96,3 +96,32 @@
     text-align: center;
 }
 
+.dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background-color: #f04800 !important;
+    width: 300px;
+    height: auto;
+    left: -50% !important;
+}
+
+.dropdown-menu a {
+    white-space: nowrap;
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 600;
+    color: black;
+    padding-bottom: 7px !important;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+
+.dropdown-menu a:hover {
+    color: #ffc107;
+}
+
+.dropdown-menu .next-icon {
+   float: right;
+}
