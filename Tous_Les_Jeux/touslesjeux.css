@@ -1,0 +1,199 @@
+body{margin-top:20px;}
+
+/**
+ * Shop
+ */
+/* General */
+/** Shop: cards **/
+.card-jeux {
+    width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-right: 15px;
+    background-color: white;
+    text-align: center;
+    -webkit-transition: border-color 0.1s, -webkit-box-shadow 0.1s;
+        -o-transition: border-color 0.1s, box-shadow 0.1s;
+            transition: border-color 0.1s, box-shadow 0.1s;
+}
+
+.card-jeux:hover {
+  border-color: rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+          box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+}
+
+.card-jeux > a {
+  color: #333333;
+}
+
+.card-jeux > a:hover {
+  text-decoration: none;
+}
+
+.card-jeux-img {
+    width: 100%;
+    max-height: 300px;
+  margin-bottom: 20px;
+}
+
+.card-jeux-img img{
+    display: block;
+    width: 100%;
+    max-height: 300px;
+}
+
+.card-jeux-titre {
+  font-weight: 600;
+}
+
+.card-jeux-prix {
+  color: #777777;
+}
+
+.previous-price {
+  text-decoration: line-through;
+}
+
+.current-price {
+  color: red;
+}
+
+/** Shop: Filter **/
+.filtre-liste {
+  margin-bottom: 40px;
+}
+
+/* Shop filter: Prix */
+.filtre-liste-prix {
+  padding: 15px;
+}
+
+.filtre-liste-prix [class*='col-'] {
+  padding: 2px;
+}
+
+/* Shop filter: rating */
+.filtre-liste-rating {
+  display: inline-block;
+  margin: 0 2px 2px 0;
+}
+
+.filtre-liste-rating input[type="text"] {
+  display: none;
+}
+
+.filtre-liste-rating label {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/** Shop: Trie **/
+.trier-liste {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 40px;
+  margin-top: -20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+.trier-liste > li {
+  display: inline-block;
+}
+
+.trier-liste > li > a {
+  display: block;
+  padding: 20px 10px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  color: #757575;
+  -webkit-transition: all .05s linear;
+       -o-transition: all .05s linear;
+          transition: all .05s linear;
+}
+
+.trier-liste > li > a:hover,
+.trier-liste > li > a:focus {
+  color: #333333;
+  text-decoration: none;
+}
+
+.trier-liste > li.active > a {
+  color: #ed3e49;
+  border-bottom-color: #ed3e49;
+}
+
+@media (max-width: 767px) {
+  .trier-liste {
+    text-align: left;
+    border-bottom: 0;
+  }
+  .trier-liste > li {
+    display: block;
+  }
+  .trier-liste > li > a {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .trier-liste > li.active > a {
+    font-weight: 600;
+  }
+}
+
+
+/* Checkboxes */
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+.checkbox label {
+  padding-left: 0;
+}
+.checkbox label:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #eee;
+  text-align: center;
+  font-family: "FontAwesome";
+}
+
+.checkbox input[type="checkbox"]:checked + label::before {
+  content: "\f00c";
+}
+
+/* Radios */
+.radio input[type="radio"] {
+  display: none;
+}
+
+.radio label {
+  padding-left: 0;
+}
+
+.radio label:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 10px solid #eee;
+  background-color: #333333;
+}
+
+.radio input[type="radio"]:checked + label:before {
+  border-width: 7px;
+}
+

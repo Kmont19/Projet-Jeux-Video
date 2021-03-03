@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <div class="bloc-corps pt-5">
+
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-3 col-md-2">
+                
+                <!-- Filtre -->
+                <form class="filtre-liste">
+                  <!-- Prix -->
+                  <h3 class="headline">
+                    <span>Prix</span>
+                  </h3>
+                  <div class="radio">
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-0" value="" checked="">
+                    <label for="filtre-liste-prix-0">Aucun</label>
+                  </div>
+                  <div class="radio">
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-1" value="">
+                    <label for="filtre-liste-prix-1">25$ et moins</label>
+                  </div>
+                  <div class="radio">
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-2" value="">
+                    <label for="filtre-liste-prix-2">25$ à 50$</label>
+                  </div>
+                  <div class="radio">
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-3" value="">
+                    <label for="filtre-liste-prix-3">50$ à 100$</label>
+                  </div>
+                  <div class="radio">
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-4" value="">
+                    <label for="filtre-liste-prix-4">Plus de 100$</label>
+                  </div>
+                  <div class="form-group filtre-liste-prix">
+                    <div class="row">                      
+                      <div class="col-xs-4">
+                        <button type="submit" class="btn btn-block btn-default">Rechercher</button>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <!-- Catégorie -->
+                  <h3 class="headline">
+                    <span>Genres de jeux</span>
+                  </h3>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-action">
+                    <label for="filtre-action">Action</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-aventure">
+                    <label for="filtre-aventure">Aventure</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-casual">
+                    <label for="filtre-casual">Casual</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-autos">
+                    <label for="filtre-autos">Course Automobile</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-independant">
+                    <label for="filtre-independant">Indépendant</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-multijoueur">
+                    <label for="filtre-multijoueur">Multijoueur</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-rpg">
+                    <label for="filtre-rpg">RPG</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-simulation">
+                    <label for="filtre-simulation">Simulation</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-sport">
+                    <label for="filtre-sport">Sport</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-strategie">
+                    <label for="filtre-strategie">Strategie</label>
+                  </div>
+          
+                  <!-- Editeurs -->
+                  <h3 class="headline pt-5">
+                    <span>Editeurs</span>
+                  </h3>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-1">
+                    <label for="filtre-editeur-1">editeur</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-2">
+                    <label for="filtre-editeur-2">editeur</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-3">
+                    <label for="filtre-editeur-3">editeur</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-4">
+                    <label for="filtre-editeur-4">editeur</label>
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-5">
+                    <label for="filtre-editeur-5">editeur</label>
+                  </div>
+          
+                  <!-- Rating -->
+                  <h3 class="headline pt-5">
+                    <span>Rating</span>
+                  </h3>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-1" value="1">
+                    <label for="filtre-rating-1">1</label>
+                  </div>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-2" value="2">
+                    <label for="filtre-rating-2">2</label>
+                  </div>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-3" value="3">
+                    <label for="filtre-rating-3">3</label>
+                  </div>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-4" value="4">
+                    <label for="filtre-rating-4">4</label>
+                  </div>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-5" value="5">
+                    <label for="filtre-rating-5">5</label>
+                  </div>
+                </form>
+              </div>
+              
+              <div class="col-sm-8 col-md-9">
+                <!-- Trie -->
+                <ul class="trier-liste">
+                  <li class="active"><a href="#">Le plus récents</a></li>
+                  <li><a href="#">Prix: croissant</a></li>
+                  <li><a href="#">Prix: décroissant</a></li>
+                </ul>
+          
+                <div class="card-deck">
+                    <div class="card-jeux">
+                      <a href="#">
+                        <div class="card-jeux-img">
+                          <img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
+                        </div>
+                        <h5 class="card-jeux-titre">Nom jeux</h5>
+                        <div class="card-jeux-prix">
+                          <span id="prix-precedent"class="previous-price">$80.99</span><span class="previous-currency">CAD</span><br>
+                          <span class="prix-actuel">$59.99</span><span class="current-currency">CAD</span>
+                        </div>
+                      </a>
+                    </div>
+                  
+                    <div class="card-jeux">
+                      <a href="#">
+                        <div class="card-jeux-img">
+                          <img src="https://via.placeholder.com/400x400/20B2AA/000000" class="img-responsive" alt="...">
+                        </div>
+                        <h5 class="card-jeux-titre">Nom jeux</h5>
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
+                        </div>
+                      </a>
+                    </div>
+                  
+
+                    <div class="card-jeux">
+                      <a href="#">
+                        <div class="card-jeux-img">
+                          <img src="https://via.placeholder.com/400x400/FFB6C1/000000" class="img-responsive" alt="...">
+                        </div>
+                        <h5 class="card-jeux-titre">
+                          Nom jeux
+                        </h5>
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
+                        </div>
+                      </a>
+                    </div>
+                  
+                    <div class="card-jeux">
+                      <a href="#">
+                        <div class="card-jeux-img">
+                          <img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
+                        </div>
+                        <h5 class="card-jeux-titre">
+                          Nom jeux
+                        </h5>
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
+                        </div>
+                      </a>
+                    </div>
+
+                  
+                    <div class="card-jeux">
+                      <a href="#">
+                        <div class="card-jeux-img">
+                          <img src="https://via.placeholder.com/400x400/FFA07A/000000" class="img-responsive" alt="...">
+                        </div>
+                        <h5 class="card-jeux-titre">
+                          Nom jeux
+                        </h5>
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
+                        </div>
+                      </a>
+                    </div>
+                  
+                    
+                </div> <!-- / .row -->
+          
+                <!-- Pagination -->
+                <div class="row">
+                  <div class="col-sm-12">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination pull-right">
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+								</a>
+							</li>
+							<li class="page-item"><a class="page-link active" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+									<span class="sr-only">Next</span>
+								</a>
+							</li>
+						</ul>
+					  </nav>
+                  </div>
+                </div> <!-- / .row -->
+                
+              </div> <!-- / .col-sm-8 -->
+            </div> <!-- / .row -->
+          </div>
+
+</html>
