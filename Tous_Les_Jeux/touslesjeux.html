@@ -6,29 +6,33 @@
             <div class="row">
               <div class="col-sm-3 col-md-2">
                 
-                <!-- Filter -->
-                <form class="shop__filter">
-                  <!-- Price -->
+                <!-- Filtre -->
+                <form class="filtre-liste">
+                  <!-- Prix -->
                   <h3 class="headline">
                     <span>Prix</span>
                   </h3>
                   <div class="radio">
-                    <input type="radio" name="shop-filter__price" id="shop-filter-price_1" value="" checked="">
-                    <label for="shop-filter-price_1">25$ et moins</label>
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-0" value="" checked="">
+                    <label for="filtre-liste-prix-0">Aucun</label>
                   </div>
                   <div class="radio">
-                    <input type="radio" name="shop-filter__price" id="shop-filter-price_2" value="">
-                    <label for="shop-filter-price_2">25$ à 50$</label>
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-1" value="">
+                    <label for="filtre-liste-prix-1">25$ et moins</label>
                   </div>
                   <div class="radio">
-                    <input type="radio" name="shop-filter__price" id="shop-filter-price_3" value="">
-                    <label for="shop-filter-price_3">50$ à 100$</label>
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-2" value="">
+                    <label for="filtre-liste-prix-2">25$ à 50$</label>
                   </div>
                   <div class="radio">
-                    <input type="radio" name="shop-filter__price" id="shop-filter-price_4" value="specify">
-                    <label for="shop-filter-price_4">Plus de 100$</label>
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-3" value="">
+                    <label for="filtre-liste-prix-3">50$ à 100$</label>
                   </div>
-                  <div class="form-group shop-filter__price">
+                  <div class="radio">
+                    <input type="radio" name="filtre-liste-prix" id="filtre-liste-prix-4" value="">
+                    <label for="filtre-liste-prix-4">Plus de 100$</label>
+                  </div>
+                  <div class="form-group filtre-liste-prix">
                     <div class="row">                      
                       <div class="col-xs-4">
                         <button type="submit" class="btn btn-block btn-default">Rechercher</button>
@@ -36,181 +40,177 @@
                     </div>
                   </div>
           
-                  <!-- Checkboxes -->
+                  <!-- Catégorie -->
                   <h3 class="headline">
                     <span>Genres de jeux</span>
                   </h3>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_1" checked="">
-                    <label for="shop-filter-checkbox_1">Action</label>
+                    <input type="checkbox" value="" id="filtre-action">
+                    <label for="filtre-action">Action</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_2">
-                    <label for="shop-filter-checkbox_2">Aventure</label>
+                    <input type="checkbox" value="" id="filtre-aventure">
+                    <label for="filtre-aventure">Aventure</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_3">
-                    <label for="shop-filter-checkbox_3">Casual</label>
+                    <input type="checkbox" value="" id="filtre-casual">
+                    <label for="filtre-casual">Casual</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_4">
-                    <label for="shop-filter-checkbox_4">Course Automobile</label>
+                    <input type="checkbox" value="" id="filtre-autos">
+                    <label for="filtre-autos">Course Automobile</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_5">
-                    <label for="shop-filter-checkbox_5">Indépendant</label>
+                    <input type="checkbox" value="" id="filtre-independant">
+                    <label for="filtre-independant">Indépendant</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_5">
-                    <label for="shop-filter-checkbox_5">Multijoueur</label>
+                    <input type="checkbox" value="" id="filtre-multijoueur">
+                    <label for="filtre-multijoueur">Multijoueur</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_5">
-                    <label for="shop-filter-checkbox_5">RPG</label>
+                    <input type="checkbox" value="" id="filtre-rpg">
+                    <label for="filtre-rpg">RPG</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_5">
-                    <label for="shop-filter-checkbox_5">Simulation</label>
+                    <input type="checkbox" value="" id="filtre-simulation">
+                    <label for="filtre-simulation">Simulation</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_5">
-                    <label for="shop-filter-checkbox_5">Sport</label>
+                    <input type="checkbox" value="" id="filtre-sport">
+                    <label for="filtre-sport">Sport</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="shop-filter-checkbox_5">
-                    <label for="shop-filter-checkbox_5">Strategie</label>
+                    <input type="checkbox" value="" id="filtre-strategie">
+                    <label for="filtre-strategie">Strategie</label>
                   </div>
           
-                  <!-- Radios -->
+                  <!-- Editeurs -->
                   <h3 class="headline pt-5">
                     <span>Editeurs</span>
                   </h3>
-                  <div class="radio">
-                    <input type="radio" name="shop-filter__radio" id="shop-filter-radio_1" value="" checked="">
-                    <label for="shop-filter-radio_1">Choix</label>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-1">
+                    <label for="filtre-editeur-1">editeur</label>
                   </div>
-                  <div class="radio">
-                    <input type="radio" name="shop-filter__radio" id="shop-filter-radio_2" value="">
-                    <label for="shop-filter-radio_2">Choix</label>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-2">
+                    <label for="filtre-editeur-2">editeur</label>
                   </div>
-                  <div class="radio">
-                    <input type="radio" name="shop-filter__radio" id="shop-filter-radio_3" value="">
-                    <label for="shop-filter-radio_3">Choix</label>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-3">
+                    <label for="filtre-editeur-3">editeur</label>
                   </div>
-                  <div class="radio">
-                    <input type="radio" name="shop-filter__radio" id="shop-filter-radio_4" value="">
-                    <label for="shop-filter-radio_4">Choix</label>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-4">
+                    <label for="filtre-editeur-4">editeur</label>
                   </div>
-                  <div class="radio">
-                    <input type="radio" name="shop-filter__radio" id="shop-filter-radio_5" value="">
-                    <label for="shop-filter-radio_5">Choix</label>
+                  <div class="checkbox">
+                    <input type="checkbox" value="" id="filtre-editeur-5">
+                    <label for="filtre-editeur-5">editeur</label>
                   </div>
           
-                  <!-- Colors -->
+                  <!-- Rating -->
                   <h3 class="headline pt-5">
                     <span>Rating</span>
                   </h3>
-                  <div class="shop-filter__color">
-                    <input type="text" id="shop-filter-color_1" value="" data-input-color="black">
-                    <label for="shop-filter-color_1">1</label>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-1" value="1">
+                    <label for="filtre-rating-1">1</label>
                   </div>
-                  <div class="shop-filter__color">
-                    <input type="text" id="shop-filter-color_2" value="" data-input-color="gray">
-                    <label for="shop-filter-color_2">2</label>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-2" value="2">
+                    <label for="filtre-rating-2">2</label>
                   </div>
-                  <div class="shop-filter__color">
-                    <input type="text" id="shop-filter-color_3" value="" data-input-color="brown">
-                    <label for="shop-filter-color_3">3</label>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-3" value="3">
+                    <label for="filtre-rating-3">3</label>
                   </div>
-                  <div class="shop-filter__color">
-                    <input type="text" id="shop-filter-color_4" value="" data-input-color="beige">
-                    <label for="shop-filter-color_4">4</label>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-4" value="4">
+                    <label for="filtre-rating-4">4</label>
                   </div>
-                  <div class="shop-filter__color">
-                    <input type="text" id="shop-filter-color_5" value="" data-input-color="white">
-                    <label for="shop-filter-color_5">5</label>
+                  <div class="filtre-liste-rating">
+                    <input type="text" id="filtre-rating-5" value="5">
+                    <label for="filtre-rating-5">5</label>
                   </div>
                 </form>
               </div>
               
               <div class="col-sm-8 col-md-9">
-                <!-- Filters -->
-                <ul class="shop__sorting">
+                <!-- Trie -->
+                <ul class="trier-liste">
                   <li class="active"><a href="#">Le plus récents</a></li>
                   <li><a href="#">Prix: croissant</a></li>
                   <li><a href="#">Prix: décroissant</a></li>
                 </ul>
           
                 <div class="card-deck">
-                    <div class="shop__thumb">
+                    <div class="card-jeux">
                       <a href="#">
-                        <div class="shop-thumb__img">
+                        <div class="card-jeux-img">
                           <img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
                         </div>
-                        <h5 class="shop-thumb__title">
-                          Nom jeux
-                        </h5>
-                        <div class="shop-thumb__price">
-                          <span class="shop-thumb-price_old">$80.99</span>
-                          <span class="shop-thumb-price_new">$59.99</span>
+                        <h5 class="card-jeux-titre">Nom jeux</h5>
+                        <div class="card-jeux-prix">
+                          <span id="prix-precedent"class="previous-price">$80.99</span><span class="previous-currency">CAD</span><br>
+                          <span class="prix-actuel">$59.99</span><span class="current-currency">CAD</span>
                         </div>
                       </a>
                     </div>
                   
-                    <div class="shop__thumb">
+                    <div class="card-jeux">
                       <a href="#">
-                        <div class="shop-thumb__img">
+                        <div class="card-jeux-img">
                           <img src="https://via.placeholder.com/400x400/20B2AA/000000" class="img-responsive" alt="...">
                         </div>
-                        <h5 class="shop-thumb__title">
-                          Nom jeux
-                        </h5>
-                        <div class="shop-thumb__price">
-                          $59.99
+                        <h5 class="card-jeux-titre">Nom jeux</h5>
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
                         </div>
                       </a>
                     </div>
                   
 
-                    <div class="shop__thumb">
+                    <div class="card-jeux">
                       <a href="#">
-                        <div class="shop-thumb__img">
+                        <div class="card-jeux-img">
                           <img src="https://via.placeholder.com/400x400/FFB6C1/000000" class="img-responsive" alt="...">
                         </div>
-                        <h5 class="shop-thumb__title">
+                        <h5 class="card-jeux-titre">
                           Nom jeux
                         </h5>
-                        <div class="shop-thumb__price">
-                          $59.99
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
                         </div>
                       </a>
                     </div>
                   
-                    <div class="shop__thumb">
+                    <div class="card-jeux">
                       <a href="#">
-                        <div class="shop-thumb__img">
+                        <div class="card-jeux-img">
                           <img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
                         </div>
-                        <h5 class="shop-thumb__title">
+                        <h5 class="card-jeux-titre">
                           Nom jeux
                         </h5>
-                        <div class="shop-thumb__price">
-                          $59.99
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
                         </div>
                       </a>
                     </div>
 
                   
-                    <div class="shop__thumb">
+                    <div class="card-jeux">
                       <a href="#">
-                        <div class="shop-thumb__img">
+                        <div class="card-jeux-img">
                           <img src="https://via.placeholder.com/400x400/FFA07A/000000" class="img-responsive" alt="...">
                         </div>
-                        <h5 class="shop-thumb__title">
+                        <h5 class="card-jeux-titre">
                           Nom jeux
                         </h5>
-                        <div class="shop-thumb__price">
-                          $59.99
+                        <div class="card-jeux-prix">
+                          <span class="current-price">$59.99</span>
                         </div>
                       </a>
                     </div>
@@ -229,7 +229,7 @@
 								<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link active" href="#">1</a></li>
 							<li class="page-item"><a class="page-link" href="#">2</a></li>
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
 							<li class="page-item">
