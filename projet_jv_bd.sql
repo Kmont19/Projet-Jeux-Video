@@ -1,7 +1,11 @@
 drop table paniers;
 drop table factures;
 drop table utilisateurs;
-
+drop table categories;
+drop table utilisateurs_jeux;
+drop table jeux_categories;
+drop table factures_jeux;
+drop table paniers_jeux;
 
 
 create table utilisateurs (
@@ -19,7 +23,7 @@ rating varchar(20),
 prix double,
 rabais double,
 date_de_sortie date, 
-imagelien varchar(255)
+image_lien varchar(255)
 );
 
 create table utilisateurs_jeux (
