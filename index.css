@@ -1,7 +1,19 @@
 html body {
-    background-color: black;
+    background-color: white;
 }
 
-.row {
-    width: 100%;
+.bloc-menu-recommandes {
+    padding: 0 10%;  
+}
+
+.bloc-promotions {
+    border-bottom: 2px solid #f04800;
+}
+
+.bloc-varies {
+    padding: 0 10%;
+}
+
+.liste-jeux {
+    padding-left: 10%;
 }

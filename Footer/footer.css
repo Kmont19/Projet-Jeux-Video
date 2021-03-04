@@ -1,12 +1,12 @@
 .footer {
-    background-color: white;
+    background-color: black;
     border-top: 2px solid #f04800;
     width: 100%;
 }
 
 .footer h5 {
     text-align: center;
-    color: black;
+    color: #f04800;
     font-family: 'Bungee Inline', cursive;
     font-weight: 200;
     font-size: 15px;
@@ -30,7 +30,7 @@
 }
 
 .footer-list-top {
-    border-bottom: 1px solid #f04800;
+    border-bottom: 2px solid #f04800;
 }
 
 .footer .social-media-links {

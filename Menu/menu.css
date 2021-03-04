@@ -5,7 +5,7 @@
     padding-top: 0 !important;
     width: 100%;
     z-index: 10;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid black;
 }
 
 .navbar-brand{
@@ -20,6 +20,7 @@
 
 .navbar-dark .navbar-nav .nav-link {
     color: black !important;
+    font-weight: 600;
 }
 
 .navbar-dark .navbar-toggler {
@@ -28,11 +29,13 @@
 
 .menu .left-menu {
     font-family: 'Bungee Inline', cursive;
-    font-size: 20px;
-    font-weight: 200;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 3px;
     margin-bottom: 0;
     margin-left: 3%;
     width: 100%;
+    letter-spacing: 1px;
 }
 
 .menu a:hover{
@@ -51,19 +54,19 @@
 }
 
 .menu .input-group>.form-control{
-    background-color: black;
+    background-color: white;
     color: black;
     border-color: black;
 }
 
 .menu .input-group>.form-control::placeholder{
-    color: rgba(196, 196, 196, 0.342);
+    color: rgba(0, 0, 0, 0.596);
 }
 
 .menu .input-group>.form-control:focus{
     box-shadow: none;
-    border-color: white;
-    color: #f04800;
+    border-color: black !important;
+    color: black;
 }
 
 .menu .btn {
@@ -93,3 +96,32 @@
     text-align: center;
 }
 
+.dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background-color: #f04800 !important;
+    width: 300px;
+    height: auto;
+    left: -50% !important;
+}
+
+.dropdown-menu a {
+    white-space: nowrap;
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 600;
+    color: black;
+    padding-bottom: 7px !important;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+
+.dropdown-menu a:hover {
+    color: #ffc107;
+}
+
+.dropdown-menu .next-icon {
+   float: right;
+}
