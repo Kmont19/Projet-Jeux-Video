@@ -5,13 +5,14 @@ body{margin-top:20px;}
  */
 /* General */
 /** Shop: cards **/
+
 .card-jeux {
     width: 300px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 20px;
+    border-radius: .25rem;
     margin-bottom: 20px;
     margin-right: 15px;
-    background-color: white;
+    padding: 2px 2px 20px 2px;
+    background-color: black;
     text-align: center;
     -webkit-transition: border-color 0.1s, -webkit-box-shadow 0.1s;
         -o-transition: border-color 0.1s, box-shadow 0.1s;
@@ -25,17 +26,18 @@ body{margin-top:20px;}
 }
 
 .card-jeux > a {
-  color: #333333;
+    color: white;
 }
 
 .card-jeux > a:hover {
-  text-decoration: none;
+    text-decoration: none;
+    color: #f04800;
 }
 
 .card-jeux-img {
     width: 100%;
     max-height: 300px;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .card-jeux-img img{
@@ -52,12 +54,35 @@ body{margin-top:20px;}
   color: #777777;
 }
 
-.previous-price {
-  text-decoration: line-through;
+.current-price {
+  color: #f04800;
+  font-weight: 600;
+  font-size: 18px;
 }
 
-.current-price {
-  color: red;
+.current-currency {
+  color: #f04800;
+  font-weight: 600;
+  font-size: 10px;
+  position: relative;
+  top: -5px;
+  left: 2px;
+}
+
+.previous-price {
+  color: gray;
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: line-through;
+  font-style: italic;
+}
+.previous-currency {
+  color: gray;
+  font-weight: 400;
+  font-size: 8px;
+  position: relative;
+  top: -5px;
+  left: 2px;
 }
 
 /** Shop: Filter **/
@@ -91,6 +116,7 @@ body{margin-top:20px;}
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   cursor: pointer;
+  text-align: center;
 }
 
 /** Shop: Trie **/
@@ -120,13 +146,14 @@ body{margin-top:20px;}
 
 .trier-liste > li > a:hover,
 .trier-liste > li > a:focus {
-  color: #333333;
+  color: #f04800;
+  border-bottom-color: #f04800;
   text-decoration: none;
 }
 
 .trier-liste > li.active > a {
-  color: #ed3e49;
-  border-bottom-color: #ed3e49;
+  color: #f04800;
+  border-bottom-color: #f04800;
 }
 
 @media (max-width: 767px) {
@@ -146,7 +173,6 @@ body{margin-top:20px;}
     font-weight: 600;
   }
 }
-
 
 /* Checkboxes */
 .checkbox input[type="checkbox"] {
@@ -195,5 +221,14 @@ body{margin-top:20px;}
 
 .radio input[type="radio"]:checked + label:before {
   border-width: 7px;
+}
+
+.pagination li a {
+  color: white !important;
+  background-color: #f04800 !important;
+}
+
+.pagination li a:hover {
+  background-color: black !important;
 }
 
