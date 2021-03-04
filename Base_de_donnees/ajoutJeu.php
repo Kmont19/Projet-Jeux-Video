@@ -1,7 +1,7 @@
 <?php
-require_once ('/DB/Model/ModelJeux.php');
-$modelJeux = new );
-echo json_encode($modelJeux->addJeu($_POST['id_jeu'],
+require_once ('BD\Models\ModelJeux.php');
+$modelJeux = new ModelJeux();
+echo json_encode($modelJeux->ajoutJeu($_POST['id_jeu'],
                                     $_POST['nom'],
                                     $_POST['developpeur'],
                                     $_POST['editeur'],

@@ -24,3 +24,4 @@ class Connexion
         return $this->connexion;
     }
 }
+?>

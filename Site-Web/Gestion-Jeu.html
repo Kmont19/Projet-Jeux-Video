@@ -35,7 +35,7 @@
 
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" style="width: 100%;">
                     <div class="col-lg-12">
 
                         <button onclick="ouvrirModalAjout()" class="w3-button w3-black" style="margin-left: 40%; margin-bottom: 5%;">Créer un nouveau jeu</button>
@@ -58,6 +58,9 @@
                                                         <th scope="col">Catégorie</th>
                                                         <th scope="col">Studio</th>
                                                         <th scope="col">Éditeur</th>
+                                                        <th scope="col">Prix</th>
+                                                        <th scope="col">Rabais</th>
+                                                        <th scope="col">Date de sortie</th>
                                                         <th scope="col">À modifier?</th>
                                                         <th scope="col">À supprimer?</th>
 
@@ -67,18 +70,21 @@
 
                                                     <!-- Chaque Nouvelle entrée -->
                                                     <tr>
-                                                        <th scope="row" width="10%;">1</th>
-                                                        <th>
-                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Kingdom-Hearts-III.jpg" style="width: 30%;"/>
+                                                        <th scope="row" width="2%;">1</th>
+                                                        <th width="10%">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Kingdom-Hearts-III.jpg" style="width: 60px; height: 80px;"/>
                                                         </th>
-                                                        <th width="10%;">Kingdom Hearts 3</th>
-                                                        <th width="10%;">Action</th>
-                                                        <th width="10%;">Square Enix</th>
-                                                        <th width="10%;">Square Enix</th>
-                                                        <th width="10%;">
-                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Modif.jpg" class="animationsBoutonsListe" onclick="ouvrirModalModif('Kingdom-Hearts-III.jpg','1','Kingdom Hearts 3', 'Action', 'Square Enix', 'Square Enix')">
+                                                        <th width="5%">Kingdom Hearts 3</th>
+                                                        <th width="5%">Action</th>
+                                                        <th width="5%">Square Enix</th>
+                                                        <th width="5%">Square Enix</th>
+                                                        <th>79.99$</th>
+                                                        <th>0</th>
+                                                        <th>2019-01-25</th>
+                                                        <th width="10%">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Modif.jpg" class="animationsBoutonsListe" onclick="ouvrirModalModif('Kingdom-Hearts-III.jpg','1','Kingdom Hearts 3', 'Action', 'Square Enix', 'Square Enix','79.99','0', '2019', '01', '25')">
                                                         </th>
-                                                        <th width="10%;">
+                                                        <th width="10%">
                                                             <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/supprimer.png" class="animationsBoutonsListe" onclick="supprimerObjetListe('2475')">
                                                         </th>
                                                     </tr>
@@ -146,6 +152,14 @@
                 <input type="text" placeholder="Veuillez entrer le nom du studio du jeu" class="dispositionsInputs" id="nomStudio"> <br>
                 <h4>Nom de l'éditeur</h4>
                 <input type="text" placeholder="Veuillez entrer le nom de l'éditeur du jeu" class="dispositionsInputs" id="nomEditeur"> <br>
+                <h4>Prix</h4>
+                <input type="text" placeholder="Veuillez entrer le prix du jeu" class="dispositionsInputs" id="prixJeu">
+                <h4>Rabais (ne pas mettre un %)</h4>
+                <input type="text" placeholder="Veuillez entrer le rabais du jeu" class="dispositionsInputs" id="rabaisJeu">
+                <h4>Date de sortie</h4>
+                <input type="text" placeholder="Veuillez entrer l'année de sortie du jeu" class="dispositionsInputs" id="dateJeuAnnee">
+                <input type="text" placeholder="Veuillez entrer le mois de sortie du jeu" class="dispositionsInputs" id="dateJeuMois">
+                <input type="text" placeholder="Veuillez entrer le jour de sortie du jeu" class="dispositionsInputs" id="dateJeuJour">
                 <input type="button" id="boutonConfirmation" onclick="boutonConfirmation()">
             </div>
         </div>
@@ -170,15 +184,19 @@
             document.getElementById("boutonConfirmation").value ="Créer le jeu";
             document.getElementById("nomImage").innerHTML = "inconnu.jpg";
             document.getElementById("imageModal").src ="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/inconnu.jpg";
-            document.getElementById("idJeu").value = "(Aucune image sélectionné)";
             document.getElementById("idJeu").value = "";
             document.getElementById("nomJeu").value ="";
             document.getElementById("categorie").selectedIndex = "-1";
             document.getElementById("nomStudio").value = "";
             document.getElementById('nomEditeur').value = "";
+            document.getElementById('prixJeu').value = "";
+            document.getElementById('rabaisJeu').value = "";
+            document.getElementById('dateJeuAnnee').value = "";
+            document.getElementById('dateJeuMois').value = "";
+            document.getElementById('dateJeuJour').value = "";
         }
 
-        function ouvrirModalModif(image, id, nom, categorie, studio, editeur){
+        function ouvrirModalModif(image, id, nom, categorie, studio, editeur, prix, rabais, annee, mois, jour){
             modal.style.display = "block";
             document.getElementById("titreModal").innerHTML = "Modification de jeu";
             document.getElementById("boutonConfirmation").value ="Enregistrer les modifications";
@@ -223,6 +241,11 @@
             }
             document.getElementById("nomStudio").value = studio;
             document.getElementById('nomEditeur').value = editeur;
+            document.getElementById('prixJeu').value = prix;
+            document.getElementById('rabaisJeu').value = rabais;
+            document.getElementById('dateJeuAnnee').value = annee;
+            document.getElementById('dateJeuMois').value = mois;
+            document.getElementById('dateJeuJour').value = jour;
         }
 
         // When the user clicks on <span> (x), close the modal
@@ -244,9 +267,9 @@
                 var categorie = document.getElementById("categorie");
                 var studio = document.getElementById("nomStudio");
                 var editeur = document.getElementById("nomEditeur");
-                var prix = 95.93;
-                var rabais = 2.25;
-                var date = '2020-02-21';
+                var prix = document.getElementById("prixJeu");
+                var rabais = document.getElementById("rabaisJeu");
+                var date = document.getElementById("dateJeuAnnee") + '-' + document.getElementById("dateJeuMois") + '-' + document.getElementById("dateJeuJour");
                 var lien_image = document.getElementById("nomImage");
 
                 if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == ""){
@@ -264,7 +287,7 @@
                         $(document).ready(function (){
                             e.preventDefault()
                             $.ajax({
-                                url: "/../",
+                                url: "../Base_de_donnees/ajoutJeu.php",
                                 type: "POST",
                                 dataType: "json",
                                 data: {
