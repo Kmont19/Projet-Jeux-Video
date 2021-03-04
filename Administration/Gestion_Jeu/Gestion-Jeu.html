@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestion des jeux</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet"
+              type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="Style-Gestion-Jeu.css">
+    </head>
+
+    <body>
+
+    <div id="wrapper" class="wrapper-content">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    Menu administratif
+                </li>
+                <li>
+                    <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Accueil_Administratif/Menu-Administration.html">Menu Administratif</a>
+                </li>
+                <li>
+                    <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Gestion_Jeu/Gestion-Jeu.html">Gestion des Jeux</a>
+                </li>
+                <li>
+                    <a id="retourAccueil" href="">Retour à l'accueil</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-12">
+
+                        <button onclick="ouvrirModalAjout()" class="w3-button w3-black" style="margin-left: 40%; margin-bottom: 5%;">Créer un nouveau jeu</button>
+
+                        <div class="container" style="background-color: white;">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive project-list">
+                                                <table class="table project-table table-centered table-nowrap" style="color:black;">
+
+
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Image</th>
+                                                        <th scope="col">Nom</th>
+                                                        <th scope="col">Catégorie</th>
+                                                        <th scope="col">Studio</th>
+                                                        <th scope="col">Éditeur</th>
+                                                        <th scope="col">Prix</th>
+                                                        <th scope="col">Rabais</th>
+                                                        <th scope="col">Date de sortie</th>
+                                                        <th scope="col">À modifier?</th>
+                                                        <th scope="col">À supprimer?</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    <!-- Chaque Nouvelle entrée -->
+                                                    <tr>
+                                                        <th scope="row" width="2%;">1</th>
+                                                        <th width="10%">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Kingdom-Hearts-III.jpg" style="width: 60px; height: 80px;"/>
+                                                        </th>
+                                                        <th width="5%">Kingdom Hearts 3</th>
+                                                        <th width="5%">Action</th>
+                                                        <th width="5%">Square Enix</th>
+                                                        <th width="5%">Square Enix</th>
+                                                        <th>79.99$</th>
+                                                        <th>0</th>
+                                                        <th>2019-01-25</th>
+                                                        <th width="10%">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Modif.jpg" class="animationsBoutonsListe" onclick="ouvrirModalModif('Kingdom-Hearts-III.jpg','1','Kingdom Hearts 3', 'Action', 'Square Enix', 'Square Enix','79.99','0', '2019', '01', '25')">
+                                                        </th>
+                                                        <th width="10%">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/supprimer.png" class="animationsBoutonsListe" onclick="supprimerObjetListe('2475')">
+                                                        </th>
+                                                    </tr>
+
+                                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                    <script>
+
+                                                        $(document).ready(function (e) {
+
+                                                        })
+                                                    </script>
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end project-list -->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="interieurModal">
+                <h2 id="titreModal"></h2>
+                <img id="imageModal"> <br>
+                <p id="nomImage"></p>
+                <input type="file" id="fichierModal">
+                <h4>Id du jeu</h4>
+                <input type="text" class="dispositionsInputs" id="idJeu" disabled>
+                <h4>Nom du jeu</h4>
+                <input type="text" placeholder="Veuillez entrer le nom du jeu" class="dispositionsInputs" id="nomJeu"> <br>
+                <h4>Catégorie</h4>
+                <select name="categorie" id="categorie" class="dispositionsInputs">
+                    <option>Action/Aventure</option>
+                    <option>Sport</option>
+                    <option>FPS</option>
+                    <option>RPG</option>
+                    <option>Course</option>
+                    <option>Plateforme</option>
+                    <option>Gestion</option>
+                    <option>Jeux de société</option>
+                    <option>Combat</option>
+                    <option>Simulation</option>
+                    <option>MMO</option>
+                </select><br>
+                <h4>Nom du studio</h4>
+                <input type="text" placeholder="Veuillez entrer le nom du studio du jeu" class="dispositionsInputs" id="nomStudio"> <br>
+                <h4>Nom de l'éditeur</h4>
+                <input type="text" placeholder="Veuillez entrer le nom de l'éditeur du jeu" class="dispositionsInputs" id="nomEditeur"> <br>
+                <h4>Prix</h4>
+                <input type="text" placeholder="Veuillez entrer le prix du jeu" class="dispositionsInputs" id="prixJeu">
+                <h4>Rabais (ne pas mettre un %)</h4>
+                <input type="text" placeholder="Veuillez entrer le rabais du jeu" class="dispositionsInputs" id="rabaisJeu">
+                <h4>Date de sortie</h4>
+                <input type="text" placeholder="Veuillez entrer l'année de sortie du jeu" class="dispositionsInputs" id="dateJeuAnnee">
+                <input type="text" placeholder="Veuillez entrer le mois de sortie du jeu" class="dispositionsInputs" id="dateJeuMois">
+                <input type="text" placeholder="Veuillez entrer le jour de sortie du jeu" class="dispositionsInputs" id="dateJeuJour">
+                <input type="button" id="boutonConfirmation">
+            </div>
+        </div>
+
+    </div>
+
+
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.getElementById("retourAccueil").style.color = "red";
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Ouvre le modal de création de jeux
+        function ouvrirModalAjout(){
+            modal.style.display = "block";
+            document.getElementById("titreModal").innerHTML = "Ajout de jeu";
+            document.getElementById("boutonConfirmation").value ="Créer le jeu";
+            document.getElementById("nomImage").innerHTML = "inconnu.jpg";
+            document.getElementById("imageModal").src ="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/inconnu.jpg";
+            document.getElementById("idJeu").value = "";
+            document.getElementById("nomJeu").value ="";
+            document.getElementById("categorie").selectedIndex = "-1";
+            document.getElementById("nomStudio").value = "";
+            document.getElementById('nomEditeur').value = "";
+            document.getElementById('prixJeu').value = "";
+            document.getElementById('rabaisJeu').value = "";
+            document.getElementById('dateJeuAnnee').value = "";
+            document.getElementById('dateJeuMois').value = "";
+            document.getElementById('dateJeuJour').value = "";
+        }
+
+        function ouvrirModalModif(image, id, nom, categorie, studio, editeur, prix, rabais, annee, mois, jour){
+            modal.style.display = "block";
+            document.getElementById("titreModal").innerHTML = "Modification de jeu";
+            document.getElementById("boutonConfirmation").value ="Enregistrer les modifications";
+            document.getElementById("imageModal").src ="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/" + image;
+            document.getElementById("idJeu").value = id;
+            document.getElementById("nomJeu").value = nom;
+            switch (categorie){
+                case "Action/Aventure":
+                    document.getElementById("categorie").selectedIndex = "0";
+                    break;
+                case "Sport":
+                    document.getElementById("categorie").selectedIndex = "1";
+                    break;
+                case "FPS":
+                    document.getElementById("categorie").selectedIndex = "2";
+                    break;
+                case "RPG":
+                    document.getElementById("categorie").selectedIndex = "3";
+                    break;
+                case "Course":
+                    document.getElementById("categorie").selectedIndex = "4";
+                    break;
+                case "Plateforme":
+                    document.getElementById("categorie").selectedIndex = "5";
+                    break;
+                case "Gestion":
+                    document.getElementById("categorie").selectedIndex = "6";
+                    break;
+                case "Jeux de société":
+                    document.getElementById("categorie").selectedIndex = "7";
+                    break;
+                case "Combat":
+                    document.getElementById("categorie").selectedIndex = "8";
+                    break;
+                case "Simulation":
+                    document.getElementById("categorie").selectedIndex = "9";
+                    break;
+                case "MMO":
+                    document.getElementById("categorie").selectedIndex = "10";
+                    break;
+
+            }
+            document.getElementById("nomStudio").value = studio;
+            document.getElementById('nomEditeur').value = editeur;
+            document.getElementById('prixJeu').value = prix;
+            document.getElementById('rabaisJeu').value = rabais;
+            document.getElementById('dateJeuAnnee').value = annee;
+            document.getElementById('dateJeuMois').value = mois;
+            document.getElementById('dateJeuJour').value = jour;
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        $(document).ready(function (){
+            $('#boutonConfirmation').click(function (e) {
+                var bouton = document.getElementById("boutonConfirmation");
+                var nom = document.getElementById("nomJeu");
+                var categorie = document.getElementById("categorie");
+                var studio = document.getElementById("nomStudio");
+                var editeur = document.getElementById("nomEditeur");
+                var prix = document.getElementById("prixJeu");
+                var rabais = document.getElementById("rabaisJeu");
+                var annee = document.getElementById("dateJeuAnnee");
+                var mois = document.getElementById("dateJeuMois");
+                var jour = document.getElementById("dateJeuJour");
+                var date = annee.value + '-' + mois.value + '-' + jour.value;
+                var lien_image = document.getElementById("nomImage");
+
+                if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == "" || prix.value == "" || rabais.value == "" || annee.value == "" || mois.value == "" || jour.value == ""){
+                    alert("Veuillez choisir et remplir tous les champs");
+                } else {
+                    if (bouton.value == "Créer le jeu") {
+                        /* Création de l'ID */
+                        var id = nom.value.substring(0,3) + studio.value.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
+                        document.getElementById("idJeu").value = id;
+
+                        /* Ajout Image dans le serveur*/
+
+
+                        /* Ajout jeu dans la BD */
+                            e.preventDefault()
+                            $.ajax({
+                                url: "../../Base_de_donnees/ajoutJeu.php",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    "id_jeu": id,
+                                    "nom": nom.value,
+                                    "developpeur": studio.value,
+                                    "editeur": editeur.value,
+                                    "rating": '0',
+                                    "prix": prix.value,
+                                    "rabais": rabais.value,
+                                    "date_de_sortie": date,
+                                    "image_lien": lien_image.innerHTML
+                                },
+                                success: function (reponse) {
+                                    console.log(reponse);
+                                    alert("Le jeu a bien été ajouté");
+                                },
+                                error: function (message, e) {
+                                    console.log(message);
+                                }
+                            });
+                        /* Ajout de la catégorie */
+                        var categorie = document.getElementById("categorie");
+                        e.preventDefault()
+                        $.ajax({
+                            url: "../../Base_de_donnees/ajout_categorie",
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id_jeu": id,
+                                "categorie": categorie.options[categorie.selectedIndex].text
+                            },
+                            success: function (reponse) {
+                                console.log(reponse);
+                                alert("Le jeu a bien été ajouté");
+                                location.reload();
+                            },
+                            error: function (message, e) {
+                                console.log(message);
+                            }
+                        });
+
+                    } else {
+                        alert("Le jeu a bien été modifié");
+                        location.reload();
+                    }
+                }
+
+            });
+        });
+
+        //Pour la supression d'objets
+        function supprimerObjetListe(id){
+            if (confirm("Voulez-vous vraiment supprimer cet objet?")){
+                alert("Oui");
+                alert(id);
+                location.reload();
+            } else {
+                alert("nope");
+            }
+        }
+    </script>
+
+</html>

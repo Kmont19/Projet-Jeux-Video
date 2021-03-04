@@ -1,0 +1,45 @@
+.menu-categories {
+    margin-left:  5%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border: 2px solid black !important;
+    border-radius: 4px;
+}
+
+.menu-categories h3 {
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 600;
+    text-align: center;
+    padding: 4% 0;
+    color: #f04800;
+    margin: 0 auto;
+    background-color: black;
+    font-size: 20px;
+}
+
+.menu-categories .nav-link {
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 600;
+    color: black;
+    border-bottom: 2px solid black !important;
+    padding-bottom: 7px !important;
+    letter-spacing: 3px;
+    background-color: #f04800;
+}
+
+.menu-categories .nav-link:hover {
+    color: #ffc107;
+}
+
+.menu-categories .nav-link {
+    float: left;
+}
+
+.menu-categories .next-icon {
+    float: right;
+}
+
+.nav-top {
+    border-top: 1px solid #f04800 !important;
+    padding-top: 9px !important;
+}

@@ -1,0 +1,127 @@
+.navbar{
+    position: absolute;
+    background-color:  #f04800;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 2px solid black;
+}
+
+.navbar-brand{
+    padding: 0 !important;
+    background-color: black !important;
+}
+
+.menu .logo {
+    width: 70px;
+    height: 47px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: black !important;
+    font-weight: 600;
+}
+
+.navbar-dark .navbar-toggler {
+    background-color: black ;
+}
+
+.menu .left-menu {
+    font-family: 'Bungee Inline', cursive;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 3px;
+    margin-bottom: 0;
+    margin-left: 3%;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.menu a:hover{
+    background-color: #ffc107 !important;
+}
+
+.menu .active {
+    background-color: #ffc107 !important;
+}
+
+.menu .search-bar {
+    position: relative;
+    z-index: 1;
+    width: 35%;
+    margin-left: 3%;
+}
+
+.menu .input-group>.form-control{
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.menu .input-group>.form-control::placeholder{
+    color: rgba(0, 0, 0, 0.596);
+}
+
+.menu .input-group>.form-control:focus{
+    box-shadow: none;
+    border-color: black !important;
+    color: black;
+}
+
+.menu .btn {
+    padding: 0 .375rem !important;
+}
+
+.menu .btn-search {
+    background-color: black !important;
+    color: #f04800 !important;
+    padding: .375rem;
+}
+
+.menu .btn-search:hover {
+    border: 1px solid  white !important;
+}
+
+.menu .input-group-append button {
+    border-width: 0;
+}
+
+.menu .material-icons {
+    font-size: 24px;
+}
+
+.menu .right-icons .nav-link{
+    margin-right: 15px;
+    text-align: center;
+}
+
+.dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background-color: #f04800 !important;
+    width: 300px;
+    height: auto;
+    left: -50% !important;
+}
+
+.dropdown-menu a {
+    white-space: nowrap;
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 600;
+    color: black;
+    padding-bottom: 7px !important;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+
+.dropdown-menu a:hover {
+    color: #ffc107;
+}
+
+.dropdown-menu .next-icon {
+   float: right;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu Administratif</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="Style-Menu-Administration.css">
+    </head>
+
+    <body>
+        <div id="wrapper" class="wrapper-content">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        Menu administratif
+                    </li>
+                    <li>
+                        <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Accueil_Administratif/Menu-Administration.html">Menu Administratif</a>
+                    </li>
+                    <li>
+                        <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Gestion_Jeu/Gestion-Jeu.html">Gestion des Jeux</a>
+                    </li>
+                    <li>
+                        <a id="retourAccueil" href="">Retour à l'accueil</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+
+
+                            <div class="container bootstrap snippets bootdey">
+                                <div class="row">
+                                    <div class="col-lg-2 col-sm-6">
+                                        <div class="circle-tile ">
+                                            <a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+                                            <div class="circle-tile-content dark-blue">
+                                                <div class="circle-tile-description text-faded">Gestion des jeux</div>
+                                                <div id="nombreJeux" class="circle-tile-number text-faded"></div>
+                                                <a class="circle-tile-footer" href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Gestion_Jeu/Gestion-Jeu.html">Appuyez pour faire la gestion des jeux<i class="fa fa-chevron-circle-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        /* Rechercher le nombre de jeux au total dans la BD */
+        document.getElementById("nombreJeux").innerHTML = "5";
+
+        document.getElementById("retourAccueil").style.color = "red";
+    </script>
+
+</html>
