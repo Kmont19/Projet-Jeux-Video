@@ -18,10 +18,13 @@
                         Menu administratif
                     </li>
                     <li>
-                        <a href="Menu-Administration.html">Menu Administratif</a>
+                        <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Accueil_Administratif/Menu-Administration.html">Menu Administratif</a>
                     </li>
                     <li>
-                        <a href="Gestion-Jeu.html">Gestion des Jeux</a>
+                        <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Gestion_Jeu/Gestion-Jeu.html">Gestion des Jeux</a>
+                    </li>
+                    <li>
+                        <a id="retourAccueil" href="">Retour à l'accueil</a>
                     </li>
                 </ul>
             </div>
@@ -40,8 +43,8 @@
                                             <a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
                                             <div class="circle-tile-content dark-blue">
                                                 <div class="circle-tile-description text-faded">Gestion des jeux</div>
-                                                <div class="circle-tile-number text-faded ">265</div>
-                                                <a class="circle-tile-footer" href="Gestion-Jeu.html">Appuyez pour faire la gestion des jeux<i class="fa fa-chevron-circle-right"></i></a>
+                                                <div id="nombreJeux" class="circle-tile-number text-faded"></div>
+                                                <a class="circle-tile-footer" href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Gestion_Jeu/Gestion-Jeu.html">Appuyez pour faire la gestion des jeux<i class="fa fa-chevron-circle-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -57,5 +60,12 @@
             </div>
         </div>
     </body>
+
+    <script>
+        /* Rechercher le nombre de jeux au total dans la BD */
+        document.getElementById("nombreJeux").innerHTML = "5";
+
+        document.getElementById("retourAccueil").style.color = "red";
+    </script>
 
 </html>
