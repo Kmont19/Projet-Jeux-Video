@@ -45,43 +45,43 @@
                     <span>Genres de jeux</span>
                   </h3>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-action">
+                    <input class="filtre-categorie" type="checkbox" value="Action" id="filtre-action">
                     <label for="filtre-action">Action</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-aventure">
+                    <input class="filtre-categorie" type="checkbox" value="Aventure" id="filtre-aventure">
                     <label for="filtre-aventure">Aventure</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-casual">
+                    <input class="filtre-categorie" type="checkbox" value="Casual" id="filtre-casual">
                     <label for="filtre-casual">Casual</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-autos">
+                    <input class="filtre-categorie" type="checkbox" value="Course Automobile" id="filtre-autos">
                     <label for="filtre-autos">Course Automobile</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-independant">
+                    <input class="filtre-categorie" type="checkbox" value="Indépendant" id="filtre-independant">
                     <label for="filtre-independant">Indépendant</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-multijoueur">
+                    <input class="filtre-categorie" type="checkbox" value="Multijoueur" id="filtre-multijoueur">
                     <label for="filtre-multijoueur">Multijoueur</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-rpg">
+                    <input class="filtre-categorie" type="checkbox" value="RPG" id="filtre-rpg">
                     <label for="filtre-rpg">RPG</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-simulation">
+                    <input class="filtre-categorie" type="checkbox" value="Simulation" id="filtre-simulation">
                     <label for="filtre-simulation">Simulation</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-sport">
+                    <input class="filtre-categorie" type="checkbox" value="Sport" id="filtre-sport">
                     <label for="filtre-sport">Sport</label>
                   </div>
                   <div class="checkbox">
-                    <input type="checkbox" value="" id="filtre-strategie">
+                    <input class="filtre-categorie" type="checkbox" value="Strategie" id="filtre-strategie">
                     <label for="filtre-strategie">Strategie</label>
                   </div>
           
@@ -146,83 +146,83 @@
                   <li><a href="#">Prix: décroissant</a></li>
                 </ul>
           
-                <div class="card-deck">
-                    <div class="card-jeux">
-                      <a href="#">
-                        <div class="card-jeux-img">
-                          <img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
-                        </div>
-                        <h5 class="card-jeux-titre">Nom jeux</h5>
-                        <div class="card-jeux-prix">
-                          <span id="prix-precedent"class="previous-price">$80.99</span><span class="previous-currency">CAD</span><br>
-                          <span class="prix-actuel">$59.99</span><span class="current-currency">CAD</span>
-                        </div>
-                      </a>
-                    </div>
-                  
-                    <div class="card-jeux">
-                      <a href="#">
-                        <div class="card-jeux-img">
-                          <img src="https://via.placeholder.com/400x400/20B2AA/000000" class="img-responsive" alt="...">
-                        </div>
-                        <h5 class="card-jeux-titre">Nom jeux</h5>
-                        <div class="card-jeux-prix">
-                          <span class="current-price">$59.99</span>
-                        </div>
-                      </a>
-                    </div>
-                  
+				<!-- Card-Deck -->
+				<div class="card-deck">
+					<div class="card-jeux">
+						<a href="#">
+						<div class="card-jeux-img">
+							<img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
+						</div>
+						<h5 class="card-jeux-titre">Nom jeux</h5>
+						<div class="card-jeux-prix">
+							<span id="prix-actuel" class="current-price">59.99</span><span class="current-currency">CAD</span><br> 
+								<span id="prix-precedent"class="previous-price">80.99</span><span class="previous-currency">CAD</span>                         
+						</div>
+						</a>
+					</div>
+					
+					<div class="card-jeux">
+						<a href="#">
+						<div class="card-jeux-img">
+							<img src="https://via.placeholder.com/400x400/20B2AA/000000" class="img-responsive" alt="...">
+						</div>
+						<h5 class="card-jeux-titre">Nom jeux</h5>
+						<div class="card-jeux-prix">
+							<span class="current-price">59.99</span><span class="current-currency">CAD</span>
+						</div>
+						</a>
+					</div>
+					
 
-                    <div class="card-jeux">
-                      <a href="#">
-                        <div class="card-jeux-img">
-                          <img src="https://via.placeholder.com/400x400/FFB6C1/000000" class="img-responsive" alt="...">
-                        </div>
-                        <h5 class="card-jeux-titre">
-                          Nom jeux
-                        </h5>
-                        <div class="card-jeux-prix">
-                          <span class="current-price">$59.99</span>
-                        </div>
-                      </a>
-                    </div>
-                  
-                    <div class="card-jeux">
-                      <a href="#">
-                        <div class="card-jeux-img">
-                          <img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
-                        </div>
-                        <h5 class="card-jeux-titre">
-                          Nom jeux
-                        </h5>
-                        <div class="card-jeux-prix">
-                          <span class="current-price">$59.99</span>
-                        </div>
-                      </a>
-                    </div>
+					<div class="card-jeux">
+						<a href="#">
+						<div class="card-jeux-img">
+							<img src="https://via.placeholder.com/400x400/FFB6C1/000000" class="img-responsive" alt="...">
+						</div>
+						<h5 class="card-jeux-titre">
+							Nom jeux
+						</h5>
+						<div class="card-jeux-prix">
+							<span class="current-price">59.99</span><span class="current-currency">CAD</span>
+						</div>
+						</a>
+					</div>
+					
+					<div class="card-jeux">
+						<a href="#">
+						<div class="card-jeux-img">
+							<img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
+						</div>
+						<h5 class="card-jeux-titre">
+							Nom jeux
+						</h5>
+						<div class="card-jeux-prix">
+							<span class="current-price">59.99</span><span class="current-currency">CAD</span>
+						</div>
+						</a>
+					</div>
 
-                  
-                    <div class="card-jeux">
-                      <a href="#">
-                        <div class="card-jeux-img">
-                          <img src="https://via.placeholder.com/400x400/FFA07A/000000" class="img-responsive" alt="...">
-                        </div>
-                        <h5 class="card-jeux-titre">
-                          Nom jeux
-                        </h5>
-                        <div class="card-jeux-prix">
-                          <span class="current-price">$59.99</span>
-                        </div>
-                      </a>
-                    </div>
-                  
-                    
-                </div> <!-- / .row -->
-          
+					
+					<div class="card-jeux">
+						<a href="#">
+						<div class="card-jeux-img">
+							<img src="https://via.placeholder.com/400x400/FFA07A/000000" class="img-responsive" alt="...">
+						</div>
+						<h5 class="card-jeux-titre">
+							Nom jeux
+						</h5>
+						<div class="card-jeux-prix">
+							<span class="current-price">59.99</span><span class="current-currency">CAD</span>
+						</div>
+						</a>
+					</div>					
+				</div> <!--card-deck -->
+                
+
                 <!-- Pagination -->
                 <div class="row">
                   <div class="col-sm-12">
-					<nav aria-label="Page navigation example">
+					<nav aria-label="Page navigation">
 						<ul class="pagination pull-right">
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Previous">
@@ -247,5 +247,18 @@
               </div> <!-- / .col-sm-8 -->
             </div> <!-- / .row -->
           </div>
-
 </html>
+<script>
+    $(document).ready(function() {
+        //Check categorie si le menu a été clické
+        if(localStorage.getItem("categorie") !== null) {
+            var categorie = localStorage.getItem("categorie")
+            $("input[class='filtre-categorie']").each(function() {
+                if($(this).val() == categorie) {
+                    $(this).prop("checked", true)
+                }
+            })
+            localStorage.clear()
+        }
+    })    
+</script>
