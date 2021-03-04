@@ -4,8 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestion des jeux</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet"
+              type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="Style-Gestion-Jeu.css">
     </head>
 
@@ -32,149 +38,74 @@
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <button class="tablink" onclick="openCity('visualisation', this, '#fff')" id="defaultOpen">Visualisation</button>
-                        <button class="tablink" onclick="openCity('creation', this, '#fff')">Création</button>
-                        <button class="tablink" onclick="openCity('modification', this, '#fff')">Modification</button>
+                        <button onclick="ouvrirModalAjout()" class="w3-button w3-black" style="margin-left: 40%; margin-bottom: 5%;">Créer un nouveau jeu</button>
 
-                        <div id="visualisation" class="tabcontent">
-                            <div class="container">
+                        <div class="container" style="background-color: white;">
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="table-responsive project-list">
-                                                    <table class="table project-table table-centered table-nowrap" style="color:black;">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive project-list">
+                                                <table class="table project-table table-centered table-nowrap" style="color:black;">
 
 
-                                                        <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Image</th>
-                                                            <th scope="col">Nom</th>
-                                                            <th scope="col">Studio</th>
-                                                            <th scope="col">Éditeur</th>
-                                                            <th scope="col">À supprimer?</th>
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Image</th>
+                                                        <th scope="col">Nom</th>
+                                                        <th scope="col">Catégorie</th>
+                                                        <th scope="col">Studio</th>
+                                                        <th scope="col">Éditeur</th>
+                                                        <th scope="col">À modifier?</th>
+                                                        <th scope="col">À supprimer?</th>
 
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <!-- Chaque Nouvelle entrée -->
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td width="20%;">
-                                                                <img src="Kingdom-Hearts-III.jpg" style="width: 50%;"/>
-                                                            </td>
-                                                            <td>Kingdom Hearts 3</td>
-                                                            <td>Square Enix</td>
-                                                            <td>Square Enix</td>
-                                                            <td>
-                                                                <a style="color:red; font-size: 2vw;">
-                                                                    X
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
 
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td width="20%;">
-                                                                <img src="Kingdom-Hearts-III.jpg" style="width: 50%;"/>
-                                                            </td>
-                                                            <td>Kingdom Hearts 3</td>
-                                                            <td>Square Enix</td>
-                                                            <td>Square Enix</td>
-                                                            <td>
-                                                                <a style="color:red; font-size: 2vw;">
-                                                                    X
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+                                                    <!-- Chaque Nouvelle entrée -->
+                                                    <tr>
+                                                        <th scope="row" width="10%;">1</th>
+                                                        <th>
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Kingdom-Hearts-III.jpg" style="width: 30%;"/>
+                                                        </th>
+                                                        <th width="10%;">Kingdom Hearts 3</th>
+                                                        <th width="10%;">Action</th>
+                                                        <th width="10%;">Square Enix</th>
+                                                        <th width="10%;">Square Enix</th>
+                                                        <th width="10%;">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Modif.jpg" class="animationsBoutonsListe" onclick="ouvrirModalModif('Kingdom-Hearts-III.jpg','1','Kingdom Hearts 3', 'Action', 'Square Enix', 'Square Enix')">
+                                                        </th>
+                                                        <th width="10%;">
+                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/supprimer.png" class="animationsBoutonsListe" onclick="supprimerObjetListe('2475')">
+                                                        </th>
+                                                    </tr>
 
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td width="20%;">
-                                                                <img src="Kingdom-Hearts-III.jpg" style="width: 50%;"/>
-                                                            </td>
-                                                            <td>Kingdom Hearts 3</td>
-                                                            <td>Square Enix</td>
-                                                            <td>Square Enix</td>
-                                                            <td>
-                                                                <a style="color:red; font-size: 2vw;">
-                                                                    X
-                                                                </a>
-                                                            </td>
-                                                        </tr>
+                                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                    <script>
 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <!-- end project-list -->
+                                                        $(document).ready(function (e) {
+
+                                                        })
+                                                    </script>
 
 
+
+                                                    </tbody>
+                                                </table>
                                             </div>
+                                            <!-- end project-list -->
+
+
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end row -->
-                            </div>
-                        </div>
-
-                        <div id="creation" class="tabcontent">
-
-                            <div style="display: flex; justify-content: center; margin-top: 3%;">
-                                <div style="width: 30%;">
-                                    <img src="inconnu.jpg" style="width: 100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> <br>
-                                    <button type="button" class="btn btn-block btn-lg btn-primary waves-effect waves-light">Changer la photo de couverture</button>
-                                </div>
-                                <div style="width: 60%; margin-left: 15%; color:black; display: flex; justify-content: center;">
-                                    <div style="width: 20%; display: flex; justify-content: space-between; flex-direction: column;">
-
-                                        <div>
-                                            <label for="nom">Nom du jeu: </label>
-                                        </div>
-                                        <div>
-                                            <label for="date">Date de sortie: </label>
-                                        </div>
-                                        <div>
-                                            <label for="studio">Nom du studio: </label>
-                                        </div>
-                                        <div>
-                                            <label for="editeur">Nom du l'éditeur: </label>
-                                        </div>
-                                        <div>
-                                            <p>Description: </p>
-                                        </div>
-
-                                    </div>
-                                    <div style="width: 60%; display: flex; justify-content: space-between; flex-direction: column;">
-
-                                        <div>
-                                            <input type="text" id="nom" placeholder="Entrez le nom du jeu" style="width: 100%;">
-                                        </div>
-                                        <div>
-                                            <input type="text" id="date" placeholder="Entrez la date de sortie du jeu" style="width: 100%;">
-                                        </div>
-                                        <div>
-                                            <input type="text" id="studio" placeholder="Entrez le nom du studio du jeu" style="width: 100%;">
-                                        </div>
-                                        <div>
-                                            <input type="text" id="editeur" placeholder="Entrez le nom de l'éditeur du jeu" style="width: 100%;">
-                                        </div>
-                                        <div>
-                                            <textarea id="description" placeholder="Entrez la description du jeu" style="resize: vertical; height: 100%; width: 100%;"></textarea>
-                                        </div>
-
-                                    </div>
-
-
                                 </div>
                             </div>
-                            <input type="submit" value="Confirmer la création de la fiche de jeu" style="padding: 2%; margin-top: 3%; margin-left: 35%; margin-bottom: 1%; font-size: 15px; background-color: #3f5fb5; color:white;">
+                            <!-- end row -->
                         </div>
 
-                        <div id="modification" class="tabcontent">
-                            <p style="color:black;">3</p>
-                        </div>
 
                     </div>
                 </div>
@@ -182,32 +113,205 @@
         </div>
     </div>
 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="interieurModal">
+                <h2 id="titreModal"></h2>
+                <img id="imageModal"> <br>
+                <p id="nomImage"></p>
+                <input type="file" id="fichierModal">
+                <h4>Id du jeu</h4>
+                <input type="text" class="dispositionsInputs" id="idJeu" disabled>
+                <h4>Nom du jeu</h4>
+                <input type="text" placeholder="Veuillez entrer le nom du jeu" class="dispositionsInputs" id="nomJeu"> <br>
+                <h4>Catégorie</h4>
+                <select name="categorie" id="categorie" class="dispositionsInputs">
+                    <option>Action/Aventure</option>
+                    <option>Sport</option>
+                    <option>FPS</option>
+                    <option>RPG</option>
+                    <option>Course</option>
+                    <option>Plateforme</option>
+                    <option>Gestion</option>
+                    <option>Jeux de société</option>
+                    <option>Combat</option>
+                    <option>Simulation</option>
+                    <option>MMO</option>
+                </select><br>
+                <h4>Nom du studio</h4>
+                <input type="text" placeholder="Veuillez entrer le nom du studio du jeu" class="dispositionsInputs" id="nomStudio"> <br>
+                <h4>Nom de l'éditeur</h4>
+                <input type="text" placeholder="Veuillez entrer le nom de l'éditeur du jeu" class="dispositionsInputs" id="nomEditeur"> <br>
+                <input type="button" id="boutonConfirmation" onclick="boutonConfirmation()">
+            </div>
+        </div>
+
+    </div>
+
+
     </body>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        function openCity(cityName, elmnt, color) {
-            // Hide all elements with class="tabcontent" by default */
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
+        // Get the modal
+        var modal = document.getElementById("myModal");
 
-            // Remove the background color of all tablinks/buttons
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-            }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-            // Show the specific tab content
-            document.getElementById(cityName).style.display = "block";
-
-            // Add the specific color to the button used to open the tab content
-            elmnt.style.backgroundColor = color;
+        // Ouvre le modal de création de jeux
+        function ouvrirModalAjout(){
+            modal.style.display = "block";
+            document.getElementById("titreModal").innerHTML = "Ajout de jeu";
+            document.getElementById("boutonConfirmation").value ="Créer le jeu";
+            document.getElementById("nomImage").innerHTML = "inconnu.jpg";
+            document.getElementById("imageModal").src ="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/inconnu.jpg";
+            document.getElementById("idJeu").value = "(Aucune image sélectionné)";
+            document.getElementById("idJeu").value = "";
+            document.getElementById("nomJeu").value ="";
+            document.getElementById("categorie").selectedIndex = "-1";
+            document.getElementById("nomStudio").value = "";
+            document.getElementById('nomEditeur').value = "";
         }
 
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
+        function ouvrirModalModif(image, id, nom, categorie, studio, editeur){
+            modal.style.display = "block";
+            document.getElementById("titreModal").innerHTML = "Modification de jeu";
+            document.getElementById("boutonConfirmation").value ="Enregistrer les modifications";
+            document.getElementById("imageModal").src ="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/" + image;
+            document.getElementById("idJeu").value = id;
+            document.getElementById("nomJeu").value = nom;
+            switch (categorie){
+                case "Action/Aventure":
+                    document.getElementById("categorie").selectedIndex = "0";
+                    break;
+                case "Sport":
+                    document.getElementById("categorie").selectedIndex = "1";
+                    break;
+                case "FPS":
+                    document.getElementById("categorie").selectedIndex = "2";
+                    break;
+                case "RPG":
+                    document.getElementById("categorie").selectedIndex = "3";
+                    break;
+                case "Course":
+                    document.getElementById("categorie").selectedIndex = "4";
+                    break;
+                case "Plateforme":
+                    document.getElementById("categorie").selectedIndex = "5";
+                    break;
+                case "Gestion":
+                    document.getElementById("categorie").selectedIndex = "6";
+                    break;
+                case "Jeux de société":
+                    document.getElementById("categorie").selectedIndex = "7";
+                    break;
+                case "Combat":
+                    document.getElementById("categorie").selectedIndex = "8";
+                    break;
+                case "Simulation":
+                    document.getElementById("categorie").selectedIndex = "9";
+                    break;
+                case "MMO":
+                    document.getElementById("categorie").selectedIndex = "10";
+                    break;
+
+            }
+            document.getElementById("nomStudio").value = studio;
+            document.getElementById('nomEditeur').value = editeur;
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        $(document).ready(function (){
+            $('#boutonConfirmation').click(function (e) {
+                var bouton = document.getElementById("boutonConfirmation");
+                var nom = document.getElementById("nomJeu");
+                var categorie = document.getElementById("categorie");
+                var studio = document.getElementById("nomStudio");
+                var editeur = document.getElementById("nomEditeur");
+                var prix = 95.93;
+                var rabais = 2.25;
+                var date = '2020-02-21';
+                var lien_image = document.getElementById("nomImage");
+
+                if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == ""){
+                    alert("Veuillez choisir et remplir tous les champs");
+                } else {
+                    if (bouton.value == "Créer le jeu") {
+                        /* Création de l'ID */
+                        var id = nom.value.substring(0,3) + studio.value.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
+                        document.getElementById("idJeu").value = id;
+
+                        /* Ajout Image dans le serveur*/
+
+
+                        /* Ajout jeu dans la BD */
+                        $(document).ready(function (){
+                            e.preventDefault()
+                            $.ajax({
+                                url: "/../",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    "id_jeu": id.value,
+                                    "nom": nom.value,
+                                    "developpeur": studio.value,
+                                    "editeur": editeur.value,
+                                    "rating": '0',
+                                    "prix": prix,
+                                    "rabais": rabais,
+                                    "date_de_sortie": date,
+                                    "image_lien": lien_image.innerHTML
+                                },
+                                success: function (reponse) {
+                                    console.log(reponse);
+                                    alert("Le jeu a bien été ajouté");
+                                    location.reload();
+                                },
+                                error: function (message, e) {
+                                    console.log(message);
+                                    alert("Une erreur est survenue");
+                                    alert(message);
+                                    alert(e);
+                                }
+                            });
+                        });
+
+
+                    } else {
+                        alert("Le jeu a bien été modifié");
+                        location.reload();
+                    }
+                }
+
+            });
+        });
+
+        //Pour la supression d'objets
+        function supprimerObjetListe(id){
+            if (confirm("Voulez-vous vraiment supprimer cet objet?")){
+                alert("Oui");
+                alert(id);
+                location.reload();
+            } else {
+                alert("nope");
+            }
+        }
     </script>
 
 </html>
