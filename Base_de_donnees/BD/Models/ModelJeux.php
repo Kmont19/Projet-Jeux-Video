@@ -10,7 +10,7 @@ class ModelJeux
      */
     public function __construct()
     {
-        $class = new Co;
+        $class = new Connexion();
         $this->connexion = $class->getConnexion();
     }
 
@@ -29,10 +29,10 @@ class ModelJeux
     public function ajoutJeu(string $id_jeu, string $nom, string $developpeur, string $editeur, string $rating, float $prix, float $rabais, string $date_de_sortie, string $image_lien): bool
     {
         try {
-            $stmt = $this->connection->prepare(
+            $stmt = $this->connexion->prepare(
                 "INSERT INTO jeux (id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien) 
-                                values(:id_jeu, :nom, :developpeur, :editeur, :rating, :prix, :rabais, :date_de_sortie, :image_lien)");
-            $stmt->bindParam(':name', $id_jeu);
+                                values(':id_jeu', ':nom', ':developpeur', ':editeur', ':rating', :prix, :rabais, ':date_de_sortie', ':image_lien')");
+            $stmt->bindParam(':id_jeu', $id_jeu);
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':developpeur', $developpeur);
             $stmt->bindParam(':editeur', $editeur);
