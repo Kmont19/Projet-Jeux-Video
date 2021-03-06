@@ -1,4 +1,4 @@
 <?php
-require_once (__DIR__."/DB/Entity/EntityJeux.php");
+require_once (__DIR__."/BD/Entity/EntityJeux.php");
 $entityJeux = new EntityJeux();
-echo json_encode(array("item" => $entityJeux->getActivities()));
+echo json_encode(array("item" => $entityJeux->getJeux()));
