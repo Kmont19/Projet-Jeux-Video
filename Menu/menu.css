@@ -1,11 +1,10 @@
 .navbar{
-    position: absolute;
     background-color:  #f04800;
     padding-bottom: 0 !important;
     padding-top: 0 !important;
     width: 100%;
-    z-index: 10;
-    border-bottom: 2px solid black;
+    border-top: 2px solid #f04800;
+    border-bottom: 2px solid #f04800;
 }
 
 .navbar-brand{
