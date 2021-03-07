@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MVG</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+        <link rel="stylesheet" type="text/css" href="Menu/menu.css"/>
+        <link rel="stylesheet" type="text/css" href="Accueil/Menu-Categories/menu-categories.css"/>
+        <link rel="stylesheet" type="text/css" href="Accueil/Recommandes/recommandes.css"/>
+        <link rel="stylesheet" type="text/css" href="Accueil/Promotions/promotions.css"/>
+        <link rel="stylesheet" type="text/css" href="Accueil/Jeux-Varies/jeux-varies.css"/>
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <link rel="stylesheet" type="text/css" href="Footer/footer.css"/>   
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="Menu/menu.js"></script>
+    </head>
+    <body>
+        <div id="menu"></div>
+        <div class="bloc-corps pb-5">
+            <div class="bloc-recommandes" id="recommandes"></div>
+            <div class="bloc-promotions" id="promotions"></div>
+            <div class="bloc-varies pt-5" id="jeux-varies"></div>
+        </div>
+        <div id="footer"></div>
+    </body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $("#menu").load("menu.html");
+        $("#footer").load("footer.html");
+        $("#menu-categories").load("Accueil/Menu-Categories/menu-categories.html");
+        $("#recommandes").load("Accueil/Recommandes/recommandes.html");
+        $("#promotions").load("Accueil/Promotions/promotions.html");
+        $("#jeux-varies").load("Accueil/Jeux-Varies/jeux-varies.html");
+
+        $.ajax({
+            url: "Base_de_donnees/getJeuxRecommandees.php",
+            type: "POST",
+            dataType: "json",
+            success: function (result){
+                for (i = 0; i < result['item'].length; i++){
+                    let item = result['item'][i];
+                    $.ajax({
+                        url: "Base_de_donnees/getNbrPersonnes.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "id_jeu" : item["id_jeu"]
+                        },
+                        success: function (result2){
+                            for (i = 0; i < result2['item'].length; i++){
+                                let item2 = result2['item'][i];
+                                $("#listeJeuxRecommendes").append(
+                                    "<div class='card text-black' onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                    "     <span class='discount-badge'>" + item["rabais"] + "%</span>" +
+                                    "     <img class='card-img img-responsive' src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/" + item["image_lien"] + "' alt='Card image'>" +
+                                    "     <div class='card-img-overlay d-flex justify-content-center'>" +
+                                    "          <button class='btn'>Voir détails</button>" +
+                                    "     </div>" +
+                                    "</div>"
+                                );
+                            }
+                        },
+                        error: function (message2, error2){
+                            console.log(message2);
+                            console.log(error2);
+                        }
+                    })
+                }
+            },
+            error: function (message, error){
+                console.log(message);
+                console.log(error);
+            }
+        });
+    })
+</script>
