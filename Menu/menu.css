@@ -3,8 +3,7 @@
     padding-bottom: 0 !important;
     padding-top: 0 !important;
     width: 100%;
-    border-top: 2px solid #f04800;
-    border-bottom: 2px solid #f04800;
+    border-bottom: 2px solid black;
 }
 
 .navbar-brand{
