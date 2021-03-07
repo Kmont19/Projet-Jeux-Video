@@ -9,13 +9,12 @@
         <link rel="stylesheet"
               type="text/css"
               href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="Style-Gestion-Jeu.css">
     </head>
 
-    <body>
+    <body onload="selectJeux()">
 
     <div id="wrapper" class="wrapper-content">
         <div id="sidebar-wrapper">
@@ -24,12 +23,14 @@
                     Menu administratif
                 </li>
                 <li>
-                    <a href="Menu-Administration.html">Menu Administratif</a>
+                    <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Accueil_Administratif/Menu-Administration.html">Menu Administratif</a>
                 </li>
                 <li>
-                    <a href="Gestion-Jeu.html">Gestion des Jeux</a>
+                    <a href="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Administration/Gestion_Jeu/Gestion-Jeu.html">Gestion des Jeux</a>
                 </li>
-
+                <li>
+                    <a id="retourAccueil" href="">Retour à l'accueil</a>
+                </li>
             </ul>
         </div>
 
@@ -66,45 +67,11 @@
 
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
-
-                                                    <!-- Chaque Nouvelle entrée -->
-                                                    <tr>
-                                                        <th scope="row" width="2%;">1</th>
-                                                        <th width="10%">
-                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Kingdom-Hearts-III.jpg" style="width: 60px; height: 80px;"/>
-                                                        </th>
-                                                        <th width="5%">Kingdom Hearts 3</th>
-                                                        <th width="5%">Action</th>
-                                                        <th width="5%">Square Enix</th>
-                                                        <th width="5%">Square Enix</th>
-                                                        <th>79.99$</th>
-                                                        <th>0</th>
-                                                        <th>2019-01-25</th>
-                                                        <th width="10%">
-                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Modif.jpg" class="animationsBoutonsListe" onclick="ouvrirModalModif('Kingdom-Hearts-III.jpg','1','Kingdom Hearts 3', 'Action', 'Square Enix', 'Square Enix','79.99','0', '2019', '01', '25')">
-                                                        </th>
-                                                        <th width="10%">
-                                                            <img src="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/supprimer.png" class="animationsBoutonsListe" onclick="supprimerObjetListe('2475')">
-                                                        </th>
-                                                    </tr>
-
-                                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                                                    <script>
-
-                                                        $(document).ready(function (e) {
-
-                                                        })
-                                                    </script>
-
-
-
+                                                    <tbody id="tBodyListeJeu">
+                                                    <!-- Liste de jeux... -->
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <!-- end project-list -->
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +127,7 @@
                 <input type="text" placeholder="Veuillez entrer l'année de sortie du jeu" class="dispositionsInputs" id="dateJeuAnnee">
                 <input type="text" placeholder="Veuillez entrer le mois de sortie du jeu" class="dispositionsInputs" id="dateJeuMois">
                 <input type="text" placeholder="Veuillez entrer le jour de sortie du jeu" class="dispositionsInputs" id="dateJeuJour">
-                <input type="button" id="boutonConfirmation" onclick="boutonConfirmation()">
+                <input type="button" id="boutonConfirmation">
             </div>
         </div>
 
@@ -168,9 +135,51 @@
 
 
     </body>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+
+        function selectJeux(){
+            $(document).ready(function (e) {
+                $.ajax({
+                    url: "../../Base_de_donnees/getJeux.php",
+                    type: "POST",
+                    dataType: "json",
+                    success: function (result){
+                        for (i = 0; i < result['item'].length; i++){
+                            let item = result['item'][i];
+                            $("#tBodyListeJeu").append(
+                                "<tr>" +
+                                    "<th scope='row' width='2%;'>" + item['id_jeu'] + "</th>" +
+                                    "<th width='10%'>" +
+                                        "<img src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/" + item['image_lien'] + "' style='width: 60px; height: 80px;'/>" +
+                                    "</th>" +
+                                    "<th width='5%'>" + item['nom'] + "</th>" +
+                                    "<th width='5%'>" + item['categorie'] + "</th>" +
+                                    "<th width='5%'>" + item['developpeur'] + "</th>" +
+                                    "<th width='5%'>" + item['editeur'] + "</th>" +
+                                    "<th>" + item['prix'] + "$</th>" +
+                                    "<th>" + item['rabais'] + "%</th>" +
+                                    "<th>" + item['date_de_sortie'] + "</th>" +
+                                    "<th width='10%'>" +
+                                        "<img src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/Modif.jpg' class='animationsBoutonsListe' onClick='ouvrirModalModif(\"" + item['image_lien'] + "\", \"" + item['id_jeu'] + "\", \"" + item['nom'] + "\", \"" + item['categorie'] + "\", \"" + item['developpeur'] + "\", \"" + item['editeur'] + "\", " + item['prix'] + "," + item['rabais'] + ", \"" + item['date_de_sortie'].substring(0,4) + "\", \"" + item['date_de_sortie'].substring(5,7) + "\", \"" + item['date_de_sortie'].substring(8,10) + "\")'>" +
+                                    "</th>" +
+                                    "<th width='10%'>" +
+                                        "<img src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/supprimer.png' class='animationsBoutonsListe' onClick='supprimerObjetListe(\"" + item['id_jeu'] + "\");'>" +
+                                    "</th>" +
+                                "</tr>"
+                            );
+                        }
+                    },
+                    error: function (message, error){
+                        console.log(message);
+                        console.log(error);
+                    }
+                });
+            })
+        }
+
+
+        document.getElementById("retourAccueil").style.color = "red";
         // Get the modal
         var modal = document.getElementById("myModal");
 
@@ -201,6 +210,8 @@
             document.getElementById("titreModal").innerHTML = "Modification de jeu";
             document.getElementById("boutonConfirmation").value ="Enregistrer les modifications";
             document.getElementById("imageModal").src ="http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/" + image;
+            document.getElementById("nomImage").innerHTML = image;
+            console.log(image);
             document.getElementById("idJeu").value = id;
             document.getElementById("nomJeu").value = nom;
             switch (categorie){
@@ -260,7 +271,34 @@
             }
         }
 
+        document.getElementById("fichierModal").accept = "image/*";
+
         $(document).ready(function (){
+
+            $("#fichierModal").change(function (e) {
+                document.getElementById("nomImage").innerHTML = $("#fichierModal")[0].files[0].name;
+
+                /* Download de l'image sur le serveur */
+                var file_data = $('#sortpicture').prop('files')[0];
+                var form_data = new FormData();
+                form_data.append('file', file_data);
+                alert(form_data);
+                e.preventDefault();
+                $.ajax({
+                    url: 'upload.php', // point to server-side PHP script
+                    dataType: 'text',  // what to expect back from the PHP script, if anything
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    type: 'post',
+                    success: function (php_script_response) {
+                        alert(php_script_response); // display response from the PHP script, if any
+                    }
+                });
+            })
+
+
             $('#boutonConfirmation').click(function (e) {
                 var bouton = document.getElementById("boutonConfirmation");
                 var nom = document.getElementById("nomJeu");
@@ -269,10 +307,13 @@
                 var editeur = document.getElementById("nomEditeur");
                 var prix = document.getElementById("prixJeu");
                 var rabais = document.getElementById("rabaisJeu");
-                var date = document.getElementById("dateJeuAnnee") + '-' + document.getElementById("dateJeuMois") + '-' + document.getElementById("dateJeuJour");
+                var annee = document.getElementById("dateJeuAnnee");
+                var mois = document.getElementById("dateJeuMois");
+                var jour = document.getElementById("dateJeuJour");
+                var date = annee.value + '-' + mois.value + '-' + jour.value;
                 var lien_image = document.getElementById("nomImage");
 
-                if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == ""){
+                if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == "" || prix.value == "" || rabais.value == "" || annee.value == "" || mois.value == "" || jour.value == ""){
                     alert("Veuillez choisir et remplir tous les champs");
                 } else {
                     if (bouton.value == "Créer le jeu") {
@@ -280,59 +321,120 @@
                         var id = nom.value.substring(0,3) + studio.value.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
                         document.getElementById("idJeu").value = id;
 
-                        /* Ajout Image dans le serveur*/
-
-
                         /* Ajout jeu dans la BD */
-                        $(document).ready(function (){
                             e.preventDefault()
                             $.ajax({
-                                url: "../Base_de_donnees/ajoutJeu.php",
+                                url: "../../Base_de_donnees/ajoutJeu.php",
                                 type: "POST",
                                 dataType: "json",
                                 data: {
-                                    "id_jeu": id.value,
+                                    "id_jeu": id,
                                     "nom": nom.value,
                                     "developpeur": studio.value,
                                     "editeur": editeur.value,
                                     "rating": '0',
-                                    "prix": prix,
-                                    "rabais": rabais,
+                                    "prix": prix.value,
+                                    "rabais": rabais.value,
                                     "date_de_sortie": date,
                                     "image_lien": lien_image.innerHTML
                                 },
                                 success: function (reponse) {
                                     console.log(reponse);
-                                    alert("Le jeu a bien été ajouté");
-                                    location.reload();
+
+                                    /* Ajout de la catégorie */
+                                    var categorie = document.getElementById("categorie");
+                                    e.preventDefault()
+                                    $.ajax({
+                                        url: "../../Base_de_donnees/ajout_categorie.php",
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: {
+                                            "id_jeu": id,
+                                            "categorie": categorie.options[categorie.selectedIndex].text
+                                        },
+                                        success: function (reponse) {
+                                            console.log(reponse);
+                                            alert("Le jeu a bien été ajouté");
+                                            location.reload();
+                                        },
+                                        error: function (message, e) {
+                                            console.log(message);
+                                        }
+                                    });
                                 },
                                 error: function (message, e) {
                                     console.log(message);
-                                    alert("Une erreur est survenue");
-                                    alert(message);
-                                    alert(e);
                                 }
                             });
+                    } else {
+                        e.preventDefault()
+                        $.ajax({
+                            url: "../../Base_de_donnees/updateCategorie.php",
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id_jeu": document.getElementById("idJeu").value,
+                                "categorie" : categorie.options[categorie.selectedIndex].text
+                            },
+                            success: function (reponse) {
+                                e.preventDefault()
+                                $.ajax({
+                                    url: "../../Base_de_donnees/updateJeu.php",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: {
+                                        "id_jeu": document.getElementById("idJeu").value,
+                                        "nom": nom.value,
+                                        "developpeur": studio.value,
+                                        "editeur": editeur.value,
+                                        "prix": prix.value,
+                                        "rabais": rabais.value,
+                                        "date_de_sortie": date,
+                                        "image_lien": lien_image.innerHTML
+                                    },
+                                    success: function (reponse) {
+                                        console.log(reponse);
+                                        alert("Le jeu a bien été modifié");
+                                        location.reload();
+                                    },
+                                    error: function (message, e) {
+                                        console.log(message);
+                                    }
+                                });
+                            },
+                            error: function (message, e) {
+                                console.log(message);
+                            }
                         });
 
-
-                    } else {
-                        alert("Le jeu a bien été modifié");
-                        location.reload();
                     }
                 }
-
             });
         });
 
         //Pour la supression d'objets
         function supprimerObjetListe(id){
-            if (confirm("Voulez-vous vraiment supprimer cet objet?")){
-                alert("Oui");
-                alert(id);
-                location.reload();
-            } else {
-                alert("nope");
+            console.log(id);
+            if (confirm("Voulez-vous vraiment supprimer ce jeu?")){
+                /* Suppression du jeu */
+                $(document).ready(function () {
+                    $.ajax({
+                        url: "../../Base_de_donnees/supprimerJeu.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "id_jeu": id
+                        },
+                        success: function (reponse) {
+                            console.log(reponse);
+                            alert("Le jeu a bien été supprimé");
+                            location.reload();
+                        },
+                        error: function (message, e) {
+                            console.log(message);
+                        }
+                    });
+                });
             }
         }
     </script>

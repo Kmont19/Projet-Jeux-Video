@@ -10,23 +10,20 @@ class EntityJeux
      */
     public function __construct()
     {
-        $classe = new;
-        $this->connexion = $classe->g;
+        $class = new Connexion();
+        $this->connexion = $class->getConnexion();
     }
 
-    /**
-     * Fetch all activities
-     *
-     * @return array
-     */
-    public function getActivities(): array
+    public function getJeux(): array
     {
         $items = array();
         try {
-            $request = "SELECT * FROM activities";
-            $result = $this->connection->query($request);
+            $request = "select j.id_jeu, nom, developpeur, editeur, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu;";
+            $result = $this->connexion->query($request);
             $items = $result->fetchAll();
-
             return $items;
         }
         catch(PDOException $e) {
@@ -34,20 +31,33 @@ class EntityJeux
         }
     }
 
-    /**
-     * get specified activity by id
-     *
-     * @param int $id
-     * @return array
-     */
-    public function getActivityByID(int $id): array
+    public function getJeuxRecommandees(): array
     {
         $items = array();
         try {
-            $request = "SELECT * FROM activities WHERE id = '$id'";
-            $result = $this->connection->query($request);
-            $items = $result->fetch();
+            $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu
+                        order by rabais
+                        limit 3;";
+            $result = $this->connexion->query($request);
+            $items = $result->fetchAll();
+            return $items;
+        }
+        catch(PDOException $e) {
+            return $items;
+        }
+    }
 
+    public function getNbrPersonnes(string $id):array{
+        $items = array();
+        try {
+            $request = "select count(id_jeu) as nbrPersonnes
+                        from utilisateurs_jeux
+                        where id_jeu = '$id';";
+            $result = $this->connexion->query($request);
+            $items = $result->fetchAll();
             return $items;
         }
         catch(PDOException $e) {
