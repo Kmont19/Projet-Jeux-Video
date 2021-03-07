@@ -2,16 +2,13 @@ body{
     background:#f4f3ef;
 }
 
-p{
-  color:black;
-}
-
 h3{
     margin-left: 40%;
-    color:white;
+    color:black;
 }
 
-h4{
+h5{
+    margin-top: 0.5rem;
     margin-left: 25%;
     color: white;
 }
@@ -34,180 +31,39 @@ h4{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: scroll; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    margin-top: .5rem;
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: #222831;
+    background-color: black;
     padding: 20px;
-    border: 1px solid #888;
-    width: 40%;
-    margin-left: 35%;
-    margin-bottom: 15%;
+    border: 3px solid #f04800;
+    width: 70% !important;
+    margin-left: 27rem;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: #f04800;
     float: right;
     font-size: 28px;
-    font-weight: bold;
+    width: 1%;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Menu à gauche */
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#wrapper.toggled {
-    padding-left: 250px;
-}
-
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 0;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background:#fff;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#sidebar-wrapper {
-    box-shadow: inset -1px 0px 0px 0px #DDDDDD;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-}
-
-#page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-}
-
-/* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-}
-
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #999999;
-}
-
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 250px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
-}
-
-#sidebar-wrapper li.active > a:after {
-    border-right: 17px solid #f4f3ef;
-    border-top: 17px solid transparent;
-    border-bottom: 17px solid transparent;
-    content: "";
-    display: inline-block;
-    position: absolute;
-    right: -1px;
-}
-
-.sidebar-brand {
-    border-bottom: 1px solid rgba(102, 97, 91, 0.3);
-}
-
-.sidebar-brand {
-    padding: 18px 0px;
-    margin: 0 20px;
-}
-
-.navbar .navbar-nav > li > a p {
-    display: inline-block;
-    margin: 0;
-}
 p {
     font-size: 16px;
     line-height: 1.4em;
@@ -219,7 +75,7 @@ p {
     border-bottom: 1px solid #DDDDDD;
 }
 
-btn-menu {
+.btn-menu {
     border-radius: 3px;
     padding: 4px 12px;
     margin: 14px 5px 5px 20px;
@@ -228,37 +84,45 @@ btn-menu {
 }
 
 /* Pour les objets du modal */
-.interieurModal{
-    background-color: #393e46;
-}
-
 #titreModal{
     text-align: center;
     color: white;
+    margin-bottom: 1.5rem;
 }
 
 #imageModal{
-    margin-left: 22.5%;
     margin-top: 2%;
-    box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
-    width: 400px;
-    height: 400px;
+    border: 2px solid #f04800;
+    width: 100%;
+    max-height: 400px;
 }
 
 #nomImage{
     color: white;
     text-align: center;
-
 }
 
-#fichierModal{
-    margin-left: 30%; margin-top: 3%;
+#fichierModal {
+    margin-left: 3rem;
+    color: white;
+}
+
+.idTitre {
+    text-align: center;
 }
 
 .dispositionsInputs{
     margin-left: 25%;
-    margin-top: 1%;
     width: 45%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-bottom: 1px solid #f04800 ;
+    padding-left: .5rem;
+}
+
+.dispositionsInputs:focus {
+    outline: none;
 }
 
 #boutonConfirmation{
@@ -266,4 +130,100 @@ btn-menu {
     margin-bottom: 3%;
     width: 40%;
     margin-left: 28%;
+    background-color: #f04800;
+    border: none;
+    border: 1px inset #862800b4;
+    cursor: pointer;
+    padding: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Partie boutons */
+.circle-tile {
+    width: 30%;
+    text-align: center;
+    color: black;
+}
+
+.circle-tile-heading {
+    border: 3px solid rgba(0, 0, 0, 0.829);
+    border-radius: 100%;
+    color: black;
+    height: 80px;
+    margin: 0 auto -40px;
+    position: relative;
+    transition: all 0.3s ease-in-out 0s;
+    width: 80px;
+    background-color: #f04800;
+}
+
+.circle-tile-heading .fa {
+    line-height: 80px;
+}
+
+.circle-tile-description {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 5px 0 15px;
+}
+
+.circle-tile-content {
+    padding-top: 50px;
+    background-color: #f04800;
+    border: 3px solid rgba(0, 0, 0, 0.829);
+}
+
+.circle-tile-number {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 5px 0 15px;
+}
+
+.circle-tile-description {
+    text-transform: uppercase;
+}
+
+.circle-tile-footer {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    display: block;
+    padding: 15px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.circle-tile-footer:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.circle-tile-heading.dark-blue:hover {
+    background-color: #2E4154;
+}
+
+.circle-tile-heading.green:hover {
+    background-color: #138F77;
+}
+
+.circle-tile-heading.orange:hover {
+    background-color: #DA8C10;
+}
+
+.circle-tile-heading.blue:hover {
+    background-color: #2473A6;
+}
+
+.circle-tile-heading.red:hover {
+    background-color: #CF4435;
+}
+
+.circle-tile-heading.purple:hover {
+    background-color: #7F3D9B;
+}
+
+.tile-img {
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
 }

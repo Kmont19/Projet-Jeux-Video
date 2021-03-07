@@ -2,6 +2,7 @@
     background-color: black;
     border-top: 2px solid #f04800;
     width: 100%;
+    z-index: 1030 !important;
 }
 
 .footer h5 {

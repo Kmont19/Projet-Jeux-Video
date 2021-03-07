@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="84e7faec-4b33-4d82-81a5-28e34675ed63" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Accueil/Jeux-Varies/jeux-varies.html" beforeDir="false" afterPath="$PROJECT_DIR$/Accueil/Jeux-Varies/jeux-varies.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accueil/Promotions/promotions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Accueil/Promotions/promotions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accueil/Recommandes/recommandes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Accueil/Recommandes/recommandes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Administration/Accueil_Administratif/Menu-Administration.html" beforeDir="false" afterPath="$PROJECT_DIR$/Administration/Accueil_Administratif/Menu-Administration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Administration/Gestion_Jeu/Gestion-Jeu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Administration/Gestion_Jeu/Gestion-Jeu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Administration/Gestion_Jeu/Style-Gestion-Jeu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Administration/Gestion_Jeu/Style-Gestion-Jeu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Connexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityJeux.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeux.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeuxf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base_de_donnees/ajoutJeu.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutJeu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base_de_donnees/getJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/getJeux.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fiche_Jeu/Fiche-Jeu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fiche_Jeu/Style-Fiche-Jeu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Fiche_Jeu/Style-Fiche-Jeu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Menu/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/menu.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1pILdtGvjGLm9hfObjvzvZvlmnd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="84e7faec-4b33-4d82-81a5-28e34675ed63" name="Default Changelist" comment="" />
+      <created>1614865748041</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614865748041</updated>
+      <workItem from="1614865750287" duration="7123000" />
+      <workItem from="1614930963867" duration="10885000" />
+      <workItem from="1614990180578" duration="4109000" />
+      <workItem from="1614994437909" duration="16501000" />
+      <workItem from="1615076847404" duration="185000" />
+      <workItem from="1615078358281" duration="772000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
