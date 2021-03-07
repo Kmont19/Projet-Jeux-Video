@@ -151,8 +151,6 @@
             </div>
         </div>
     </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         /* Rechercher le nombre de jeux au total dans la BD */
         document.getElementById("nombreJeux").innerHTML = "5";
@@ -262,7 +260,7 @@
                 if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == "" || prix.value == "" || rabais.value == "" || date.value == ""){
                     alert("Veuillez choisir et remplir tous les champs");
                 } else {
-                    if (bouton.value == "Créer le jeu") {
+                    if (bouton.value == "Ajouter") {
                         /* Création de l'ID */
                         var id = nom.value.substring(0,3) + studio.value.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
                         document.getElementById("idJeu").value = id;
@@ -284,7 +282,7 @@
                                     "rating": '0',
                                     "prix": prix.value,
                                     "rabais": rabais.value,
-                                    "date_de_sortie": date,
+                                    "date_de_sortie": date.value,
                                     "image_lien": lien_image.innerHTML
                                 },
                                 success: function (reponse) {
@@ -299,7 +297,7 @@
                         var categorie = document.getElementById("categorie");
                         e.preventDefault()
                         $.ajax({
-                            url: "Base_de_donnees/ajout_categorie",
+                            url: "Base_de_donnees/ajoutCategorie.php",
                             type: "POST",
                             dataType: "json",
                             data: {
