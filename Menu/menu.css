@@ -103,6 +103,7 @@
     width: 300px;
     height: auto;
     left: -50% !important;
+    border: 2px solid black;
 }
 
 .dropdown-menu a {

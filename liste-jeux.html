@@ -172,75 +172,17 @@
 					</ul>
 			  
 					<!-- Card-Deck -->
-					<div class="card-deck mx-auto">
-						<div class="card-jeux">
-							<a href="#">
-							<div class="card-jeux-img">
-								<img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
+					<div id="cardDeck" class="card-deck mx-auto">
+						<!--<div class="card-jeux" id="cardJeux">							
+							<div class="card-jeux-img" id="imgContainer">
+								<img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="Image Jeux" id="imgJeux">
 							</div>
-							<h5 class="card-jeux-titre">Nom jeux</h5>
-							<div class="card-jeux-prix">
+							<h5 class="card-jeux-titre" id="nomJeux">Nom jeux</h5>
+							<div class="card-jeux-prix" id="containerPrix">
 								<span id="prix-actuel" class="current-price">59.99</span><span class="current-currency">CAD</span><br> 
-									<span id="prix-precedent"class="previous-price">80.99</span><span class="previous-currency">CAD</span>                         
+								<span id="prix-precedent"class="previous-price">80.99</span><span class="previous-currency">CAD</span>                         
 							</div>
-							</a>
-						</div>
-						
-						<div class="card-jeux">
-							<a href="#">
-							<div class="card-jeux-img">
-								<img src="https://via.placeholder.com/400x400/20B2AA/000000" class="img-responsive" alt="...">
-							</div>
-							<h5 class="card-jeux-titre">Nom jeux</h5>
-							<div class="card-jeux-prix">
-								<span class="current-price">59.99</span><span class="current-currency">CAD</span>
-							</div>
-							</a>
-						</div>
-						
-
-						<div class="card-jeux">
-							<a href="#">
-							<div class="card-jeux-img">
-								<img src="https://via.placeholder.com/400x400/FFB6C1/000000" class="img-responsive" alt="...">
-							</div>
-							<h5 class="card-jeux-titre">
-								Nom jeux
-							</h5>
-							<div class="card-jeux-prix">
-								<span class="current-price">59.99</span><span class="current-currency">CAD</span>
-							</div>
-							</a>
-						</div>
-						
-						<div class="card-jeux">
-							<a href="#">
-							<div class="card-jeux-img">
-								<img src="https://via.placeholder.com/400x400/87CEFA/000000" class="img-responsive" alt="...">
-							</div>
-							<h5 class="card-jeux-titre">
-								Nom jeux
-							</h5>
-							<div class="card-jeux-prix">
-								<span class="current-price">59.99</span><span class="current-currency">CAD</span>
-							</div>
-							</a>
-						</div>
-
-						
-						<div class="card-jeux">
-							<a href="#">
-							<div class="card-jeux-img">
-								<img src="https://via.placeholder.com/400x400/FFA07A/000000" class="img-responsive" alt="...">
-							</div>
-							<h5 class="card-jeux-titre">
-								Nom jeux
-							</h5>
-							<div class="card-jeux-prix">
-								<span class="current-price">59.99</span><span class="current-currency">CAD</span>
-							</div>
-							</a>
-						</div>					
+						</div><-->				
 					</div> <!--card-deck -->
 
 					<!-- Pagination -->
@@ -275,21 +217,3 @@
         <div id="footer"></div>
     </body>
 </html>
-
-<script>
-	$(document).ready(function() {
-		$("#menu").load("menu.html")
-		$("#footer").load("footer.html")
-
-		//Check categorie si le menu a été clické
-		if(localStorage.getItem("categorie") !== null) {
-			var categorie = localStorage.getItem("categorie")
-			$("input[class='filtre-categorie']").each(function() {
-				if($(this).val() == categorie) {
-					$(this).prop("checked", true)
-				}
-			})
-			localStorage.clear()
-		}
-	})    
-</script>
