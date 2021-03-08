@@ -115,6 +115,10 @@ h2 {
   left: 2px;
 }
 
+.filtres {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 /** Shop: Filter **/
 .filtre-liste {
   margin-bottom: 40px;
@@ -142,11 +146,11 @@ h2 {
 .filtre-liste-rating label {
   width: 30px;
   height: 30px;
-  background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   cursor: pointer;
-  text-align: center;
+  color: #f04800;
+  background-color: transparent;
 }
 
 /** Shop: Trie **/
@@ -252,13 +256,3 @@ h2 {
 .radio input[type="radio"]:checked + label:before {
   border-width: 7px;
 }
-
-.pagination li a {
-  color: white !important;
-  background-color: #f04800 !important;
-}
-
-.pagination li a:hover {
-  background-color: black !important;
-}
-

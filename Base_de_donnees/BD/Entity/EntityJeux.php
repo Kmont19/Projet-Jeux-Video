@@ -17,7 +17,7 @@
         public function getJeux() 
         {
             try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux");
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux ORDER BY date_de_sortie");
                 $stmt->execute();
                 $jeux = $stmt->fetchAll();
                 return $jeux;
