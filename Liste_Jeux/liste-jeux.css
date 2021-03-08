@@ -139,16 +139,6 @@ h2 {
   display: none;
 }
 
-.filtre-liste-rating label {
-  width: 30px;
-  height: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  cursor: pointer;
-  color: #f04800;
-  background-color: transparent;
-}
-
 /** Shop: Trie **/
 .trier-liste {
   list-style: none;
@@ -168,7 +158,9 @@ h2 {
   padding: 20px 10px;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
-  color: #757575;
+  font-family: 'Bungee Inline', cursive;
+  font-weight: 600;
+  letter-spacing: 1px;
   -webkit-transition: all .05s linear;
        -o-transition: all .05s linear;
           transition: all .05s linear;
@@ -176,9 +168,10 @@ h2 {
 
 .trier-liste > li > a:hover,
 .trier-liste > li > a:focus {
-  color: #f04800;
+  color: #f04800 !important;
   border-bottom-color: #f04800;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .trier-liste > li.active > a {
@@ -204,12 +197,20 @@ h2 {
   }
 }
 
+/*Headline*/
+.headline {
+  font-family: 'Bungee Inline', cursive;
+  font-weight: 600;
+  color: black;
+}
+
 /* Checkboxes */
 .checkbox input[type="checkbox"] {
   display: none;
 }
 .checkbox label {
   padding-left: 0;
+
 }
 .checkbox label:before {
   content: "";
@@ -226,29 +227,24 @@ h2 {
 
 .checkbox input[type="checkbox"]:checked + label::before {
   content: "\f00c";
+
 }
 
-/* Radios */
-.radio input[type="radio"] {
-  display: none;
+.btn {
+  background-color: #f04800;
+  border: 1px solid black;
 }
 
-.radio label {
-  padding-left: 0;
+.btn:hover {
+  background-color: #ffc107;
 }
 
-.radio label:before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 15px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 10px solid #eee;
-  background-color: #333333;
+#rating {
+  background-color: black;
+  color: white;
+  border-radius: 3px;
 }
 
-.radio input[type="radio"]:checked + label:before {
-  border-width: 7px;
+#rating > option {
+  color: white;
 }

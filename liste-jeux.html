@@ -24,7 +24,7 @@
     </head>
     <body>
         <div id="menu"></div>
-		<h2 class="mt-5">Jeux</h2>
+		<h2 class="mt-5">Liste de Jeux</h2>
         <div class="bloc-corps pt-2">
 			
 			<div class="container-fluid">
@@ -35,19 +35,13 @@
 						<form class="filtre-liste">
 							<!-- Prix -->
 							<h3 class="headline">
-								<span>Prix</span>
+								<span>Prix </span><span style="font-weight: 500; font-size: 18px;">(CAD)</span>
 							</h3>
 							<div class="row no-gutters">
-								<label>Min:</label>
+								<input class="w-50 mr-1" type="number" name="prixMin" id="prixMin" min="0" placeholder="Min">
 							</div>
-							<div class="row no-gutters">
-								<input class="w-50 mr-1" type="number" name="prixMin" id="prixMin" min="0"><span class="mt-1">CAD</span>
-							</div>
-							<div class="row no-gutters mt-3">
-							<label>Max:</label>
-							</div>
-							<div class="row no-gutters">
-							<input class="w-50 mr-1" type="number" name="prixMax" id="prixMax" min="0"><span class="mt-1">CAD</span>
+							<div class="row no-gutters mt-1">
+							<input class="w-50 mr-1" type="number" name="prixMax" id="prixMax" min="0" placeholder="Max">
 							</div>
 							<div class="form-group filtre-liste-prix">
 								<div class="row">                      
@@ -115,12 +109,12 @@
 							</h3>
 							<div class="filtre-liste-rating mt-1 w-100 pr-5">
 								<select class="w-100" name="rating" id="rating" >
-									<option value="5">5 étoiles</option>
-									<option value="4">4 étoiles</option>
-									<option value="3">3 étoiles</option>
-									<option value="2">2 étoiles</option>
-									<option value="1">1 étoile</option>
-									<option value="0">0 étoiles</option>
+									<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+									<option value="4">&#9733; &#9733; &#9733; &#9733; &#9734; et +</option>
+									<option value="3">&#9733; &#9733; &#9733; &#9734; &#9734; et +</option>
+									<option value="2">&#9733; &#9733; &#9734; &#9734; &#9734; et +</option>
+									<option value="1">&#9733; &#9734; &#9734; &#9734; &#9734; et +</option>
+									<option value="0">&#9734; &#9734; &#9734; &#9734; &#9734;</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -136,10 +130,10 @@
 				<div class="liste-jeux col-sm-7 col-md-9 col-lg-10">
 					<!-- Trie -->
 					<ul class="trier-liste pr-5">
-					<li class="active"><a href="#">Date: Les plus récents</a></li>
-					<li><a href="#">Date: Les plus anciens</a></li>
-					<li><a href="#">Prix: croissant</a></li>
-					<li><a href="#">Prix: décroissant</a></li>
+					<li id="jeuxRecents" onclick="getJeuxRecents()"><a>Date: Les plus récents</a></li>
+					<li id="jeuxAnciens" onclick="getJeuxAnciens()"><a>Date: Les plus anciens</a></li>
+					<li id="prixCroissant" onclick="getJeuxPrixCroissant()"><a>Prix: croissant</a></li>
+					<li id="prixDecroissant" onclick="getJeuxPrixDecroissant()"><a>Prix: décroissant</a></li>
 					</ul>
 			
 					<!-- Card-Deck -->
@@ -161,23 +155,38 @@
 	})
 
 	$("#btnRechPrix").click(function(e) {
-		e.preventDefault();
+		e.preventDefault();	
 		
-		var prixMin = $('#prixMin').val();
-		var prixMax = $('#prixMax').val();
-
-		if(prixMin == "") {
-			prixMin = 0;
+		if($('#prixMin').val() == "") {
+			$('#prixMin').val(0);
 		}
+		
+		var prixMin = Number($('#prixMin').val());
+		var prixMax = Number($('#prixMax').val());
 
-		if($('#prixMin').val() > $('#prixMax').val()) {
-			console.log(prixMin, prixMax)
-			alert("Le prix minimal doit être inférieur au prix maximal.");
-		}else if(prixMax == "") {
+		if(prixMax == "") {
 			alert("Vous devez entrer un prix maximal pour effectuer une recherche.")
+		}else if(prixMin > prixMax) {
+
+			alert("Le prix minimal doit être inférieur au prix maximal.");
 		} else {
 			clearListe();
 			getJeuxByPrix(prixMin, prixMax);
 		}
-	})	
+	})
+	
+	$("#btnRechRating").click(function(e) {
+		e.preventDefault();
+		
+		var rating = Number($("#rating").val());
+		 
+		if (rating == 0){
+			clearListe();
+			getJeux();
+		} else {
+			clearListe();
+			getJeuxByRating(rating);
+		}
+
+	})
 </script>

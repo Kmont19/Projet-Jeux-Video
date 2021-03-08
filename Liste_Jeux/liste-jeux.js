@@ -1,3 +1,5 @@
+var tableJeux = [];
+
 $(document).ready(function() {
     $("#menu").load("menu.html");
     $("#footer").load("footer.html");
@@ -6,6 +8,7 @@ $(document).ready(function() {
 
 //Charger jeux dans la liste
 function loadJeux() {
+    tableJeux = [];
     if(localStorage.getItem("categorie") !== null) {
         var categorie = localStorage.getItem("categorie");
         $("input[class='filtre-categorie']").each(function() {
@@ -18,11 +21,25 @@ function loadJeux() {
 
     } else if(localStorage.getItem('nom')  !== null) {
         var nom = localStorage.getItem('nom');
+        clearListe();
         getJeuxByNom(nom)
-        localStorage.clear('nom');
+        localStorage.clear();
 
-    } else {
+    } else if(localStorage.getItem('promotions')  !== null) {
+        clearListe();
+        getJeuxByPromotions();
+        localStorage.clear();
+    } else if (localStorage.getItem('bestSellers')  !== null) {
+        clearListe();
+        getBestSellers();
+        localStorage.clear();
+    } else if(localStorage.getItem('precommandes')  !== null) {
+        clearListe();
+        getJeuxByPrecommandes();
+        localStorage.clear();
+    }else {
         getJeux();
+        console.log(tableJeux)
     }
 }
 
@@ -65,6 +82,7 @@ function createCardJeu(imgLien, nom, prix, rabais) {
 }
 
 function getJeux() { 
+    clearListe();
     $.ajax({
         url: "Base_de_donnees/getJeux.php",
         type: "GET",
@@ -72,6 +90,7 @@ function getJeux() {
         data: "getJeux",
         success: function(reponse) {
             reponse.forEach(function(jeu) {
+                tableJeux.push(jeu);
                 var imgLien = jeu.image_lien.replace("../", "");   
                 var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                 $('#cardDeck').prepend(cardJeu);
@@ -88,6 +107,7 @@ function getJeuxByNom(nom) {
         data: {nom: nom},
         success: function(reponse) {
             reponse.forEach(function(jeu) {
+                tableJeux.push(jeu);
                 var imgLien = jeu.image_lien.replace("../", "");
                 var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                 $('#cardDeck').prepend(cardJeu);
@@ -108,6 +128,7 @@ function getJeuxByCategorie(categorie) {
         success: function(reponse) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
+                    tableJeux.push(jeu);
                     var imgLien = jeu.image_lien.replace('../', '');
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);                   
@@ -130,6 +151,7 @@ function getJeuxByPrix(prixMin, prixMax) {
         success: function(reponse) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
+                    tableJeux.push(jeu);
                     var imgLien = jeu.image_lien.replace('../', '');
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);                   
@@ -139,3 +161,136 @@ function getJeuxByPrix(prixMin, prixMax) {
     });
 }
 
+function getJeuxByRating(rating) {
+    $.ajax({
+        url: "Base_de_donnees/getJeux.php",
+        type: "GET",
+        dataType: "json",
+        data: {
+            rating: rating
+        },
+        success: function(reponse) {
+            if(reponse.length > 0) {
+                reponse.forEach(function(jeu) {
+                    tableJeux.push(jeu);
+                    var imgLien = jeu.image_lien.replace('../', '');
+                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    $('#cardDeck').prepend(cardJeu);                   
+                })
+            }
+        }
+    });
+}
+
+function getJeuxByPromotions() {
+    $.ajax({
+        url: "Base_de_donnees/getJeux.php",
+        type: "GET",
+        dataType: "json",
+        data: "promotions",
+        success: function(reponse) {
+            if(reponse.length > 0) {
+                reponse.forEach(function(jeu) {
+                    tableJeux.push(jeu);
+                    var imgLien = jeu.image_lien.replace('../', '');
+                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    $('#cardDeck').prepend(cardJeu);                   
+                })
+            }
+        }
+    });
+}
+
+function getBestSellers() {
+    $.ajax({
+        url: "Base_de_donnees/getJeux.php",
+        type: "GET",
+        dataType: "json",
+        data: "bestSellers",
+        success: function(reponse) {
+            if(reponse.length > 0) {
+                reponse.forEach(function(jeu) {
+                    tableJeux.push(jeu);
+                    var imgLien = jeu.image_lien.replace('../', '');
+                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    $('#cardDeck').prepend(cardJeu);                   
+                })
+            }
+        }
+    });
+}
+
+function getJeuxByPrecommandes() {
+    $.ajax({
+        url: "Base_de_donnees/getJeux.php",
+        type: "GET",
+        dataType: "json",
+        data: "precommandes",
+        success: function(reponse) {
+            if(reponse.length > 0) {
+                reponse.forEach(function(jeu) {
+                    tableJeux.push(jeu);
+                    var imgLien = jeu.image_lien.replace('../', '');
+                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    $('#cardDeck').prepend(cardJeu);                   
+                })
+            }
+        }
+    });
+}
+
+function sortByDate(a, b) {
+    return a.date_de_sortie.localeCompare(b.date_de_sortie)
+}
+
+function sortByPrix(a, b) {
+    return a.prix.localeCompare(b.prix)
+}
+
+function getJeuxRecents() {
+    clearListe()
+    addActive($("#jeuxRecents"));
+    removeActive($("#jeuxAnciens"));
+    removeActive($("#prixCroissant"));
+    removeActive($("#prixDecroissant"));
+    tableJeux.sort(sortByDate)
+    tableJeux.reverse();
+    tableJeux.forEach(getItems)
+}
+
+function getJeuxAnciens() {
+    clearListe()
+    removeActive($("#jeuxRecents"));
+    addActive($("#jeuxAnciens"));
+    removeActive($("#prixCroissant"));
+    removeActive($("#prixDecroissant"));
+    tableJeux.sort(sortByDate)
+    tableJeux.forEach(getItems)
+}
+
+function getJeuxPrixCroissant() {
+    clearListe()
+    removeActive($("#jeuxRecents"));
+    removeActive($("#jeuxAnciens"));
+    addActive($("#prixCroissant"));
+    removeActive($("#prixDecroissant"));
+    tableJeux.sort(sortByPrix)
+    tableJeux.forEach(getItems)
+}
+
+function getJeuxPrixDecroissant() {
+    clearListe()
+    removeActive($("#jeuxRecents"));
+    removeActive($("#jeuxAnciens"));
+    removeActive($("#prixCroissant"));
+    addActive($("#prixDecroissant"));
+    tableJeux.sort(sortByPrix)
+    tableJeux.reverse();
+    tableJeux.forEach(getItems)
+}
+
+function getItems(value) {
+    var imgLien = value.image_lien.replace('../', '');
+    var cardJeux = createCardJeu(imgLien, value.nom, value.prix, value.rabais);
+    $("#cardDeck").append(cardJeux);
+}

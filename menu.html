@@ -10,7 +10,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav justify-content-between w-50 left-menu">              
-                <li class="nav-item active">
+                <li class="nav-item"  id="menuAccueil">
                     <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -29,13 +29,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="liste-jeux.html">Promotions</a>
+                    <a class="nav-link" href="liste-jeux.html" onclick="getPromotions()">Promotions</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="liste-jeux.html">Meilleures ventes</a>
+                    <a class="nav-link" href="liste-jeux.html" onclick="getBestSellers()">Meilleures ventes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="liste-jeux.html">Précommandes</a>
+                        <a class="nav-link" href="liste-jeux.html" onclick="getPrecommandes()">Précommandes</a>
                 </li>                         
             </ul>
             
@@ -51,11 +51,11 @@
                 </form>            
             </section>
             <ul class="navbar-nav ml-auto right-icons">
-                <li class="nav-item">
+                <li class="nav-item" id="connexion" onclick="addActive($(this))">
                     <a class="nav-link" id="boutonConnexion" onclick="document.getElementById('connexionModal').style.display='block'" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="panier" href="#"><i class="material-icons">shopping_cart</i></a>
+                    <a class="nav-link" id="panier" href="#" onclick="addActive($(this))"><i class="material-icons">shopping_cart</i></a>
                 </li>        
             </ul>
         </div>
@@ -65,7 +65,7 @@
 
         <form class="modal-content animate">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('connexionModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('connexionModal').style.display='none', removeActive($('#connexion'))" class="close" title="Close Modal">&times;</span>
             </div>
 
             <div class="container">
@@ -84,6 +84,11 @@
     </div>
 </html>
 <script>
+
+    $(document).ready(function() {
+        checkPage();
+    })
+
     var modal = document.getElementById('connexionModal');
 
     // When the user clicks anywhere outside of the modal, close it
