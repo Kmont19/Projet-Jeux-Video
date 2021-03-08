@@ -26,6 +26,19 @@
             }
         }
 
+        public function getJeuxByNom(string $nom) 
+        {
+            try {
+                $nomLike = '%'.$nom.'%';
+                $stmt = $this->connexion->prepare('SELECT * FROM jeux WHERE nom LIKE :nom');
+                $stmt->execute(['nom' => $nomLike]);
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
         public function getJeuxByCategorie(string $categorie) 
         {
             try {
@@ -76,47 +89,11 @@
             }
         }
 
-        public function getJeuxUnder25()
+        public function getJeuxByPrix($prixMin, $prixMax)
         {
             try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE prix <= 25");
-                $stmt->execute();
-                $jeux = $stmt->fetchAll();
-                return $jeux;
-            } catch (PDOException $e) {
-                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-            }
-        }
-
-        public function getJeux25_50()
-        {
-            try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE prix BETWEEN 25 and 50");
-                $stmt->execute();
-                $jeux = $stmt->fetchAll();
-                return $jeux;
-            } catch (PDOException $e) {
-                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-            }
-        }
-
-        public function getJeux50_100()
-        {
-            try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE prix BETWEEN 50 and 100");
-                $stmt->execute();
-                $jeux = $stmt->fetchAll();
-                return $jeux;
-            } catch (PDOException $e) {
-                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-            }
-        }
-
-        public function getJeux100plus()
-        {
-            try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE prix >= 100");
-                $stmt->execute();
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE prix BETWEEN :prixMin AND :prixMax");                
+                $stmt->execute(array('prixMin' => $prixMin, 'prixMax' => $prixMax));
                 $jeux = $stmt->fetchAll();
                 return $jeux;
             } catch (PDOException $e) {

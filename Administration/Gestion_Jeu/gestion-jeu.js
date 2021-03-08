@@ -48,6 +48,8 @@ $(document).ready(function (){
                 var id = nom.substring(0,3) + studio.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
                 $("#idJeu").val(id);
 
+                var prixConvert = Math.round(prix * 100) /100;
+
                 var jeu = new FormData();
                 jeu.append('id_jeu', id);
                 jeu.append('nom', nom);
@@ -56,7 +58,7 @@ $(document).ready(function (){
                 jeu.append('editeur', editeur);
                 jeu.append('rating', '0');
                 jeu.append('rabais', rabais);
-                jeu.append('prix', prix);
+                jeu.append('prix', prixConvert);
                 jeu.append('date_de_sortie', date);
                 jeu.append('image_lien', image_lien);
                 
@@ -82,7 +84,7 @@ function ajouterJeu(jeu) {
             data: jeu,
             success: function () {
                 alert("Le jeu a bien été ajouté");
-                window.reload();
+                location.reload();
             },
             error: function (message, e) {
                 console.log(message);
