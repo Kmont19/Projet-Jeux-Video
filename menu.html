@@ -43,16 +43,16 @@
             <section class="search-bar">                                                   
                 <form>
                     <div class="input-group">
-                        <input type="search" placeholder="Rechercher un jeu" class="form-control">
+                        <input id="inputRecherche" type="search" placeholder="Rechercher un jeu" class="form-control">
                         <div class="input-group-append">                                
-                            <button type="submit" class="btn btn-search btn-link"><i class="material-icons">search</i></button>
+                            <button id="btnRecherche" type="submit" class="btn btn-search btn-link"><i class="material-icons">search</i></button>
                         </div>
                     </div>
                 </form>            
             </section>
             <ul class="navbar-nav ml-auto right-icons">
                 <li class="nav-item">
-                    <a class="nav-link" id="compte" href="Gestion-Jeu.html"><i class="material-icons">account_circle</i></a>
+                    <a class="nav-link" id="boutonConnexion" onclick="document.getElementById('connexionModal').style.display='block'" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="panier" href="#"><i class="material-icons">shopping_cart</i></a>
@@ -60,4 +60,46 @@
             </ul>
         </div>
     </nav>
+
+    <div id="connexionModal" class="modal modal-connexion">
+
+        <form class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('connexionModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Nom d'utilisateur</b></label>
+                <input type="text" placeholder="Entrez le nom d'utilisateur" name="uname" id="uname" required>
+
+                <label for="psw"><b>Mode de passe</b></label>
+                <input type="password" placeholder="Entrez le mot de passe" name="psw" id="psw" required>
+
+                <button class="btnConnexion" type="submit">Connexion</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+                </label>
+            </div>
+        </form>
+    </div>
 </html>
+<script>
+    var modal = document.getElementById('connexionModal');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    $('#btnRecherche').click(function(e) {
+        e.preventDefault()
+        var nomJeu = $('#inputRecherche').val();
+        if(!nomJeu == '') {
+            localStorage.setItem("nom", nomJeu)
+            if(window.location.href !== 'liste-jeux.html')
+            location.assign('liste-jeux.html')            
+        }
+    })
+</script>
