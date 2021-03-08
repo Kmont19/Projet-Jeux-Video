@@ -29,11 +29,10 @@
         public function getJeuxByCategorie(string $categorie) 
         {
             try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                $stmt = $this->connexion->prepare('SELECT * FROM jeux j
                             INNER JOIN jeux_categories jc on j.id_jeu = jc.id_jeu
-                            WHERE categorie=" . $categorie);
-
-                $stmt->execute();
+                            WHERE jc.categorie= :categorie');
+                $stmt->execute(['categorie' => $categorie]);
                 $jeux = $stmt->fetchAll();
                 return $jeux;
             } catch (PDOException $e) {
@@ -44,8 +43,8 @@
         public function getJeuxByEditeur(string $editeur)
         {
             try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE editeur=" . $editeur);
-                $stmt->execute();
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE editeur= :editeur");
+                $stmt->execute(['editeur' => $editeur]);
                 $jeux = $stmt->fetchAll();
                 return $jeux;
             } catch (PDOException $e) {
@@ -56,8 +55,8 @@
         public function getJeuxByDeveloppeur(string $developpeur)
         {
             try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE developpeur=" . $developpeur);
-                $stmt->execute();
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE developpeur= :developpeur");
+                $stmt->execute(['developpeur' => $developpeur]);
                 $jeux = $stmt->fetchAll();
                 return $jeux;
             } catch (PDOException $e) {
@@ -68,8 +67,8 @@
         public function getJeuxByRating(int $rating)
         {
             try {
-                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE rating=" . $rating);
-                $stmt->execute();
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux WHERE rating= :rating");
+                $stmt->execute(['rating' => $rating]);
                 $jeux = $stmt->fetchAll();
                 return $jeux;
             } catch (PDOException $e) {

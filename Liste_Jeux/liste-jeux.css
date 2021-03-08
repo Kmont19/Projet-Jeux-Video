@@ -77,6 +77,7 @@ h2 {
 
 .card-jeux-titre {
   font-weight: 600;
+  color: white !important;
 }
 
 .card-jeux-prix {

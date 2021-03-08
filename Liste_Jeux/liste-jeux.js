@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $("#menu").load("menu.html");
     $("#footer").load("footer.html");
-    getJeux();
     checkCategorie();
 })
 
@@ -16,12 +15,17 @@ function checkCategorie() {
             }
         })
         localStorage.clear();
+        return true
+    } else {
+        getJeux();
+        return false
     }
 }
 
 function getJeux() { 
     var prixActuel;
-    var prixPrecedent;   
+    var prixPrecedent;  
+    var jeuCard; 
     $.ajax({
         url: "Base_de_donnees/getJeux.php",
         type: "GET",
@@ -29,12 +33,14 @@ function getJeux() {
         data: "getJeux",
         success: function(reponse) {
             reponse.forEach(function(jeu) {
+                console.log(jQuery.type(jeu.image_lien))
+                var imgLien = jeu.image_lien.replace("../", "");
                 if( jeu.rabais > 0) {
                     prixActuel = jeu.prix - (jeu.prix * (jeu.rabais) / 100);
                     prixPrecedent = jeu.prix;
-                    var jeuCard = `<div class="card-jeux" id="cardJeux">							
+                    jeuCard = `<div class="card-jeux" id="cardJeux">							
                         <div class="card-jeux-img" id="imgContainer">
-                            <img src=Images/"${jeu.image_lien}" class="img-responsive" alt="Image Jeux" id="imgJeux">
+                            <img src=${imgLien} class="img-responsive" alt="Image Jeux" id="imgJeux">
                         </div>
                         <h5 class="card-jeux-titre" id="nomJeux">${jeu.nom}</h5>
                         <div class="card-jeux-prix" id="containerPrix">
@@ -44,9 +50,9 @@ function getJeux() {
                     </div>`
                 } else {
                     prixActuel = jeu.prix;
-                    `<div class="card-jeux" id="cardJeux">							
+                    jeuCard =  `<div class="card-jeux" id="cardJeux">							
                         <div class="card-jeux-img" id="imgContainer">
-                            <img src=Images/"${jeu.image_lien}" class="img-responsive" alt="Image Jeux" id="imgJeux">
+                            <img src=${imgLien} class="img-responsive" alt="Image Jeux" id="imgJeux">
                         </div>
                         <h5 class="card-jeux-titre" id="nomJeux">${jeu.nom}</h5>
                         <div class="card-jeux-prix" id="containerPrix">
@@ -63,20 +69,24 @@ function getJeux() {
 function getJeuxByCategorie(categorie) {
     var prixActuel;
     var prixPrecedent;
+    var jeuCard; 
     $.ajax({
         url: "Base_de_donnees/getJeux.php",
         type: "GET",
         dataType: "json",
-        data: categorie,
+        data: {
+            categorie: categorie
+        },
         success: function(reponse) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
+                    var imgLien = jeu.image_lien.replace('../', '');
                     if( jeu.rabais > 0) {
                         prixActuel = jeu.prix - (jeu.prix * (jeu.rabais) / 100);
                         prixPrecedent = jeu.prix;
-                        `<div class="card-jeux" id="cardJeux">							
+                        jeuCard = `<div class="card-jeux" id="cardJeux">							
                         <div class="card-jeux-img" id="imgContainer">
-                            <img src=Images/"${jeu.image_lien}" class="img-responsive" alt="Image Jeux" id="imgJeux">
+                            <img src=${imgLien} class="img-responsive" alt="Image Jeux" id="imgJeux">
                         </div>
                         <h5 class="card-jeux-titre" id="nomJeux">${jeu.nom}</h5>
                         <div class="card-jeux-prix" id="containerPrix">
@@ -86,9 +96,9 @@ function getJeuxByCategorie(categorie) {
                     </div>`
                     } else {
                         prixActuel = jeu.prix;
-                        `<div class="card-jeux" id="cardJeux">							
+                        jeuCard = `<div class="card-jeux" id="cardJeux">							
                             <div class="card-jeux-img" id="imgContainer">
-                                <img src=Images/"${jeu.image_lien}" class="img-responsive" alt="Image Jeux" id="imgJeux">
+                                <img src=${imgLien} class="img-responsive" alt="Image Jeux" id="imgJeux">
                             </div>
                             <h5 class="card-jeux-titre" id="nomJeux">${jeu.nom}</h5>
                             <div class="card-jeux-prix" id="containerPrix">
