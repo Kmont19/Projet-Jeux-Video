@@ -20,7 +20,6 @@
         <link rel="stylesheet" href="Menu/menu.css">
 
         <script src="Menu/menu.js"></script>
-        <script src="Administration/Gestion_Jeu/gestion-jeu.js"></script>
     </head>
 
     <body>
@@ -103,17 +102,18 @@
         </div>
 
     <!-- The Modal -->
-        <div id="myModal" class="modal modal-gestion mt-5 pt-5">
+        <div id="myModal" class="modal mt-5 pt-5">
 
             <!-- Modal content -->
             <div class="modal-content pl-5">
-                <span class="close" id="closeModal">&times;</span>
+                <span class="close">&times;</span>
                 <div class="interieurModal">                    
                     <h2 id="titreModal"></h2>
                     <div class="row no-gutters">
                         <div class="col-sm-4  mx-auto">
                             <img id="imageModal">
-                            <input class="mt-5" type="file" id="fichierModal">                        
+                            <p id="nomImage" class="mt-3"></p>
+                            <input type="file" id="fichierModal">                        
                         </div>
                         <div class="col-sm-8  mx-auto">
                             <h5 id="idTitre">Id du jeu</h5>
@@ -123,15 +123,16 @@
                             <h5>Catégorie</h5>
                             <select name="categorie" id="categorie" class="dispositionsInputs">
                                 <option>Action</option>
-                                <option>Aventure</option>
-                                <option>Casual</option>
-                                <option>Course automobile</option>
-                                <option>Indépendant</option>
-                                <option>Multijoueur</option>
-                                <option>RPG</option>
-                                <option>Simulation</option>
                                 <option>Sport</option>
-                                <option>Stratégie</option>
+                                <option>FPS</option>
+                                <option>RPG</option>
+                                <option>Course</option>
+                                <option>Plateforme</option>
+                                <option>Gestion</option>
+                                <option>Jeux de société</option>
+                                <option>Combat</option>
+                                <option>Simulation</option>
+                                <option>MMO</option>
                             </select>
                             <h5>Nom du studio</h5>
                             <input type="text" placeholder="Nom du studio du jeu" class="dispositionsInputs" id="nomStudio">
@@ -149,5 +150,191 @@
                 </div>
             </div>
         </div>
-    </body>    
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        /* Rechercher le nombre de jeux au total dans la BD */
+        document.getElementById("nombreJeux").innerHTML = "5";
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Ouvre le modal de création de jeux
+        function ouvrirModalAjout(){
+            modal.style.display = "block";
+            document.getElementById("titreModal").innerHTML = "Ajouter un jeu";
+            document.getElementById("boutonConfirmation").value ="Ajouter";
+            document.getElementById("nomImage").innerHTML = "inconnu.jpg";
+            document.getElementById("imageModal").src ="Images/inconnu.jpg";
+            $("#idTitre").hide()
+            $("#idJeu").hide()
+            document.getElementById("nomJeu").value ="";
+            document.getElementById("categorie").selectedIndex = "-1";
+            document.getElementById("nomStudio").value = "";
+            document.getElementById('nomEditeur').value = "";
+            document.getElementById('prixJeu').value = "";
+            document.getElementById('rabaisJeu').value = "";
+            document.getElementById('dateSortie').value = "";
+        }
+
+        function ouvrirModalModif(image, id, nom, categorie, studio, editeur, prix, rabais, date){
+            modal.style.display = "block";
+            $("#idTitre").show()
+            $("#idJeu").show()
+            document.getElementById("titreModal").innerHTML = "Modification de jeu";
+            document.getElementById("boutonConfirmation").value ="Enregistrer les modifications";
+            document.getElementById("imageModal").src ="Images/" + image;
+            document.getElementById("idJeu").value = id;
+            document.getElementById("nomJeu").value = nom;
+            switch (categorie){
+                case "Action":
+                    document.getElementById("categorie").selectedIndex = "0";
+                    break;
+                case "Sport":
+                    document.getElementById("categorie").selectedIndex = "1";
+                    break;
+                case "FPS":
+                    document.getElementById("categorie").selectedIndex = "2";
+                    break;
+                case "RPG":
+                    document.getElementById("categorie").selectedIndex = "3";
+                    break;
+                case "Course":
+                    document.getElementById("categorie").selectedIndex = "4";
+                    break;
+                case "Plateforme":
+                    document.getElementById("categorie").selectedIndex = "5";
+                    break;
+                case "Gestion":
+                    document.getElementById("categorie").selectedIndex = "6";
+                    break;
+                case "Jeux de société":
+                    document.getElementById("categorie").selectedIndex = "7";
+                    break;
+                case "Combat":
+                    document.getElementById("categorie").selectedIndex = "8";
+                    break;
+                case "Simulation":
+                    document.getElementById("categorie").selectedIndex = "9";
+                    break;
+                case "MMO":
+                    document.getElementById("categorie").selectedIndex = "10";
+                    break;
+
+            }
+            document.getElementById("nomStudio").value = studio;
+            document.getElementById('nomEditeur').value = editeur;
+            document.getElementById('prixJeu').value = prix;
+            document.getElementById('rabaisJeu').value = rabais;
+            document.getElementById('dateSortie').value = date;
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        $(document).ready(function (){
+            $("#sidebar-wrapper").load('Menu-Administration.html')
+            $("#menu").load('menu.html')
+            $('#boutonConfirmation').click(function (e) {
+                var bouton = document.getElementById("boutonConfirmation");
+                var nom = document.getElementById("nomJeu");
+                var categorie = document.getElementById("categorie");
+                var studio = document.getElementById("nomStudio");
+                var editeur = document.getElementById("nomEditeur");
+                var prix = document.getElementById("prixJeu");
+                var rabais = document.getElementById("rabaisJeu");
+                var date = document.getElementById("dateSortie");
+                var lien_image = document.getElementById("nomImage");
+
+                if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == "" || prix.value == "" || rabais.value == "" || date.value == ""){
+                    alert("Veuillez choisir et remplir tous les champs");
+                } else {
+                    if (bouton.value == "Ajouter") {
+                        /* Création de l'ID */
+                        var id = nom.value.substring(0,3) + studio.value.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
+                        document.getElementById("idJeu").value = id;
+
+                        /* Ajout Image dans le serveur*/
+
+
+                        /* Ajout jeu dans la BD */
+                            e.preventDefault()
+                            $.ajax({
+                                url: "../../Base_de_donnees/ajoutJeu.php",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    "id_jeu": id,
+                                    "nom": nom.value,
+                                    "developpeur": studio.value,
+                                    "editeur": editeur.value,
+                                    "rating": '0',
+                                    "prix": prix.value,
+                                    "rabais": rabais.value,
+                                    "date_de_sortie": date,
+                                    "image_lien": lien_image.innerHTML
+                                },
+                                success: function (reponse) {
+                                    console.log(reponse);
+                                    alert("Le jeu a bien été ajouté");
+                                },
+                                error: function (message, e) {
+                                    console.log(message);
+                                }
+                            });
+                        /* Ajout de la catégorie */
+                        var categorie = document.getElementById("categorie");
+                        e.preventDefault()
+                        $.ajax({
+                            url: "../../Base_de_donnees/ajout_categorie",
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id_jeu": id,
+                                "categorie": categorie.options[categorie.selectedIndex].text
+                            },
+                            success: function (reponse) {
+                                console.log(reponse);
+                                alert("Le jeu a bien été ajouté");
+                                location.reload();
+                            },
+                            error: function (message, e) {
+                                console.log(message);
+                            }
+                        });
+
+                    } else {
+                        alert("Le jeu a bien été modifié");
+                        location.reload();
+                    }
+                }
+
+            });
+        });
+
+        //Pour la supression d'objets
+        function supprimerObjetListe(id){
+            if (confirm("Voulez-vous vraiment supprimer cet objet?")){
+                alert("Oui");
+                alert(id);
+                location.reload();
+            } else {
+                alert("nope");
+            }
+        }
+    </script>
+
 </html>

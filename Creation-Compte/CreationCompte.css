@@ -1,0 +1,20 @@
+*{
+    font-family: 'Bungee Inline', cursive;
+}
+
+#confirmationCreationCompte{
+    margin-left: 20%;
+}
+
+#blocCentral{
+    border : 2px solid black;
+    background-color: #f44336;
+    margin:auto;
+    margin-top: 5%;
+    width: 45%;
+    padding: 2%;
+}
+
+#formulaires{
+    margin-left: 10%;
+}

@@ -1,5 +1,5 @@
 <?php
-    require_once (__DIR__.'/../Connexion/Connexion.php');
+    include './Connexion/connexion.php';
 
     function getUserByEmail($email, $con) {
         $requete = "SELECT * FROM utilisateurs where email=" . $email;

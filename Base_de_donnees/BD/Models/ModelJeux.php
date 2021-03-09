@@ -1,5 +1,5 @@
 <?php
-require_once (__DIR__.'/../Connexion/Connexion.php');
+require_once (__DIR__.'/../Connexion.php');
 
 class ModelJeux
 {
@@ -29,27 +29,76 @@ class ModelJeux
     public function ajoutJeu( $id_jeu,  $nom,  $categorie,  $developpeur,  $editeur,  $rating,  $prix,  $rabais, $date_de_sortie, $image_lien): bool
     {
         try {
-            $imgPath = $this->storePath($image_lien);
-            $stmtJeu = $this->connexion->prepare(
+            $stmt = $this->connexion->prepare(
                 "INSERT INTO jeux (id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien) 
                                 values(:id_jeu, :nom, :developpeur, :editeur, :rating, :prix, :rabais, :date_de_sortie, :image_lien)");
-            $stmtJeu->bindParam(':id_jeu', $id_jeu);
-            $stmtJeu->bindParam(':nom', $nom);
-            $stmtJeu->bindParam(':developpeur', $developpeur);
-            $stmtJeu->bindParam(':editeur', $editeur);
-            $stmtJeu->bindParam(':rating', $rating);
-            $stmtJeu->bindParam(':prix', $prix);
-            $stmtJeu->bindParam(':rabais', $rabais);
-            $stmtJeu->bindParam(':date_de_sortie', $date_de_sortie);
-            $stmtJeu->bindParam(':image_lien', $imgPath);
-            $stmtJeu->execute();
+            $stmt->bindParam(':id_jeu', $id_jeu);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':developpeur', $developpeur);
+            $stmt->bindParam(':editeur', $editeur);
+            $stmt->bindParam(':rating', $rating);
+            $stmt->bindParam(':prix', $prix);
+            $stmt->bindParam(':rabais', $rabais);
+            $stmt->bindParam(':date_de_sortie', $date_de_sortie);
+            $stmt->bindParam(':image_lien', $image_lien);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
 
             $stmtCategorie = $this->connexion->prepare(
                 "INSERT INTO jeux_categories (id_jeu, categorie) 
                                 values(:id_jeu, :categorie)");
-            $stmtCategorie->bindParam(':id_jeu', $id_jeu);
-            $stmtCategorie->bindParam(':categorie', $categorie);
-            $stmtCategorie->execute();
+            $stmt->bindParam(':id_jeu', $id_jeu);
+            $stmt->bindParam(':categorie', $categorie);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
+
+    public function supprimerJeu(string $id_jeu): bool
+    {
+        try {
+            $stmt = $this->connexion->prepare(
+            "DELETE FROM jeux_categories WHERE id_jeu=:id_jeu");
+            $stmt->bindParam(':id_jeu', $id_jeu);
+            $stmt->execute();
+            $stmt = $this->connexion->prepare(
+                "DELETE FROM jeux WHERE id_jeu=:id_jeu");
+            $stmt->bindParam(':id_jeu', $id_jeu);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
+
+    public function updateJeu(string $id_jeu, string $nom, string $developpeur, string $editeur, float $prix, float $rabais, string $date_de_sortie, string $image_lien) :bool
+    {
+        try {
+            $stmt = $this->connexion->prepare(
+                "UPDATE jeux SET nom=:nom, developpeur=:developpeur, editeur=:editeur, prix=:prix, rabais=:rabais, date_de_sortie=:date_de_sortie, image_lien=:image_lien WHERE id_jeu=:id_jeu;");
+            $stmt->bindParam(':id_jeu', $id_jeu);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':developpeur', $developpeur);
+            $stmt->bindParam(':editeur', $editeur);
+            $stmt->bindParam(':prix', $prix);
+            $stmt->bindParam(':rabais', $rabais);
+            $stmt->bindParam(':date_de_sortie', $date_de_sortie);
+            $stmt->bindParam(':image_lien', $image_lien);
+            $stmt->execute();
+
+            $stmtCat = $this->connexion->prepare("UPDATE jeux_categories SET categorie=:categorie WHERE id_jeu=:id_jeu");
+            $stmtCat->bindParam(':id_jeu', $id_jeu);
+            $stmtCat->bindParam(':categorie', $categorie);
+            $stmtCat->execute();
 
             return true;
         } catch (PDOException $e) {
@@ -77,5 +126,4 @@ class ModelJeux
         }
         return $filePath;
     }
-
 }
