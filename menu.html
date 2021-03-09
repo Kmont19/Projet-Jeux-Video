@@ -52,7 +52,7 @@
             </section>
             <ul class="navbar-nav right-icons ml-5">
                 <li class="nav-item" id="connexion" onclick="addActive($(this))">
-                    <a class="nav-link" id="boutonConnexion" onclick="document.getElementById('connexionModal').style.display='block'" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
+                    <a class="nav-link" id="boutonConnexion" onclick="verifRedirection()" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="menuPanier" href="panier.html" onclick="addActive($(this))"><i class="material-icons">shopping_cart</i></a>
@@ -76,7 +76,7 @@
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
                 </label>
-                <span class="psw">Vous n'avez pas de <a href="#">compte?</a></span>
+                <span class="psw">Vous n'avez pas de <a href="Creation-Compte.html">compte?</a></span>
                 
             </div>
         </form>
@@ -103,7 +103,7 @@
                 if(window.location.href !== 'liste-jeux.html')
                 location.assign('liste-jeux.html')            
             }
-        })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        })     
     </script>
 
 
