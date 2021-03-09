@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
     <!--Menu-->
-    <nav class="navbar navbar-expand-lg navbar-dark menu fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-dark menu fixed-top">
         <a class="navbar-brand" href="index.html">
-            <img class="logo" src="Images/Logo-MVG.png" alt="logo">
+            <img class="logo" src="Images/logo-mvg.png" alt="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav justify-content-between w-50 left-menu">              
-                <li class="nav-item active">
+            <ul class="navbar-nav justify-content-between left-menu">              
+                <li class="nav-item"  id="menuAccueil">
                     <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -29,67 +29,81 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="liste-jeux.html">Promotions</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="liste-jeux.html">Meilleures ventes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="liste-jeux.html">Précommandes</a>
-                </li>                         
+                        <a class="nav-link" href="liste-jeux.html" onclick="getPromotions()">Promotions</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="liste-jeux.html" onclick="getBestSellers()">Meilleures ventes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="liste-jeux.html" onclick="getPrecommandes()">Précommandes</a>
+                    </li>                          
             </ul>
             
             <!--Barre de recherche-->
             <section class="search-bar">                                                   
                 <form>
                     <div class="input-group">
-                        <input type="search" placeholder="Rechercher un jeu" class="form-control">
+                        <input id="inputRecherche" type="search" placeholder="Rechercher un jeu" class="form-control">
                         <div class="input-group-append">                                
-                            <button type="submit" class="btn btn-search btn-link"><i class="material-icons">search</i></button>
+                            <button id="btnRecherche" type="submit" class="btn btn-search btn-link"><i class="material-icons">search</i></button>
                         </div>
                     </div>
                 </form>            
             </section>
-            <ul class="navbar-nav ml-auto right-icons">
-                <li class="nav-item">
-                    <a class="nav-link" id="compte" onclick="verifRedirection()"><i class="material-icons">account_circle</i></a>
+            <ul class="navbar-nav right-icons ml-5">
+                <li class="nav-item" id="connexion" onclick="addActive($(this))">
+                    <a class="nav-link" id="boutonConnexion" onclick="document.getElementById('connexionModal').style.display='block'" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="panier" href="panier.html"><i class="material-icons">shopping_cart</i></a>
+                    <a class="nav-link" id="menuPanier" href="panier.html" onclick="addActive($(this))"><i class="material-icons">shopping_cart</i></a>
                 </li>        
             </ul>
         </div>
     </nav>
 
 
-    <div id="id01" class="modal">
-        <form class="modal-content animate" action="/action_page.php" method="post">
+    <div id="connexionModal" class="modal modal-connexion">
+        <form class="modal-content animate">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('connexionModal').style.display='none', removeActive($('#connexion'))" class="close" title="Close Modal">&times;</span>
             </div>
-
             <div class="container">
                 <label for="uname"><b>Nom d'utilisateur</b></label>
                 <input type="text" placeholder="Entrez le nom d'utilisateur" name="uname" id="uname" required>
-
                 <label for="psw"><b>Mode de passe</b></label>
                 <input type="password" placeholder="Entrez le mot de passe" name="psw" id="psw" required>
-
-                <button type="submit">Connexion</button>
+                <button class="btnConnexion" type="submit">Se connecter</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
                 </label>
-            </div>
-
-            <div class="container" id="partieBasModal">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fermer</button>
                 <span class="psw">Vous n'avez pas de <a href="#">compte?</a></span>
+                
             </div>
         </form>
     </div>
 
     <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        $(document).ready(function() {
+            checkPage();
+        })
+
+        var modal = document.getElementById('connexionModal');
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        $('#btnRecherche').click(function(e) {
+            e.preventDefault()
+            var nomJeu = $('#inputRecherche').val();
+            if(!nomJeu == '') {
+                localStorage.setItem("nom", nomJeu)
+                if(window.location.href !== 'liste-jeux.html')
+                location.assign('liste-jeux.html')            
+            }
+        })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     </script>
 
 

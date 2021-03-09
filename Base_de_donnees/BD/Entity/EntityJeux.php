@@ -248,6 +248,7 @@
             }
         }
 
+        //Get precommandes dans la liste de jeux
         public function getJeuxByPrecommandes()
         {
             try {
@@ -263,39 +264,7 @@
             }
         }
 
-
-        public function getJeuxRecommandees(): array
-        {
-            try {
-                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
-                        from jeux j
-                        inner join jeux_categories c 
-                        on j.id_jeu = c.id_jeu
-                        order by rabais
-                        limit 3;";
-                $result = $this->connexion->query($request);
-                $items = $result->fetchAll();
-                return $items;
-            } catch (PDOException $e) {
-                return $e;
-            }
-        }
-
-        public function getNbrPersonnes(string $id): array
-        {
-            $items = array();
-            try {
-                $request = "select count(id_jeu) as nbrPersonnes
-                        from utilisateurs_jeux
-                        where id_jeu = '$id';";
-                $result = $this->connexion->query($request);
-                $items = $result->fetchAll();
-                return $items;
-            } catch (PDOException $e) {
-                return $e;
-            }
-        }
-
+        //Page d'accueil
         public function getJeuxRabais(): array
         {
             try {
@@ -314,6 +283,7 @@
             }
         }
 
+        //Page d'accueil
         public function getJeuxMeilleuresVentes(): array
         {
             try {
@@ -332,6 +302,7 @@
             }
         }
 
+        //Page d'accueil
         public function getJeuxDernieresNouveautees(): array
         {
             try {
@@ -349,6 +320,7 @@
             }
         }
 
+        //Get Precommandes dans la page d'accueil
         public function getJeuxPrecommande(): array
         {
             try {
@@ -366,7 +338,6 @@
                 return $e;
             }
         }
-
 
     }
 
