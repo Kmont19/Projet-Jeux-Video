@@ -248,6 +248,23 @@
             }
         }
 
+        //Get precommandes dans la liste de jeux
+        public function getJeuxByPrecommandes()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                where date_de_sortie > CURDATE()");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        //Page d'accueil
         public function getJeuxRabais(): array
         {
             try {
@@ -266,6 +283,7 @@
             }
         }
 
+        //Page d'accueil
         public function getJeuxMeilleuresVentes(): array
         {
             try {
@@ -284,6 +302,7 @@
             }
         }
 
+        //Page d'accueil
         public function getJeuxDernieresNouveautees(): array
         {
             try {
@@ -301,6 +320,7 @@
             }
         }
 
+        //Get Precommandes dans la page d'accueil
         public function getJeuxPrecommande(): array
         {
             try {
@@ -318,7 +338,6 @@
                 return $e;
             }
         }
-
 
     }
 
