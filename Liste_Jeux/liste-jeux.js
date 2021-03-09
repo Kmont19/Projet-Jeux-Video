@@ -39,7 +39,6 @@ function loadJeux() {
         localStorage.clear();
     }else {
         getJeux();
-        console.log(tableJeux)
     }
 }
 

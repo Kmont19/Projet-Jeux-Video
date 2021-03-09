@@ -29,23 +29,23 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="liste-jeux.html">Promotions</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="liste-jeux.html">Meilleures ventes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="liste-jeux.html">Précommandes</a>
-                </li>                         
+                        <a class="nav-link" href="liste-jeux.html" onclick="getPromotions()">Promotions</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="liste-jeux.html" onclick="getBestSellers()">Meilleures ventes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="liste-jeux.html" onclick="getPrecommandes()">Précommandes</a>
+                    </li>                          
             </ul>
             
             <!--Barre de recherche-->
             <section class="search-bar">                                                   
                 <form>
                     <div class="input-group">
-                        <input type="search" placeholder="Rechercher un jeu" class="form-control">
+                        <input id="inputRecherche" type="search" placeholder="Rechercher un jeu" class="form-control">
                         <div class="input-group-append">                                
-                            <button type="submit" class="btn btn-search btn-link"><i class="material-icons">search</i></button>
+                            <button id="btnRecherche" type="submit" class="btn btn-search btn-link"><i class="material-icons">search</i></button>
                         </div>
                     </div>
                 </form>            
@@ -55,7 +55,7 @@
                     <a class="nav-link" id="boutonConnexion" onclick="document.getElementById('connexionModal').style.display='block'" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="panier" href="panier.html"><i class="material-icons">shopping_cart</i></a>
+                    <a class="nav-link" id="menuPanier" href="panier.html" onclick="addActive($(this))"><i class="material-icons">shopping_cart</i></a>
                 </li>        
             </ul>
         </div>
@@ -83,7 +83,27 @@
     </div>
 
     <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        $(document).ready(function() {
+            checkPage();
+        })
+
+        var modal = document.getElementById('connexionModal');
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        $('#btnRecherche').click(function(e) {
+            e.preventDefault()
+            var nomJeu = $('#inputRecherche').val();
+            if(!nomJeu == '') {
+                localStorage.setItem("nom", nomJeu)
+                if(window.location.href !== 'liste-jeux.html')
+                location.assign('liste-jeux.html')            
+            }
+        })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     </script>
 
 
