@@ -1,37 +1,65 @@
 <?php
+    require_once (__DIR__.'/../Connexion/Connexion.php');
 
-    include './Connexion/connexion.php';
-
-    function getJeux($con) 
+    class EntityJeux 
     {
-        $class = new Connexion();
-        $this->connexion = $class->getConnexion();
-    }
+        private $connexion;
 
-    public function getJeux(): array
-    {
-        try {
-            $request = "select j.id_jeu, nom, developpeur, editeur, prix, rabais, date_de_sortie, image_lien, categorie
-                        from jeux j
-                        inner join jeux_categories c 
-                        on j.id_jeu = c.id_jeu;";
-            $result = $this->connexion->query($request);
-            $items = $result->fetchAll();
-            return $items;
+        /**
+        * EntityJeux constructor.
+        */
+        public function __construct() 
+        {
+            $class = new Connexion();
+            $this->connexion = $class->getConnexion();
         }
-    }
 
-    function getJeuxByDeveloppeur($con, $developpeur)
-    {
-        try {
-            $requete = "SELECT * FROM jeux WHERE developpeur=" . $developpeur;
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+        public function getJeux() 
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu
+                                                ORDER BY date_de_sortie");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
         }
-    }
+
+        public function getJeuxByNom(string $nom) 
+        {
+            try {
+                $nomLike = '%'.$nom.'%';
+                $stmt = $this->connexion->prepare('SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu
+                                                WHERE nom LIKE :nom 
+                                                ORDER BY date_de_sortie');
+                $stmt->execute(['nom' => $nomLike]);
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByCategorie(string $categorie) 
+        {
+            try {
+                $stmt = $this->connexion->prepare('SELECT * FROM jeux j
+                                                    INNER JOIN jeux_categories jc on j.id_jeu = jc.id_jeu
+                                                    WHERE jc.categorie= :categorie
+                                                    ORDER BY date_de_sortie');
+                $stmt->execute(['categorie' => $categorie]);
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
 
     public function getJeuxRecommandees(): array
     {
@@ -48,8 +76,21 @@
         }
         catch(PDOException $e) {
             return $items;
+        public function getJeuxByEditeur(string $editeur)
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu
+                                                WHERE editeur= :editeur 
+                                                ORDER BY date_de_sortie");
+                $stmt->execute(['editeur' => $editeur]);
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
         }
-    }
 
     public function getNbrPersonnes(string $id):array{
         $items = array();
@@ -60,136 +101,160 @@
             $result = $this->connexion->query($request);
             $items = $result->fetchAll();
             return $items;
+        public function getJeuxByDeveloppeur(string $developpeur)
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu
+                                                WHERE developpeur= :developpeur 
+                                                ORDER BY date_de_sortie");
+                $stmt->execute(['developpeur' => $developpeur]);
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByRating(int $rating)
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                WHERE rating >= :rating 
+                                                ORDER BY date_de_sortie");
+                $stmt->execute(['rating' => $rating]);
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByPrix($prixMin, $prixMax)
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                WHERE prix BETWEEN :prixMin AND :prixMax 
+                                                ORDER BY date_de_sortie");                
+                $stmt->execute(array('prixMin' => $prixMin, 'prixMax' => $prixMax));
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByPlusRecent()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                ORDER BY date_de_sortie DESC");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByPlusAnciens()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                ORDER BY date_de_sortie ASC");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByPrixASC()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                ORDER BY prix ASC");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByPrixDESC()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                ORDER BY prix DESC");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }    
+
+        public function getJeuxByPromotions()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                where rabais > 0
+                                                ORDER BY date_de_sortie");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getBestSellers()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                ORDER BY fois_achete DESC, date_de_sortie");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        public function getJeuxByPrecommandes()
+        {
+            try {
+                $stmt = $this->connexion->prepare("SELECT * FROM jeux j
+                                                INNER JOIN jeux_categories jc
+                                                ON j.id_jeu = jc.id_jeu 
+                                                where date_de_sortie > CURDATE()");
+                $stmt->execute();
+                $jeux = $stmt->fetchAll();
+                return $jeux;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
         }
     }
 
-    function getJeux25_50($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux WHERE prix BETWEEN 25 and 50";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
 
-    function getJeux50_100($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux WHERE prix BETWEEN 50 and 100";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
-
-    function getJeux100plus($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux WHERE prix >= 100";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
-
-    function getJeuxByPlusRecent($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux ORDER BY date_de_sortie DESC";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
-
-    function getJeuxByPlusAnciens($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux ORDER BY date_de_sortie ASC";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
-
-    function getJeuxByPrixASC($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux ORDER BY prix ASC";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
-
-    function getJeuxByPrixDESC($con)
-    {
-        try {
-            $requete = "SELECT * FROM jeux ORDER BY prix DESC";
-            $resultat = $con->query($requete);
-            $ligne = $resultat->fetchAll();
-            return json_encode($ligne);
-        } catch (PDOException $e) {
-            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
-        }
-    }
-    
-    if(isset($_GET['action'])) {
-        switch($_GET['action']){
-            case 'getJeux':
-                echo getJeux($con);
-            break;
-            case 'getJeuxByCategorie':
-                echo getJeuxByCategorie($con, $_GET['categorie']);
-            break;
-            case 'getJeuxByEditeur':
-                echo getJeuxByEditeur($con, $_GET['editeur']);
-            break;
-            case 'getJeuxByRating':
-                echo getJeuxByRating($con, $_GET['rating']);
-            break;
-            case 'getJeuxByDeveloppeur':
-                echo getJeuxByDeveloppeur($con, $_GET['developpeur']);
-            break;
-            case 'getJeuxUnder25':
-                echo getJeuxUnder25($con);
-            break;
-            case 'getJeux25_50':
-                echo getJeux25_50($con);
-            break;
-            case 'getJeux50_100':
-                echo getJeux50_100($con);
-            break;
-            case 'getJeux100plus':
-                echo getJeux100plus($con);
-            break;
-            case 'getJeuxByPlusRecent':
-                echo getJeuxByPlusRecent($con);
-            break;
-            case 'getJeuxByPlusAnciens':
-                echo getJeuxByPlusAnciens($con);
-            break;
-            case 'getJeuxByPrixASC':
-                echo getJeuxByPrixASC($con);
-            break;
-            case 'getJeuxByPrixDESC':
-                echo getJeuxByPrixDESC($con);
-            break;
-            default:
-        break;
-        }
-    }
     

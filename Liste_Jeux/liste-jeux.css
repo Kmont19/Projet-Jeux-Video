@@ -49,18 +49,9 @@ h2 {
 }
 
 .card-jeux:hover {
-  border-color: rgba(0, 0, 0, 0.07);
-  -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
-          box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
-}
-
-.card-jeux > a {
-    color: white;
-}
-
-.card-jeux > a:hover {
-    text-decoration: none;
-    color: #f04800;
+    box-shadow: 0 0 5px 5px #f04800;
+    cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .card-jeux-img {
@@ -77,6 +68,7 @@ h2 {
 
 .card-jeux-titre {
   font-weight: 600;
+  color: white !important;
 }
 
 .card-jeux-prix {
@@ -86,32 +78,36 @@ h2 {
 .current-price {
   color: #f04800;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .current-currency {
   color: #f04800;
   font-weight: 600;
-  font-size: 10px;
+  font-size: 14px;
   position: relative;
-  top: -5px;
+  top: -4px;
   left: 2px;
 }
 
 .previous-price {
   color: gray;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 18px;
   text-decoration: line-through;
   font-style: italic;
 }
 .previous-currency {
   color: gray;
   font-weight: 400;
-  font-size: 8px;
+  font-size: 10px;
   position: relative;
   top: -5px;
   left: 2px;
+}
+
+.filtres {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /** Shop: Filter **/
@@ -138,16 +134,6 @@ h2 {
   display: none;
 }
 
-.filtre-liste-rating label {
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  cursor: pointer;
-  text-align: center;
-}
-
 /** Shop: Trie **/
 .trier-liste {
   list-style: none;
@@ -167,7 +153,9 @@ h2 {
   padding: 20px 10px;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
-  color: #757575;
+  font-family: 'Bungee Inline', cursive;
+  font-weight: 600;
+  letter-spacing: 1px;
   -webkit-transition: all .05s linear;
        -o-transition: all .05s linear;
           transition: all .05s linear;
@@ -175,9 +163,11 @@ h2 {
 
 .trier-liste > li > a:hover,
 .trier-liste > li > a:focus {
-  color: #f04800;
+  color: #f04800 !important;
   border-bottom-color: #f04800;
   text-decoration: none;
+  cursor: pointer;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .trier-liste > li.active > a {
@@ -203,12 +193,20 @@ h2 {
   }
 }
 
+/*Headline*/
+.headline {
+  font-family: 'Bungee Inline', cursive;
+  font-weight: 600;
+  color: black;
+}
+
 /* Checkboxes */
 .checkbox input[type="checkbox"] {
   display: none;
 }
 .checkbox label {
   padding-left: 0;
+
 }
 .checkbox label:before {
   content: "";
@@ -225,39 +223,25 @@ h2 {
 
 .checkbox input[type="checkbox"]:checked + label::before {
   content: "\f00c";
+
 }
 
-/* Radios */
-.radio input[type="radio"] {
-  display: none;
+.btn {
+  background-color: #f04800;
+  border: 1px solid black;
 }
 
-.radio label {
-  padding-left: 0;
+.btn:hover {
+  background-color: #ffc107;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.radio label:before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 15px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 10px solid #eee;
-  background-color: #333333;
+#rating {
+  background-color: black;
+  color: white;
+  border-radius: 3px;
 }
 
-.radio input[type="radio"]:checked + label:before {
-  border-width: 7px;
+#rating > option {
+  color: white;
 }
-
-.pagination li a {
-  color: white !important;
-  background-color: #f04800 !important;
-}
-
-.pagination li a:hover {
-  background-color: black !important;
-}
-
