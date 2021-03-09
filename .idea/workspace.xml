@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84e7faec-4b33-4d82-81a5-28e34675ed63" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Accueil/Jeux-Varies/jeux-varies.html" beforeDir="false" afterPath="$PROJECT_DIR$/Accueil/Jeux-Varies/jeux-varies.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accueil/Promotions/promotions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Accueil/Promotions/promotions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accueil/Recommandes/recommandes.html" beforeDir="false" afterPath="$PROJECT_DIR$/Accueil/Recommandes/recommandes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Administration/Accueil_Administratif/Menu-Administration.html" beforeDir="false" afterPath="$PROJECT_DIR$/Administration/Accueil_Administratif/Menu-Administration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Administration/Gestion_Jeu/Gestion-Jeu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Administration/Gestion_Jeu/Gestion-Jeu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Administration/Gestion_Jeu/Style-Gestion-Jeu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Administration/Gestion_Jeu/Style-Gestion-Jeu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Connexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityJeux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeuxf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/ajoutJeu.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutJeu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/getJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/getJeux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fiche_Jeu/Fiche-Jeu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fiche_Jeu/Style-Fiche-Jeu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Fiche_Jeu/Style-Fiche-Jeu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Menu/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +49,7 @@
       <workItem from="1614994437909" duration="16501000" />
       <workItem from="1615076847404" duration="185000" />
       <workItem from="1615078358281" duration="772000" />
+      <workItem from="1615275896246" duration="92000" />
     </task>
     <servers />
   </component>

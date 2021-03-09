@@ -1,5 +1,5 @@
 <?php
-    require_once (__DIR__.'/../Connexion/Connexion.php');
+    require_once (__DIR__.'/../Connexion.php');
 
     class EntityJeux 
     {
@@ -230,6 +230,112 @@
                 echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
             }
         }
+
+
+        public function getJeuxRecommandees(): array
+        {
+            try {
+                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu
+                        order by rabais
+                        limit 3;";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
+        public function getNbrPersonnes(string $id): array
+        {
+            $items = array();
+            try {
+                $request = "select count(id_jeu) as nbrPersonnes
+                        from utilisateurs_jeux
+                        where id_jeu = '$id';";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
+        public function getJeuxRabais(): array
+        {
+            try {
+                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu
+                        where rabais > 0
+                        order by rabais
+                        limit 5;";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
+        public function getJeuxMeilleuresVentes(): array
+        {
+            try {
+                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu
+                        where fois_achete > 0
+                        order by fois_achete,rabais
+                        limit 3;";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
+        public function getJeuxDernieresNouveautees(): array
+        {
+            try {
+                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu
+                        order by date_de_sortie DESC,rabais
+                        limit 3;";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
+        public function getJeuxPrecommande(): array
+        {
+            try {
+                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
+                        from jeux j
+                        inner join jeux_categories c 
+                        on j.id_jeu = c.id_jeu
+                        where date_de_sortie > now()
+                        order by date_de_sortie,rabais
+                        limit 3;";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
+
     }
 
 
