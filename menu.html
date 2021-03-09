@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
     <!--Menu-->
-    <nav class="navbar navbar-expand-lg navbar-dark menu fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-dark menu fixed-top">
         <a class="navbar-brand" href="index.html">
             <img class="logo" src="Images/logo-mvg.png" alt="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav justify-content-between w-50 left-menu">              
+            <ul class="navbar-nav justify-content-between left-menu">              
                 <li class="nav-item"  id="menuAccueil">
                     <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
                     </li>
@@ -50,7 +50,7 @@
                     </div>
                 </form>            
             </section>
-            <ul class="navbar-nav ml-auto right-icons">
+            <ul class="navbar-nav right-icons ml-5">
                 <li class="nav-item" id="connexion" onclick="addActive($(this))">
                     <a class="nav-link" id="boutonConnexion" onclick="document.getElementById('connexionModal').style.display='block'" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
@@ -75,10 +75,12 @@
                 <label for="psw"><b>Mode de passe</b></label>
                 <input type="password" placeholder="Entrez le mot de passe" name="psw" id="psw" required>
 
-                <button class="btnConnexion" type="submit">Connexion</button>
+                <button class="btnConnexion" type="submit">Se connecter</button>
+                <button class="btnConnexion" type="submit">Créer une compte</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
                 </label>
+                
             </div>
         </form>
     </div>
