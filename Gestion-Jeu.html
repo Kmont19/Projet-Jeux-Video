@@ -262,7 +262,7 @@
                 if (nom.value == "" || categorie.selectedIndex == "-1" || studio.value == "" || editeur.value == "" || prix.value == "" || rabais.value == "" || date.value == ""){
                     alert("Veuillez choisir et remplir tous les champs");
                 } else {
-                    if (bouton.value == "Créer le jeu") {
+                    if (bouton.value == "Ajouter") {
                         /* Création de l'ID */
                         var id = nom.value.substring(0,3) + studio.value.substring(0,3) + (Math.floor(Math.random() * (9999 - 1111 + 1)) + 1111);
                         document.getElementById("idJeu").value = id;

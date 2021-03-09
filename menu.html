@@ -52,12 +52,46 @@
             </section>
             <ul class="navbar-nav ml-auto right-icons">
                 <li class="nav-item">
-                    <a class="nav-link" id="compte" href="Gestion-Jeu.html"><i class="material-icons">account_circle</i></a>
+                    <a class="nav-link" id="compte" onclick="verifRedirection()"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="panier" href="#"><i class="material-icons">shopping_cart</i></a>
+                    <a class="nav-link" id="panier" href="panier.html"><i class="material-icons">shopping_cart</i></a>
                 </li>        
             </ul>
         </div>
     </nav>
+
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Nom d'utilisateur</b></label>
+                <input type="text" placeholder="Entrez le nom d'utilisateur" name="uname" id="uname" required>
+
+                <label for="psw"><b>Mode de passe</b></label>
+                <input type="password" placeholder="Entrez le mot de passe" name="psw" id="psw" required>
+
+                <button type="submit">Connexion</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+                </label>
+            </div>
+
+            <div class="container" id="partieBasModal">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fermer</button>
+                <span class="psw">Vous n'avez pas de <a href="#">compte?</a></span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    </script>
+
+
+
 </html>
