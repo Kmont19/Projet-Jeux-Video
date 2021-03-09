@@ -19,6 +19,7 @@
 .navbar-dark .navbar-nav .nav-link {
     color: black !important;
     font-weight: 600;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .navbar-dark .navbar-toggler {
@@ -26,14 +27,22 @@
 }
 
 .menu .left-menu {
-    font-family: 'Bungee Inline', cursive !important;
+    font-family: 'Bungee Inline', cursive;
     font-size: 18px;
     font-weight: 400;
     margin-top: 3px;
     margin-bottom: 0;
     margin-left: 3%;
-    width: 100%;
+    width: 100% !important;
     letter-spacing: 1px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.menu .right-icons a{
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .menu a:hover{
@@ -78,7 +87,7 @@
 }
 
 .menu .btn-search:hover {
-    border: 1px solid  white !important;
+    color: white !important;
 }
 
 .menu .input-group-append button {
@@ -103,6 +112,7 @@
     width: 300px;
     height: auto;
     left: -50% !important;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .dropdown-menu a {
@@ -113,36 +123,29 @@
     padding-bottom: 7px !important;
     letter-spacing: 3px;
     text-align: center;
+    border-bottom: 1px solid #000;
+    
 }
 
 
 .dropdown-menu a:hover {
     color: #ffc107;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .dropdown-menu .next-icon {
    float: right;
 }
 
-/* Côté modal */
-#partieBasModal{
-    background-color:#f1f1f1;
-}
-
+/*---------------*/
 #boutonConnexion{
-    padding: 2%;
-    margin-left: 42.5%;
-    margin-bottom: 1%;
-    font-size: 15px;
-    border: 2px solid #ffd369;
-    background-color: #3f5fb5;
-    color:white;
+    cursor: pointer;
 }
 
 /* Form de création d'actualités*/
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 80%;
+.modal-connexion input[type=text], .modal-connexion input[type=password] {
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -151,8 +154,8 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
+.modal-connexion .btnConnexion {
+    background-color: #f04800;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -161,18 +164,18 @@ button {
     width: 100%;
 }
 
-button:hover {
-    opacity: 0.8;
+.modal-connexion .btnConnexion:hover {
+    box-shadow: 0 0 2px 2px gray;
 }
 
 /* Extra styles for the cancel button */
-.cancelbtn {
-    width: 30%;
+.modal-connexion .cancelbtn {
+    width: auto;
     padding: 10px 18px;
     background-color: #f44336;
 }
 
-.container {
+.modal-connexion .container {
     padding: 16px;
 }
 
@@ -183,7 +186,7 @@ span.psw {
 
 
 /* The Modal (background) */
-.modal {
+.modal-connexion .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -198,15 +201,15 @@ span.psw {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal-connexion .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 20%; /* Could be more or less, depending on screen size */
+    width: 40% !important; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
-.close {
+.modal-connexion .close {
     position: absolute;
     right: 25px;
     top: 0;
@@ -215,14 +218,14 @@ span.psw {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.modal-connexion .close:hover,
+.modal-connexion .close:focus {
     color: red;
     cursor: pointer;
 }
 
 /* Add Zoom Animation */
-.animate {
+.modal-connexion .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
@@ -243,7 +246,24 @@ span.psw {
         display: block;
         float: none;
     }
-    .cancelbtn {
+    .modal-connexion .cancelbtn {
         width: 100%;
+    }
+}
+
+@media (max-width: 1497px) {
+    .search-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .search-bar {
+        display: block;
+        width: 100% !important;
+        padding: 0 10%;
+    }
+    .dropdown-menu {
+        width: 100% !important;
     }
 }
