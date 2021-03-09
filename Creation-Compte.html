@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MVG</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="Accueil/accueil.css"/>
+    <link rel="stylesheet" type="text/css" href="Accueil/Menu-Categories/menu-categories.css"/>
+    <link rel="stylesheet" type="text/css" href="Accueil/Recommandes/recommandes.css"/>
+    <link rel="stylesheet" type="text/css" href="Accueil/Promotions/promotions.css"/>
+    <link rel="stylesheet" type="text/css" href="Accueil/Jeux-Varies/jeux-varies.css"/>
+    <link rel="stylesheet" type="text/css" href="Menu/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="Footer/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="Creation-Compte/CreationCompte.css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="Menu/menu.js"></script>
+</head>
+
+<body>
+    <div id="menu"></div>
+    <div class="bloc-corps py-5">
+        <div id="blocCentral">
+            <div id="formulaires">
+                <label for="email-creation">Email : </label><br>
+                <input type="email" id="email-creation" placeholder="Veuillez entrer un email"> <br><br>
+                <label for="pseudo-creation">Pseudo : </label><br>
+                <input type="text" id="pseudo-creation" placeholder="Veuillez entrer un pseudo"> <br><br>
+                <label for="mot-de-passe-creation">Mot de passe : </label><br>
+                <input type="password" id="mot-de-passe-creation" placeholder="Veuillez entrer un mot de passe"> <br><br>
+                <label for="confirmation-mot-de-passe-creation">Confirmation du mot de passe : </label><br>
+                <input type="password" id="confirmation-mot-de-passe-creation" placeholder="Veuillez confirmer le mot de passe"> <br><br>
+                <input type="button" value="Confirmer la création du compte" id="confirmationCreationCompte">
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+
+
+<script>
+    $("#menu").load("menu.html");
+    $("#footer").load("footer.html");
+
+
+    $("#confirmationCreationCompte").click(function (){
+        if (document.getElementById("email-creation").value=== "" || document.getElementById("pseudo-creation").value == "" || document.getElementById("mot-de-passe-creation").value == "" || document.getElementById("confirmation-mot-de-passe-creation").value == ""){
+            alert("Veuillez remplir tous les champs");
+        }
+        else if(document.getElementById("mot-de-passe-creation").value === document.getElementById("confirmation-mot-de-passe-creation").value){
+            $(document).ready(function (){
+                $.ajax({
+                    url: "Base_de_donnees/ajoutCompte.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "email": document.getElementById("email-creation").value,
+                        "pseudo": document.getElementById("pseudo-creation").value,
+                        "motdepasse": document.getElementById("mot-de-passe-creation").value
+                    },
+                    success: function (reponse) {
+                        console.log(reponse);
+                        alert("Le compte a bien été ajouté, veuillez vous reconnecter à l'accueil");
+                        window.location.href = "index.html";
+                    },
+                    error: function (message, e) {
+                        console.log(message);
+                    }
+                })
+            })
+        }
+        else{
+            alert("Les deux mots de passes entrées ne sont pas identiques");
+        }
+    })
+</script>
+
+</html>

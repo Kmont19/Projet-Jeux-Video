@@ -1,0 +1,257 @@
+h2{
+    color:white;
+    text-align: center;
+}
+
+p{
+    color:white;
+    text-align: center;
+}
+
+#description{
+    margin-bottom: 5%;
+}
+
+#titreJeu{
+    color:white;
+}
+
+.partieGauche{
+    width: 40%;
+    height: 100%;
+}
+
+.partieDroite{
+    width: 60%;
+    height: 100%;
+}
+
+.ficheJeu{
+    font-family: 'Bungee Inline', cursive;
+    margin-top: 4%;
+    background-color: black;
+    width: 70%;
+    height: 100%;
+    margin-left: 15%;
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+    border: 5px solid #f04800;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#imageJeu{
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 25%;
+}
+
+#imageJeu:hover{
+    cursor: pointer;
+}
+
+#imageJeu:active{
+    transform: translateY(4px);
+}
+
+#imageAgrandie{
+    width: 760px;
+    height: 1200px;
+}
+
+.checked {
+    color: orange;
+}
+
+#texteDescription{
+    text-align: justify;
+    margin-top: 10%;
+}
+
+/* Pour les modals */
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-Etoiles {
+    background-color: #222831;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    margin-left: 30%;
+}
+
+.infosModalEtoiles{
+    width:80%;
+    margin: auto;
+}
+
+#titreModalEtoile{
+    text-align: center;
+    color: white;
+}
+
+#indicationModalEtoile{
+    text-align: center;
+    color: white;
+}
+
+.dispositionEtoilesAccueil{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+}
+
+.modal-content-Image {
+    background-color: transparent;
+    padding: 20px;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 0;
+    margin-bottom: 15%;
+}
+
+/* The Close Button */
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.visuelEtoiles{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+#boutonAjoutEtoile{
+    width: 30%;
+    margin-top: 10%;
+}
+
+#boutonAjoutEtoile:active{
+    transform: translateY(4px);
+}
+
+.etoiles{
+    width: 30px;
+    height: 30px;
+}
+
+.etoilesModal{
+    width: 30px;
+    height: 30px;
+}
+
+.etoilesModal:hover{
+    cursor: pointer;
+}
+
+.etoilesModal:active{
+    transform: translateY(4px);
+}
+
+#boutonAjoutEtoile{
+    margin-bottom: 5%;
+}
+
+#boutonEtoile{
+    margin-left: 35%;
+    margin-top: 5%;
+    width: 30%;
+}
+
+#boutonEtoile:hover{
+    background-color: #ffd369;
+    margin-left: 29%;
+    margin-top: 5%;
+    width: 40%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#boutonEtoile:active{
+    transform: translateY(4px);
+}
+
+/* Pour la flip card */
+.flip-card {
+    background-color: transparent;
+    width: 90%;
+    height: 300px;
+    perspective: 1000px;
+    color: white;
+
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #222831;
+    padding: 3%;
+}
+
+.flip-card-back {
+    background-color: #222831;
+    transform: rotateY(180deg);
+    padding: 3%;
+}
+
+#confirmationLocation{
+    padding: 2%;
+    margin-top: 2%;;
+    margin-left:35%;
+    margin-bottom: 1%;
+    font-size: 15px;
+    border: 2px solid #ffd369;
+    background-color: #3f5fb5;
+    color:white;
+}
+
+#confirmationLocation:active{
+    transform: translateY(4px);
+}

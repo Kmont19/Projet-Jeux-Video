@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MVG</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="Menu/menu.css"/>
+        <link rel="stylesheet" type="text/css" href="Footer/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="Liste_Jeux/liste-jeux.css"/>   
+        
+        <script src="Menu/menu.js"></script>
+		<script src="Liste_Jeux/liste-jeux.js"></script>
+    </head>
+    <body>
+        <div id="menu"></div>
+		<h2 class="mt-5">Liste de Jeux</h2>
+        <div class="bloc-corps pt-2">
+			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="filtres col-sm-5 col-md-3 col-lg-2">
+						
+						<!-- Filtre -->
+						<form class="filtre-liste">
+							<!-- Prix -->
+							<h3 class="headline">
+								<span>Prix </span><span style="font-weight: 500; font-size: 18px;">(CAD)</span>
+							</h3>
+							<div class="row no-gutters">
+								<input class="w-50 mr-1" type="number" name="prixMin" id="prixMin" min="0" placeholder="Min">
+							</div>
+							<div class="row no-gutters mt-1">
+							<input class="w-50 mr-1" type="number" name="prixMax" id="prixMax" min="0" placeholder="Max">
+							</div>
+							<div class="form-group filtre-liste-prix">
+								<div class="row">                      
+								<div class="col-xs-4">
+									<button id="btnRechPrix" type="submit" class="btn btn-block btn-default">Rechercher</button>
+								</div>
+								</div>
+							</div>
+					
+							<!-- Catégorie -->
+							<h3 class="headline">
+								<span>Genres de jeux</span>
+							</h3>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Action" id="filtre-action">
+								<label for="filtre-action">Action</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Aventure" id="filtre-aventure">
+								<label for="filtre-aventure">Aventure</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Casual" id="filtre-casual">
+								<label for="filtre-casual">Casual</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Course Automobile" id="filtre-autos">
+								<label for="filtre-autos">Course Automobile</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Indépendant" id="filtre-independant">
+								<label for="filtre-independant">Indépendant</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Multijoueur" id="filtre-multijoueur">
+								<label for="filtre-multijoueur">Multijoueur</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="RPG" id="filtre-rpg">
+								<label for="filtre-rpg">RPG</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Simulation" id="filtre-simulation">
+								<label for="filtre-simulation">Simulation</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Sport" id="filtre-sport">
+								<label for="filtre-sport">Sport</label>
+							</div>
+							<div class="checkbox">
+								<input class="filtre-categorie" name="categorie" type="checkbox" value="Strategie" id="filtre-strategie">
+								<label for="filtre-strategie">Stratégie</label>
+							</div>
+							<div class="form-group filtre-categorie">
+								<div class="row mt-3 pl-3">                      
+								<div class="col-xs-4">
+									<button id="btnRechCat" type="submit" class="btn btn-block btn-default">Rechercher</button>
+								</div>
+								</div>
+							</div>
+						
+							<!-- Rating -->
+							<h3 class="headline mt-5">
+								<span>Rating</span>
+							</h3>
+							<div class="filtre-liste-rating mt-1 w-100 pr-5">
+								<select class="w-100" name="rating" id="rating" >
+									<option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+									<option value="4">&#9733; &#9733; &#9733; &#9733; &#9734; et +</option>
+									<option value="3">&#9733; &#9733; &#9733; &#9734; &#9734; et +</option>
+									<option value="2">&#9733; &#9733; &#9734; &#9734; &#9734; et +</option>
+									<option value="1">&#9733; &#9734; &#9734; &#9734; &#9734; et +</option>
+									<option value="0">&#9734; &#9734; &#9734; &#9734; &#9734;</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<div class="row mt-3 pl-3">                      
+								<div class="col-xs-4">
+									<button id="btnRechRating" type="submit" class="btn btn-block btn-default">Rechercher</button>
+								</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				
+				<div class="liste-jeux col-sm-7 col-md-9 col-lg-10">
+					<!-- Trie -->
+					<ul class="trier-liste pr-5">
+					<li id="jeuxRecents" onclick="getJeuxRecents()"><a>Date: Les plus récents</a></li>
+					<li id="jeuxAnciens" onclick="getJeuxAnciens()"><a>Date: Les plus anciens</a></li>
+					<li id="prixCroissant" onclick="getJeuxPrixCroissant()"><a>Prix: croissant</a></li>
+					<li id="prixDecroissant" onclick="getJeuxPrixDecroissant()"><a>Prix: décroissant</a></li>
+					</ul>
+			
+					<!-- Card-Deck -->
+					<div id="cardDeck" class="card-deck mx-auto"></div> 				
+				</div> <!-- / .col-sm-8 -->
+				</div> <!-- / .row -->
+			</div>
+		</div>	
+        <div id="footer"></div>
+    </body>
+</html>
+<script>
+	$("#btnRechCat").click(function(e) {
+		e.preventDefault()
+		$('input[name="categorie"]:checked').each(function() {
+			clearListe();
+			getJeuxByCategorie(this.value);
+		})
+	})
+
+	$("#btnRechPrix").click(function(e) {
+		e.preventDefault();	
+		
+		if($('#prixMin').val() == "") {
+			$('#prixMin').val(0);
+		}
+		
+		var prixMin = Number($('#prixMin').val());
+		var prixMax = Number($('#prixMax').val());
+
+		if(prixMax == "") {
+			alert("Vous devez entrer un prix maximal pour effectuer une recherche.")
+		}else if(prixMin > prixMax) {
+
+			alert("Le prix minimal doit être inférieur au prix maximal.");
+		} else {
+			clearListe();
+			getJeuxByPrix(prixMin, prixMax);
+		}
+	})
+	
+	$("#btnRechRating").click(function(e) {
+		e.preventDefault();
+		
+		var rating = Number($("#rating").val());
+		 
+		if (rating == 0){
+			clearListe();
+			getJeux();
+		} else {
+			clearListe();
+			getJeuxByRating(rating);
+		}
+
+	})
+</script>

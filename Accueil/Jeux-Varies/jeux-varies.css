@@ -1,0 +1,70 @@
+.jeux-varies .row{
+    width: 100%;
+}
+
+.jeux-varies h4 {
+    font-family: 'Bungee Inline', cursive;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+}
+
+.jeux-varies .card{
+    width: 100%;
+    padding: 0;
+    margin-bottom: 12px;
+    border-radius: 0;
+}
+
+.jeux-varies .card:hover {
+    box-shadow: 0 0 2px 2px #f04800;
+    cursor: pointer;
+}
+
+.jeux-varies .card-img {
+    width: 50;
+    height: 100%;
+    max-height: 150px;
+    max-width: 100%;
+}
+
+.jeux-varies .current-price {
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.jeux-varies .current-currency {
+    color: black;
+    font-weight: 600;
+    font-size: 10px;
+    position: relative;
+    top: -5px;
+    left: 2px;
+}
+
+.jeux-varies .previous-price {
+    color: gray;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.jeux-varies .previous-currency {
+    color: black;
+    font-weight: 400;
+    font-size: 8px;
+    position: relative;
+    top: -5px;
+    left: 2px;
+}
+
+.jeux-varies .discount {
+    color: white;
+    background-color: #f04800;
+    position: relative;
+    left: 15%;
+    font-weight: 600;
+    padding: 2px;
+}

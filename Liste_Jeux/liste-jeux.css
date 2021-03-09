@@ -1,0 +1,247 @@
+.bloc-corps {
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+
+h2 {
+    width: 100%;
+    font-family: 'Bungee Inline', cursive !important;
+    font-weight: 600 !important;
+    padding: 2% 0 2% 5% !important;
+    color: #f04800 !important;
+    margin: 0 auto !important;
+    background-color: black;
+    letter-spacing: 2px !important;
+    border-bottom: 2px solid #f04800;
+}
+
+@media (max-width: 415px) {
+    .bloc-corps {
+        margin-left: 0.5rem;
+    }
+}
+
+/**
+ * Shop
+ */
+/* General */
+/** Shop: cards **/
+
+@media (min-width: 576px) {
+    .card-deck {
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+      }
+}
+
+.card-jeux {
+    width: 19rem;
+    height: 420px;
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    margin-right: 3%;
+    padding: 0.25rem ;
+    background-color: black;
+    text-align: center;
+    -webkit-transition: border-color 0.1s, -webkit-box-shadow 0.1s;
+        -o-transition: border-color 0.1s, box-shadow 0.1s;
+            transition: border-color 0.1s, box-shadow 0.1s;
+}
+
+.card-jeux:hover {
+    box-shadow: 0 0 5px 5px #f04800;
+    cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.card-jeux-img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 20px;
+}
+
+.card-jeux-img img{
+    display: block;
+    width: 100%;
+    max-height: 300px;
+}
+
+.card-jeux-titre {
+  font-weight: 600;
+  color: white !important;
+}
+
+.card-jeux-prix {
+  color: #777777;
+}
+
+.current-price {
+  color: #f04800;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.current-currency {
+  color: #f04800;
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+  top: -4px;
+  left: 2px;
+}
+
+.previous-price {
+  color: gray;
+  font-weight: 400;
+  font-size: 18px;
+  text-decoration: line-through;
+  font-style: italic;
+}
+.previous-currency {
+  color: gray;
+  font-weight: 400;
+  font-size: 10px;
+  position: relative;
+  top: -5px;
+  left: 2px;
+}
+
+.filtres {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/** Shop: Filter **/
+.filtre-liste {
+  margin-bottom: 40px;
+}
+
+/* Shop filter: Prix */
+.filtre-liste-prix {
+  padding: 15px;
+}
+
+.filtre-liste-prix [class*='col-'] {
+  padding: 2px;
+}
+
+/* Shop filter: rating */
+.filtre-liste-rating {
+  display: inline-block;
+  margin: 0 2px 2px 0;
+}
+
+.filtre-liste-rating input[type="text"] {
+  display: none;
+}
+
+/** Shop: Trie **/
+.trier-liste {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 40px;
+  margin-top: -20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+.trier-liste > li {
+  display: inline-block;
+}
+
+.trier-liste > li > a {
+  display: block;
+  padding: 20px 10px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  font-family: 'Bungee Inline', cursive;
+  font-weight: 600;
+  letter-spacing: 1px;
+  -webkit-transition: all .05s linear;
+       -o-transition: all .05s linear;
+          transition: all .05s linear;
+}
+
+.trier-liste > li > a:hover,
+.trier-liste > li > a:focus {
+  color: #f04800 !important;
+  border-bottom-color: #f04800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.trier-liste > li.active > a {
+  color: #f04800;
+  border-bottom-color: #f04800;
+}
+
+@media (max-width: 767px) {
+  .trier-liste {
+    text-align: left;
+    border-bottom: 0;
+  }
+  .trier-liste > li {
+    display: block;
+  }
+  .trier-liste > li > a {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .trier-liste > li.active > a {
+    font-weight: 600;
+  }
+}
+
+/*Headline*/
+.headline {
+  font-family: 'Bungee Inline', cursive;
+  font-weight: 600;
+  color: black;
+}
+
+/* Checkboxes */
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+.checkbox label {
+  padding-left: 0;
+
+}
+.checkbox label:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #eee;
+  text-align: center;
+  font-family: "FontAwesome";
+}
+
+.checkbox input[type="checkbox"]:checked + label::before {
+  content: "\f00c";
+
+}
+
+.btn {
+  background-color: #f04800;
+  border: 1px solid black;
+}
+
+.btn:hover {
+  background-color: #ffc107;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#rating {
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+}
+
+#rating > option {
+  color: white;
+}

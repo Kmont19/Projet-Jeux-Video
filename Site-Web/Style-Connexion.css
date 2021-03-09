@@ -2,6 +2,20 @@ body{
     background-color: #222831;
 }
 
+#partieBasModal{
+    background-color:#f1f1f1;
+}
+
+#boutonConnexion{
+    padding: 2%;
+    margin-left: 42.5%;
+    margin-bottom: 1%;
+    font-size: 15px;
+    border: 2px solid #ffd369;
+    background-color: #3f5fb5;
+    color:white;
+}
+
 /* Form de création d'actualités*/
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -65,7 +79,7 @@ span.psw {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 40%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */

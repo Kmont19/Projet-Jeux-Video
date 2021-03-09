@@ -9,10 +9,9 @@
 
     <body>
 
-        <input type="submit" onclick="document.getElementById('id01').style.display='block'" value="Ouverture connexion"style="padding: 2%; margin-left: 42.5%; margin-bottom: 1%; font-size: 15px; border: 2px solid #ffd369; background-color: #3f5fb5; color:white;">
+        <input type="submit" onclick="document.getElementById('id01').style.display='block'" value="Ouverture connexion" id="boutonConnexion">
 
         <div id="id01" class="modal">
-
             <form class="modal-content animate" action="/action_page.php" method="post">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -31,7 +30,7 @@
                     </label>
                 </div>
 
-                <div class="container" style="background-color:#f1f1f1">
+                <div class="container" id="partieBasModal">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fermer</button>
                     <span class="psw">Vous avez oublié votre <a href="#">mot de passe?</a></span>
                 </div>
