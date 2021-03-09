@@ -105,6 +105,7 @@
 
 .dropdown {
     cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .dropdown-menu {
@@ -124,7 +125,6 @@
     letter-spacing: 3px;
     text-align: center;
     border-bottom: 1px solid #000;
-    
 }
 
 
@@ -181,7 +181,7 @@
 
 span.psw {
     float: right;
-    padding-top: 16px;
+    margin-top: 16px;
 }
 
 

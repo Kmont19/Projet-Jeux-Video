@@ -47,8 +47,8 @@ class ModelJeux
             echo $e;
             return false;
         }
-    }
 
+        try {
             $stmtCategorie = $this->connexion->prepare(
                 "INSERT INTO jeux_categories (id_jeu, categorie) 
                                 values(:id_jeu, :categorie)");

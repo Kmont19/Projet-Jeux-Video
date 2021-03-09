@@ -99,7 +99,7 @@ function getJeux() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;   
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -121,7 +121,7 @@ function getJeuxByNom(nom) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien; 
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -146,7 +146,7 @@ function getJeuxByCategorie(categorie) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien; 
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -172,7 +172,7 @@ function getJeuxByPrix(prixMin, prixMax) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -197,7 +197,7 @@ function getJeuxByRating(rating) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;   
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -219,7 +219,7 @@ function getJeuxByPromotions() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien; 
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -241,7 +241,7 @@ function getBestSellers() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -263,7 +263,7 @@ function getJeuxByPrecommandes() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = jeu.image_lien.replace("../", "");   
+                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;  
                     var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
                     $('#cardDeck').prepend(cardJeu);
                 })
@@ -342,7 +342,7 @@ function getJeuxPrixDecroissant() {
 }
 
 function getJeuxTable(value) {
-    var imgLien = value.image_lien.replace('../', '');
+    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + value.image_lien;
     var cardJeux = createCardJeu(imgLien, value.nom, value.prix, value.rabais);
     $("#cardDeck").append(cardJeux);
 }
