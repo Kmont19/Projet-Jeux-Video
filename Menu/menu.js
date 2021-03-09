@@ -21,6 +21,9 @@ function getPrecommandes() {
 function checkPage() {
     if(window.location.href.indexOf("index.html") > -1) {
         $("#menuAccueil").addClass('active');
+    } else if(window.location.href.indexOf("panier.html") > -1) {
+        $("#menuAccueil").removeClass('active');
+        $("#menuPanier").addClass('active');
     } else {
         $("#menuAccueil").removeClass('active');
     }
