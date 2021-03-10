@@ -35,18 +35,30 @@
             <div class="partieGauche">
                 <h2 id="titreJeu"></h2>
                 <img onclick="ouvrirModalGrosseImage(this)" id="imageJeu" width="300px" height="300px">
-                <input type="submit" id="confirmationLocation" value="Prendre ce jeu">
+                <input class="" type="submit" id="confirmationLocation" value="Prendre ce jeu">
             </div>
-            <div class="partieDroite">
+            <div class="partieDroite mt-5">
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <h1 id="description"></h1>
-                            <p id="categorie"></p>
-                            <p id="date"></p>
-                            <p id="prix"></p>
-                            <p id="studio"></p>
-                            <p id="editeur"></p>
+                            <div class="row no-gutters mt-4">
+                                <div class="gauche col-4">
+                                    <p>Categorie:</p>
+                                    <p>Date de sortie:</p>
+                                    <p>Prix:</p>
+                                    <p>Développé par:</p>
+                                    <p>Édité par:</p>                                
+                                </div>
+                                <div class="droite col-8 pl-4">
+                                    <p id="categorie"></p>
+                                    <p id="date"></p>
+                                    <p id="prix"></p>
+                                    <p id="studio"></p>
+                                    <p id="editeur"></p>
+                                </div>
+                            </div>
+                            
+                            
                         </div>
                         <div class="flip-card-back">
                             <h3>Critiques</h3>
@@ -104,12 +116,12 @@
             $("#footer").load("footer.html");
         });
         document.getElementById("titreJeu").innerHTML = sessionStorage.getItem("nom");
-        document.getElementById("imageJeu").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + sessionStorage.getItem("nom_image");
+        document.getElementById("imageJeu").src = "ImagesJeux/" + sessionStorage.getItem("nom_image");
         document.getElementById("categorie").innerHTML = sessionStorage.getItem("categorie");
-        document.getElementById("date").innerHTML = "Sortie le : " + sessionStorage.getItem("date");
+        document.getElementById("date").innerHTML = sessionStorage.getItem("date");
         document.getElementById("prix").innerHTML = sessionStorage.getItem("prix") + "$";
-        document.getElementById("studio").innerHTML = "Studio de dévellopement : " + sessionStorage.getItem("studio");
-        document.getElementById("editeur").innerHTML = "Édité par : " + sessionStorage.getItem("editeur");
+        document.getElementById("studio").innerHTML = sessionStorage.getItem("studio");
+        document.getElementById("editeur").innerHTML = sessionStorage.getItem("editeur");
         var nbrPersonnes = sessionStorage.getItem("nombrePersonne");
         document.getElementById("nombrePersonnesEtoiles").innerHTML = "(" + nbrPersonnes + " personnes ont notés ce jeu)";
         var rating = sessionStorage.getItem("rating");
@@ -126,48 +138,48 @@
 
             var etoiles = Math.round(rating / nbrPersonnes);
             if (rating == 0){
-                document.getElementById("etoileUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                document.getElementById("etoileDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                document.getElementById("etoileTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                document.getElementById("etoileQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                document.getElementById("etoileCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                document.getElementById("etoileUn").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileDeux").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileTrois").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileQuatre").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileCinq").src = "Images/etoile-blanche.png";
             }
 
             switch (etoiles){
                 case 1:
-                    document.getElementById("etoileUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    document.getElementById("etoileTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    document.getElementById("etoileQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    document.getElementById("etoileCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    document.getElementById("etoileUn").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileDeux").src = "Images/etoile-blanche.png";
+                    document.getElementById("etoileTrois").src = "Images/etoile-blanche.png";
+                    document.getElementById("etoileQuatre").src = "Images/etoile-blanche.png";
+                    document.getElementById("etoileCinq").src = "Images/etoile-blanche.png";
                     break;
                 case 2:
-                    document.getElementById("etoileUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    document.getElementById("etoileQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    document.getElementById("etoileCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    document.getElementById("etoileUn").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileDeux").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileTrois").src = "Images/etoile-blanche.png";
+                    document.getElementById("etoileQuatre").src = "Images/etoile-blanche.png";
+                    document.getElementById("etoileCinq").src = "Images/etoile-blanche.png";
                     break;
                 case 3:
-                    document.getElementById("etoileUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    document.getElementById("etoileCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    document.getElementById("etoileUn").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileDeux").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileTrois").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileQuatre").src = "Images/etoile-blanche.png";
+                    document.getElementById("etoileCinq").src = "Images/etoile-blanche.png";
                     break;
                 case 4:
-                    document.getElementById("etoileUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    document.getElementById("etoileUn").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileDeux").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileTrois").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileQuatre").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileCinq").src = "Images/etoile-blanche.png";
                     break;
                 case 5:
-                    document.getElementById("etoileUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    document.getElementById("etoileCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
+                    document.getElementById("etoileUn").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileDeux").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileTrois").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileQuatre").src = "Images/etoile-jaune.png";
+                    document.getElementById("etoileCinq").src = "Images/etoile-jaune.png";
                     break;
             }
 
@@ -178,11 +190,11 @@
         function ouvrirModalNouvelleNote(){
             var modal = document.getElementById("ModalEtoile");
             modal.style.display = "block";
-            document.getElementById("etoileModalUn").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-            document.getElementById("etoileModalDeux").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-            document.getElementById("etoileModalTrois").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-            document.getElementById("etoileModalQuatre").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-            document.getElementById("etoileModalCinq").src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+            document.getElementById("etoileModalUn").src = "Images/etoile-blanche.png";
+            document.getElementById("etoileModalDeux").src = "Images/etoile-blanche.png";
+            document.getElementById("etoileModalTrois").src = "Images/etoile-blanche.png";
+            document.getElementById("etoileModalQuatre").src = "Images/etoile-blanche.png";
+            document.getElementById("etoileModalCinq").src = "Images/etoile-blanche.png";
             document.getElementById("boutonEtoile").value = "Ajouter cette note";
         }
 
@@ -200,9 +212,10 @@
         }
 
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
+        window.onclick = function(event) {       
             var modalEtoile = document.getElementById("ModalEtoile");
-            var modalImage = document.getElementById("ModalImage");
+            var modalImage = document.getElementById("ModalImage");     
+            console.log(event)
             if (event.target == modalEtoile) {
                 modalEtoile.style.display = "none";
             }
@@ -215,78 +228,78 @@
         function hoverEtoile(id){
             switch (id){
                 case "etoileModalUn":
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-blanche.png";
+                    etoileModalTrois.src = "Images/etoile-blanche.png";
+                    etoileModalQuatre.src = "Images/etoile-blanche.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case "etoileModalDeux":
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-blanche.png";
+                    etoileModalQuatre.src = "Images/etoile-blanche.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case "etoileModalTrois":
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-jaune.png";
+                    etoileModalQuatre.src = "Images/etoile-blanche.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case "etoileModalQuatre":
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-jaune.png";
+                    etoileModalQuatre.src = "Images/etoile-jaune.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case "etoileModalCinq":
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-jaune.png";
+                    etoileModalQuatre.src = "Images/etoile-jaune.png";
+                    etoileModalCinq.src = "Images/etoile-jaune.png";
                     break;
             }
         }
         function resetEtoiles(){
             switch (etoilesModal){
                 case 1:
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-blanche.png";
+                    etoileModalTrois.src = "Images/etoile-blanche.png";
+                    etoileModalQuatre.src = "Images/etoile-blanche.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case 2:
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-blanche.png";
+                    etoileModalQuatre.src = "Images/etoile-blanche.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case 3:
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-jaune.png";
+                    etoileModalQuatre.src = "Images/etoile-blanche.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case 4:
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-blanche.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-jaune.png";
+                    etoileModalQuatre.src = "Images/etoile-jaune.png";
+                    etoileModalCinq.src = "Images/etoile-blanche.png";
                     break;
                 case 5:
-                    etoileModalUn.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalDeux.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalTrois.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalQuatre.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
-                    etoileModalCinq.src = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/Images/etoile-jaune.png";
+                    etoileModalUn.src = "Images/etoile-jaune.png";
+                    etoileModalDeux.src = "Images/etoile-jaune.png";
+                    etoileModalTrois.src = "Images/etoile-jaune.png";
+                    etoileModalQuatre.src = "Images/etoile-jaune.png";
+                    etoileModalCinq.src = "Images/etoile-jaune.png";
                     break;
             }
         }

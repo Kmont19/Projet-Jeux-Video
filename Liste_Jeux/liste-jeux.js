@@ -46,30 +46,45 @@ function clearListe() {
     $("#cardDeck").empty()
 }
 
-function createCardJeu(imgLien, nom, prix, rabais) {
+function redirectionFicheJeu(id, nom, developpeur, editeur, rating, nbrPersonnes, prix, rabais, date_de_sortie, image_lien, categorie){
+    sessionStorage.setItem('id', id);
+    sessionStorage.setItem('nom',nom);
+    sessionStorage.setItem('nom_image',image_lien);
+    sessionStorage.setItem('categorie',categorie);
+    sessionStorage.setItem('date',date_de_sortie);
+    sessionStorage.setItem('prix',prix);
+    sessionStorage.setItem('studio',developpeur);
+    sessionStorage.setItem('editeur',editeur);
+    sessionStorage.setItem('rating', rating);
+    sessionStorage.setItem('nombrePersonne', nbrPersonnes);
+    window.location.href = "Fiche-Jeu.html";
+}
+
+function createCardJeu(id, nom, developpeur, editeur, rating, nbrPersonnes, prix, rabais, date, imgLien, categorie) {
     var prixActuel;
     var prixPrecedent;  
     var jeuCard;
+    var image_lien = "ImagesJeux/" + imgLien;  
 
     if( rabais > 0) {
         prixActuel = (prix - (prix * (rabais) / 100)).toFixed(2);
         prixPrecedent = prix;
 
-        jeuCard = `<div class="card-jeux" id="cardJeux">							
+        jeuCard = `<div class="card-jeux" id="cardJeux" onclick='redirectionFicheJeu("${id}", "${nom}", "${developpeur}", "${editeur}", "${rating}", "${nbrPersonnes}", "${prix}", "${rabais}", "${date}", "${imgLien}", "${categorie}")'>							
             <div class="card-jeux-img" id="imgContainer">
-                <img src=${imgLien} class="img-responsive" alt="Image Jeux" id="imgJeux">
+                <img src=${image_lien} class="img-responsive" alt="Image Jeux" id="imgJeux">
             </div>
             <h5 class="card-jeux-titre" id="nomJeux">${nom}</h5>
             <div class="card-jeux-prix" id="containerPrix">
                 <span id="prix-actuel" class="current-price">${prixActuel}</span><span class="current-currency">CAD</span><br> 
-                <span id="prix-precedent"class="previous-price">${prixPrecedent}</span><span class="previous-currency">CAD</span>                         
+                <span id="prix-precedent "class="previous-price">${prixPrecedent}</span><span class="previous-currency">CAD</span>                         
             </div>
         </div>`
     } else {
         prixActuel = prix;
-        jeuCard =  `<div class="card-jeux" id="cardJeux">							
+        jeuCard =  `<div class="card-jeux" id="cardJeux" onclick='redirectionFicheJeu("${id}", "${nom}", "${developpeur}", "${editeur}", "${rating}", "${nbrPersonnes}", "${prix}", "${rabais}", "${date}", "${imgLien}", "${categorie}")'>							
             <div class="card-jeux-img" id="imgContainer">
-                <img src=${imgLien} class="img-responsive" alt="Image Jeux" id="imgJeux">
+                <img src=${image_lien} class="img-responsive" alt="Image Jeux" id="imgJeux">
             </div>
             <h5 class="card-jeux-titre" id="nomJeux">${nom}</h5>
             <div class="card-jeux-prix mt-4" id="containerPrix">
@@ -86,6 +101,23 @@ function createCardVide() {
     return cardVide;
 }
 
+function getNbrVotes(id) {
+    var nbrVotes;
+    $.ajax({
+        url: "Base_de_donnees/getNbrVotes.php",
+        type: "POST",
+        dataType: "json",
+        async: false,
+        data: {
+            "id": id
+        },
+        success: function(reponse) {
+            nbrVotes = reponse
+        }
+    });
+    return nbrVotes
+}
+
 function getJeux() { 
     tableJeux = [];
     clearListe();
@@ -98,8 +130,9 @@ function getJeux() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;   
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    console.log(nbrPersonnes)
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -120,8 +153,8 @@ function getJeuxByNom(nom) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien; 
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -145,8 +178,8 @@ function getJeuxByCategorie(categorie) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien; 
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -171,8 +204,8 @@ function getJeuxByPrix(prixMin, prixMax) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -196,8 +229,8 @@ function getJeuxByRating(rating) {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;   
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -218,8 +251,8 @@ function getJeuxByPromotions() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien; 
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -240,8 +273,8 @@ function getBestSellers() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -262,8 +295,8 @@ function getJeuxByPrecommandes() {
             if(reponse.length > 0) {
                 reponse.forEach(function(jeu) {
                     tableJeux.push(jeu);
-                    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + jeu.image_lien;  
-                    var cardJeu = createCardJeu(imgLien, jeu.nom, jeu.prix, jeu.rabais);    
+                    var nbrPersonnes = getNbrVotes(jeu.id_jeu);
+                    var cardJeu = createCardJeu(jeu.id_jeu, jeu.nom, jeu.developpeur, jeu.editeur, jeu.rating, nbrPersonnes, jeu.prix, jeu.rabais, jeu.date_de_sortie, jeu.image_lien, jeu.categorie);    
                     $('#cardDeck').prepend(cardJeu);
                 })
             } else {
@@ -341,7 +374,7 @@ function getJeuxPrixDecroissant() {
 }
 
 function getJeuxTable(value) {
-    var imgLien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + value.image_lien;
-    var cardJeux = createCardJeu(imgLien, value.nom, value.prix, value.rabais);
-    $("#cardDeck").append(cardJeux);
+    var nbrPersonnes = getNbrVotes(value.id_jeu);   
+    var cardJeu = createCardJeu(value.id_jeu, value.nom, value.developpeur, value.editeur, value.rating, nbrPersonnes, value.prix, value.rabais, value.date_de_sortie, value.image_lien, value.categorie);
+    $("#cardDeck").append(cardJeu);
 }

@@ -14,6 +14,17 @@
             $this->connexion = $class->getConnexion();
         }
 
+        public function getNbrJeux() {
+            try {
+                $stmt = $this->connexion->prepare("SELECT COUNT(id_jeu) FROM jeux");
+                $stmt->execute();
+                $nbrJeux = $stmt->fetchColumn();
+                return intval($nbrJeux);
+            } catch  (PDOException $e) {
+                return $e;
+            }
+        }
+
         public function getJeux() 
         {
             try {
@@ -68,7 +79,7 @@
                             from jeux j
                             inner join jeux_categories c 
                             on j.id_jeu = c.id_jeu
-                            order by rabais
+                            ORDER BY fois_achete DESC, date_de_sortie
                             limit 3;";
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
@@ -95,8 +106,8 @@
             }
         }
 
+        //Page Accueil
         public function getNbrPersonnes(string $id):array{
-            $items = array();
             try {
                 $request = "select count(id_jeu) as nbrPersonnes
                             from utilisateurs_jeux
@@ -104,6 +115,23 @@
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
                 return $items;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        //Page Liste de jeux
+        public function getNbrVotes($id){
+            
+            try {
+                $request = "select count(id_jeu) as nbrPersonnes
+                            from utilisateurs_jeux
+                            where id_jeu = '$id';";
+                $result = $this->connexion->prepare($request);
+                $result-> execute();
+                $count = $result->fetchColumn();
+                return intval($count);
+
             } catch (PDOException $e) {
                 echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
             }
@@ -287,13 +315,11 @@
         public function getJeuxMeilleuresVentes(): array
         {
             try {
-                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
-                        from jeux j
-                        inner join jeux_categories c 
-                        on j.id_jeu = c.id_jeu
-                        where fois_achete > 0
-                        order by fois_achete,rabais
-                        limit 3;";
+                $request = "SELECT * FROM jeux j
+                            INNER JOIN jeux_categories jc
+                            ON j.id_jeu = jc.id_jeu 
+                            ORDER BY fois_achete DESC, rabais DESC
+                            LIMIT 3;";
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
                 return $items;
@@ -338,7 +364,6 @@
                 return $e;
             }
         }
-
     }
 
 
