@@ -2,6 +2,10 @@
 require_once ("BD/Entity/EntityJeux.php");
 $entityJeux = new EntityJeux();
 
+if(isset($_GET["getNbrJeux"])) {
+    echo json_encode($entityJeux->getNbrJeux());
+}
+
 if(isset($_GET["getJeux"])) {
     echo json_encode($entityJeux->getJeux());
 }

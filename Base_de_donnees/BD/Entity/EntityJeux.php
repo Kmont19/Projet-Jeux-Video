@@ -14,6 +14,17 @@
             $this->connexion = $class->getConnexion();
         }
 
+        public function getNbrJeux() {
+            try {
+                $stmt = $this->connexion->prepare("SELECT COUNT(id_jeu) FROM jeux");
+                $stmt->execute();
+                $nbrJeux = $stmt->fetchColumn();
+                return intval($nbrJeux);
+            } catch  (PDOException $e) {
+                return $e;
+            }
+        }
+
         public function getJeux() 
         {
             try {
@@ -68,7 +79,7 @@
                             from jeux j
                             inner join jeux_categories c 
                             on j.id_jeu = c.id_jeu
-                            order by rabais
+                            ORDER BY fois_achete DESC, date_de_sortie
                             limit 3;";
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
@@ -307,7 +318,7 @@
                 $request = "SELECT * FROM jeux j
                             INNER JOIN jeux_categories jc
                             ON j.id_jeu = jc.id_jeu 
-                            ORDER BY fois_achete DESC, date_de_sortie
+                            ORDER BY fois_achete DESC, rabais DESC
                             LIMIT 3;";
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
@@ -353,7 +364,6 @@
                 return $e;
             }
         }
-
     }
 
 

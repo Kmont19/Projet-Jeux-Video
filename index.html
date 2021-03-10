@@ -64,14 +64,24 @@
                         success: function (result2){
                             for (i = 0; i < result2['item'].length; i++){
                                 let item2 = result2['item'][i];
-                                $("#listeJeuxRecommendes").append(
-                                    "<div class='card text-black' onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
-                                    "     <span class='discount-badge'>" + item["rabais"] + "%</span>" +
-                                    "     <img class='card-img img-responsive' src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "' alt='Card image'>" +
-                                    "     <div class='card-img-overlay d-flex justify-content-center'>" +
-                                    "     </div>" +
-                                    "</div>"
-                                );
+                                if(item["rabais"] > 0) {
+                                    $("#listeJeuxRecommendes").append(                                    
+                                        "<div class='card text-black' onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                        "     <span class='discount-badge'>" + item["rabais"] + "%</span>" +
+                                        "     <img class='card-img img-responsive' src='ImagesJeux/" + item["image_lien"] + "' alt='Card image'>" +
+                                        "     <div class='card-img-overlay d-flex justify-content-center'>" +
+                                        "     </div>" +
+                                        "</div>"
+                                    );
+                                } else {
+                                    $("#listeJeuxRecommendes").append(                                    
+                                        "<div class='card text-black' onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                        "     <img class='card-img img-responsive' src='ImagesJeux/" + item["image_lien"] + "' alt='Card image'>" +
+                                        "     <div class='card-img-overlay d-flex justify-content-center'>" +
+                                        "     </div>" +
+                                        "</div>"
+                                    );
+                                }
                             }
                         },
                         error: function (message2, error2){
@@ -107,7 +117,7 @@
                                 let item2 = result2['item'][i];
                                 $("#listeJeuEnRabais").append(
                                     "<div class=\"card\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
-                                    "   <img class=\"card-img-top\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                    "   <img class=\"card-img-top\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                     "   <div class=\"card-body\">" +
                                     "       <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
                                     "       <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
@@ -154,7 +164,7 @@
                                         "   <div class=\"card\">" +
                                         "       <div class=\"row no-gutters\">" +
                                         "           <div class=\"col-4\">" +
-                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "               <img class=\"card-img\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                         "           </div>" +
                                         "           <div class=\"col-8 pl-3\">" +
                                         "               <div class=\"card-body px-2\">" +
@@ -173,7 +183,7 @@
                                         "   <div class=\"card\">" +
                                         "       <div class=\"row no-gutters\">" +
                                         "           <div class=\"col-4\">" +
-                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "               <img class=\"card-img\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                         "           </div>" +
                                         "           <div class=\"col-8 pl-3\">" +
                                         "               <div class=\"card-body px-2\">" +
@@ -225,7 +235,7 @@
                                     "   <div class=\"card\">" +
                                     "       <div class=\"row no-gutters\">" +
                                     "           <div class=\"col-4\">" +
-                                    "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                    "               <img class=\"card-img\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                     "           </div>" +
                                     "           <div class=\"col-8 pl-3\">" +
                                     "               <div class=\"card-body px-2\">" +
@@ -244,7 +254,7 @@
                                     "   <div class=\"card\">" +
                                     "       <div class=\"row no-gutters\">" +
                                     "           <div class=\"col-4\">" +
-                                    "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                    "               <img class=\"card-img\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                     "           </div>" +
                                     "           <div class=\"col-8 pl-3\">" +
                                     "               <div class=\"card-body px-2\">" +
@@ -297,7 +307,7 @@
                                         "   <div class=\"card\">" +
                                         "       <div class=\"row no-gutters\">" +
                                         "           <div class=\"col-4\">" +
-                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "               <img class=\"card-img\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                         "           </div>" +
                                         "           <div class=\"col-8 pl-3\">" +
                                         "               <div class=\"card-body px-2\">" +
@@ -316,7 +326,7 @@
                                         "   <div class=\"card\">" +
                                         "       <div class=\"row no-gutters\">" +
                                         "           <div class=\"col-4\">" +
-                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "               <img class=\"card-img\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                         "           </div>" +
                                         "           <div class=\"col-8 pl-3\">" +
                                         "               <div class=\"card-body px-2\">" +

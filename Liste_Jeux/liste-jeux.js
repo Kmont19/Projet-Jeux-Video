@@ -64,7 +64,7 @@ function createCardJeu(id, nom, developpeur, editeur, rating, nbrPersonnes, prix
     var prixActuel;
     var prixPrecedent;  
     var jeuCard;
-    var image_lien = "http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + imgLien;  
+    var image_lien = "ImagesJeux/" + imgLien;  
 
     if( rabais > 0) {
         prixActuel = (prix - (prix * (rabais) / 100)).toFixed(2);
