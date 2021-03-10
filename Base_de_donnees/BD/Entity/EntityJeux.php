@@ -86,7 +86,7 @@
                 return $items;
             }
             catch(PDOException $e) {
-                return $items;
+                return $e;
             } 
         }
 
@@ -364,6 +364,23 @@
                 return $e;
             }
         }
+
+        public function getMesJeux(string $email_client): array
+        {
+            try {
+                $request = "select f.email_client, fj.id_facture, j.id_jeu, j.image_lien
+                            from factures f
+                            inner join factures_jeux fj on f.id_facture = fj.id_facture
+                            inner join jeux j on fj.id_jeu = j.id_jeu
+                            where f.email_client = '$email_client';";
+                $result = $this->connexion->query($request);
+                $items = $result->fetchAll();
+                return $items;
+            } catch (PDOException $e) {
+                return $e;
+            }
+        }
+
     }
 
 

@@ -29,4 +29,42 @@ class EntityPanier
         }
     }
 
+    public function getIdsJeuxPanier (string $id_panier){
+        try {
+            $stmt = $this->connexion->prepare("select id_jeu from paniers_jeux 
+                                                where id_panier = '$id_panier';");
+            $stmt->execute();
+            $jeux = $stmt->fetchAll();
+            return $jeux;
+        } catch (PDOException $e) {
+            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+        }
+    }
+
+    public function getIdPanier(string $email_client){
+        try {
+            $stmt = $this->connexion->prepare("select ifnull(id_panier,'rien') as id_panier from paniers where email_client='$email_client';");
+            $stmt->execute();
+            $panier = $stmt->fetchAll();
+            return $panier;
+        } catch (PDOException $e) {
+            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+        }
+    }
+
+    public function getTotalArgentPanier(string $email_client){
+        try {
+            $stmt = $this->connexion->prepare("select email_client, pj.id_panier, j.id_jeu, prix, rabais
+                                                     from paniers p
+                                                     inner join paniers_jeux pj on p.id_panier = pj.id_panier
+                                                     inner join jeux j on pj.id_jeu = j.id_jeu
+                                                     where email_client = '$email_client';");
+            $stmt->execute();
+            $panier = $stmt->fetchAll();
+            return $panier;
+        } catch (PDOException $e) {
+            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+        }
+    }
+
 }

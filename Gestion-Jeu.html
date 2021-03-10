@@ -23,7 +23,7 @@
         <script src="Administration/Gestion_Jeu/gestion-jeu.js"></script>
     </head>
 
-    <body>
+    <body onload="verifSiAdmin()">
         <div id="menu"></div>
 
         <div id="wrapper" class="wrapper-content">
@@ -132,4 +132,14 @@
             </div>
         </div>
     </body>
+
+    <script>
+        function verifSiAdmin(){
+            if (sessionStorage.getItem("email") != "admin"){
+                alert("ALERTE, vous n'êtes pas sensée accéder à cette partie du site web. Redirection obligatoire jusqu'à la page d'accueil");
+                window.location.replace("index.html");
+            }
+        }
+
+    </script>
 </html>

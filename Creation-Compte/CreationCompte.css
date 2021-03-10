@@ -2,6 +2,10 @@
     font-family: 'Bungee Inline', cursive;
 }
 
+.boutons{
+    width: 85%;
+}
+
 #confirmationCreationCompte{
     margin-left: 20%;
 }

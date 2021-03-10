@@ -125,4 +125,20 @@ class ModelJeux
         }
         return $filePath;
     }
+
+    public function ajoutNote(string $email, string $id_jeu, string $note, string $avis){
+        try {
+            $stmtJeu = $this->connexion->prepare(
+                "INSERT INTO utilisateurs_jeux values(:email,:id_jeu,:note,:avis);");
+            $stmtJeu->bindParam(':email', $email);
+            $stmtJeu->bindParam(':id_jeu', $id_jeu);
+            $stmtJeu->bindParam(':note', $note);
+            $stmtJeu->bindParam(':avis', $avis);
+            $stmtJeu->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
 }

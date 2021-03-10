@@ -21,7 +21,7 @@
     
         <script src="Menu/menu.js"></script>
     </head>
-    <body onload="selectPanier()">
+    <body onload="selectPanier(); getTotalArgentPanier()">
         <div id="menu"></div>
         <div class="bloc-corps pt-5 my-5">
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -36,44 +36,26 @@
                             <th>Jeu</th>
                             <th class="text-center">Coût</th>
                             <th class="text-center">Rabais</th>
-                            <th class="text-center"><a class="btn btn-sm btn-outline-danger" id="viderPanier">Vider le panier</a></th>
+                            <th class="text-center"><a class="btn btn-sm btn-outline-danger" id="viderPanier" onclick="viderPanierBD(1)">Vider le panier</a></th>
                         </tr>
                     </thead>
                     <tbody id="listePanier">
-
-
-                        <tr>
-                            <td>
-                                <div class="product-item">
-                                    <a class="product-thumb" href="#"><img src="https://via.placeholder.com/220x180/FF0000/000000" alt="Product"></a>
-                                    <div class="product-info">
-                                        <h4 class="product-title">Street Fighter V</h4><span><em>Développeur:</em> Capcom</span><span><em>Éditeur:</em> Capcom</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-center text-lg text-medium">$43.90</td>
-                            <td class="text-center text-lg text-medium">18.00%</td>
-                            <td class="text-center"><a class="remove-from-cart" data-toggle="tooltip" data-original-title="Remove item" onclick="supprimerJeuPanier('33444')"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-
-
-
-
+                        <!-- La liste du panier de l'utilisateur va apparaître à l'écran -->
                     </tbody>
                 </table>
             </div>
             <div class="shopping-cart-footer">
                 
-                <div class="column text-lg">Total: <span class="text-medium">$289.68</span></div>
+                <div class="column text-lg"><p id="totalArgentPanier"></p></div>
             </div>
             <div class="shopping-cart-footer">
                 <div class="column"><a class="btn btn-outline-secondary" href="index.html"><i class="icon-arrow-left"></i>&nbsp;Retourner magasiner</a></div>
-                <div class="column"><a class="btn btn-success" href="#">Payer</a></div>
+                <div class="column"><a class="btn btn-success" target="_blank" onclick="payerFacture()">Payer</a></div>
             </div>
         </div>
         </div>
 
-        <div style="margin-bottom: 11%;"></div>
+        <div style="margin-bottom: 18%;"></div>
 
         <div id="footer"></div>
     </body>
@@ -86,26 +68,52 @@
         $("#footer").load("footer.html")
     })
 
-    $("viderPanier").click(function (){
-        $(document).ready(function (e) {
-            $.ajax({
-                url: "Base_de_donnees/supprimerPanier.php",
-                type: "POST",
-                dataType: "json",
-                data:{
-                    "id_panier": sessionStorage.getItem("id_panier")
-                },
-                success: function (){
-                    alert("Le panier a bien été vidé");
-                    location.reload();
-                },
-                error: function (message, error){
-                    console.log(message);
-                    console.log(error);
-                }
-            });
-        })
-    })
+    function viderPanierBD(num){
+        if (num == 1){
+            if (confirm("Voulez-vous vraiment vider tout le panier?")) {
+                $(document).ready(function (e) {
+                    $.ajax({
+                        url: "Base_de_donnees/supprimerPanier.php",
+                        type: "POST",
+                        dataType: "json",
+                        data:{
+                            "id_panier": sessionStorage.getItem("id_panier")
+                        },
+                        success: function (){
+                            alert("Le panier a bien été vidé");
+                            location.reload();
+                        },
+                        error: function (message, error){
+                            console.log(message);
+                            console.log(error);
+                        }
+                    });
+                })
+            }
+        }
+        else{
+                $(document).ready(function (e) {
+                    $.ajax({
+                        url: "Base_de_donnees/supprimerPanier.php",
+                        type: "POST",
+                        dataType: "json",
+                        data:{
+                            "id_panier": sessionStorage.getItem("id_panier")
+                        },
+                        success: function (){
+                            alert("La facture a été payée, ces jeux sont maintenant à vous !");
+                            window.location.href= "index.html";
+                        },
+                        error: function (message, error){
+                            console.log(message);
+                            console.log(error);
+                        }
+                    });
+                })
+
+        }
+
+    }
 
     function selectPanier(){
         $(document).ready(function (e) {
@@ -124,13 +132,13 @@
                             "<tr>" +
                                 "<td>" +
                                     "<div class=\"product-item\">" +
-                                        "<a class=\"product-thumb\" href=\"#\"><img src='" + item["image_lien"] + "' alt=\"Product\"></a>" +
+                                        "<a class=\"product-thumb\" href=\"#\"><img src='ImagesJeux/" + item["image_lien"] + "' alt=\"Product\" width='220px' height='180px'></a>" +
                                         "<div class=\"product-info\">" +
                                             "<h4 class=\"product-title\">" + item["nom"] + "</h4><span><em>Développeur:</em>" + item["developpeur"] + "</span><span><em>Éditeur:</em>" + item["editeur"] + "</span>" +
                                         "</div>" +
                                     "</div>" +
                                 "</td>" +
-                                "<td class=\"text-center text-lg text-medium\">$CAD" + (item["prix"] * (item["rabais"] * 0.01)) + "</td>" +
+                                "<td class=\"text-center text-lg text-medium\">CAD$" + (item["prix"]-(item["prix"] * (item["rabais"] * 0.01))) + "</td>" +
                                 "<td class=\"text-center text-lg text-medium\">" + item["rabais"] + "%</td>" +
                                 "<td class=\"text-center\"><a class=\"remove-from-cart\" data-toggle=\"tooltip\" data-original-title=\"Remove item\" onclick=\"supprimerJeuPanier('" + item["id_jeu"] + "')\"><i class=\"fa fa-trash\"></i></a></td>" +
                             "</tr>"
@@ -146,18 +154,45 @@
     }
 
     function supprimerJeuPanier(id_jeu){
+        if (confirm("Voulez-vous vraiment supprimer ce jeu de ce panier?")){
+            $(document).ready(function (e) {
+                $.ajax({
+                    url: "Base_de_donnees/supprimerJeuPanier.php",
+                    type: "POST",
+                    dataType: "json",
+                    data:{
+                        "id_panier": sessionStorage.getItem("id_panier"),
+                        "id_jeu": id_jeu
+                    },
+                    success: function (){
+                        alert("Le jeu a bien été retiré du panier");
+                        location.reload();
+                    },
+                    error: function (message, error){
+                        console.log(message);
+                        console.log(error);
+                    }
+                });
+            })
+        }
+    }
+
+    function getTotalArgentPanier(){
+        var totalArgent = 0;
         $(document).ready(function (e) {
             $.ajax({
-                url: "Base_de_donnees/supprimerJeuPanier.php",
+                url: "Base_de_donnees/getTotalArgentPanier.php",
                 type: "POST",
                 dataType: "json",
                 data:{
-                    "id_panier": sessionStorage.getItem("id_panier"),
-                    "id_jeu": id_jeu
+                    "email_client": sessionStorage.getItem("email")
                 },
-                success: function (){
-                    alert("Le jeu a bien été retiré du panier");
-                    location.reload();
+                success: function (result){
+                    for (i = 0; i < result['item'].length; i++) {
+                        let item = result['item'][i];
+                        totalArgent = totalArgent + (item["prix"]-(item["prix"] * (item["rabais"] * 0.01)));
+                    }
+                    document.getElementById("totalArgentPanier").innerHTML = "Total : " + totalArgent + "$";
                 },
                 error: function (message, error){
                     console.log(message);
@@ -165,5 +200,66 @@
                 }
             });
         })
+
+    }
+
+    function payerFacture(){
+        /* Rajouter pour que le lien ne se fasse pas si le panier est vide */
+
+        var numFacture = Math.floor(Math.random() * 9999999999) + 1000000000;
+        $(document).ready(function (){
+            $.ajax({
+                url: "Base_de_donnees/ajoutFacture.php",
+                type: "POST",
+                dataType: "json",
+                data:{
+                    "id_facture": numFacture,
+                    "email_client": sessionStorage.getItem("email")
+                },
+                success: function (result){
+                    $.ajax({
+                        url: "Base_de_donnees/getPanier.php",
+                        type: "POST",
+                        dataType: "json",
+                        data:{
+                            "email_client": sessionStorage.getItem("email")
+                        },
+                        success: function (result){
+                            for (i = 0; i < result['item'].length; i++){
+                                let item = result['item'][i];
+                                $.ajax({
+                                    url: "Base_de_donnees/ajoutJeuDansFacture.php",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data:{
+                                        "id_facture" : numFacture,
+                                        "id_jeu" : item["id_jeu"]
+                                    },
+                                    success: function (result){
+
+                                    },
+                                    error: function (message, error){
+                                        console.log(message);
+                                        console.log(error);
+                                    }
+                                });
+                            }
+                            viderPanierBD(2);
+                        },
+                        error: function (message, error){
+                            console.log(message);
+                            console.log(error);
+                        }
+                    });
+                },
+                error: function (message, error){
+                    console.log(message);
+                    console.log(error);
+                }
+            });
+        })
+
+        window.open("dropin.html",'_blank');
+
     }
 </script>
