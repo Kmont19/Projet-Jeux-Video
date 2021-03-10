@@ -39,6 +39,7 @@
 
 #imageJeu:hover{
     cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 #imageJeu:active{
@@ -92,12 +93,12 @@
 
 #titreModalEtoile{
     text-align: center;
-    color: white;
+    color: black;
 }
 
 #indicationModalEtoile{
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .dispositionEtoilesAccueil{
@@ -129,6 +130,7 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .visuelEtoiles{
@@ -142,6 +144,12 @@
 #boutonAjoutEtoile{
     width: 30%;
     margin-top: 10%;
+}
+
+#boutonAjoutEtoile:Hover{ 
+    box-shadow: 0 0 3px 3px white;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    cursor: pointer;
 }
 
 #boutonAjoutEtoile:active{
@@ -160,6 +168,7 @@
 
 .etoilesModal:hover{
     cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .etoilesModal:active{
@@ -168,21 +177,28 @@
 
 #boutonAjoutEtoile{
     margin-bottom: 5%;
+    background-color: black;
+    color:white;
+    border: none;
+    border-radius: 0.25rem;
+    font-family: Arial;
 }
 
 #boutonEtoile{
     margin-left: 35%;
     margin-top: 5%;
     width: 30%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #000;
+    color: white;
 }
 
 #boutonEtoile:hover{
-    background-color: #ffd369;
-    margin-left: 29%;
-    margin-top: 5%;
-    width: 40%;
-    font-size: 20px;
-    font-weight: bold;
+    box-shadow: 0 0 3px 3px white;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    cursor: pointer;
 }
 
 #boutonEtoile:active{
@@ -256,7 +272,7 @@
 }
 
 #confirmationLocation:hover {
-    background-color: #ffc107;
+    box-shadow: 0 0 3px 3px white;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     cursor: pointer;
 }
