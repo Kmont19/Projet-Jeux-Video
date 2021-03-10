@@ -1,19 +1,10 @@
-h2{
-    color:white;
-    text-align: center;
-}
-
-p{
-    color:white;
-    text-align: center;
-}
-
 #description{
     margin-bottom: 5%;
 }
 
 #titreJeu{
     color:white;
+    text-align: center;
 }
 
 .partieGauche{
@@ -27,7 +18,6 @@ p{
 }
 
 .ficheJeu{
-    font-family: 'Bungee Inline', cursive;
     margin-top: 4%;
     background-color: black;
     width: 70%;
@@ -61,7 +51,7 @@ p{
 }
 
 .checked {
-    color: orange;
+    color: #ffc107;
 }
 
 #texteDescription{
@@ -87,11 +77,12 @@ p{
 
 /* Modal Content */
 .modal-content-Etoiles {
-    background-color: #222831;
+    background-color: #f04800;
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid black;
     width: 40%;
     margin-left: 30%;
+    border-radius: 0.25rem;
 }
 
 .infosModalEtoiles{
@@ -204,8 +195,7 @@ p{
     width: 90%;
     height: 300px;
     perspective: 1000px;
-    color: white;
-
+    color: #000 !important;
 }
 
 .flip-card-inner {
@@ -231,12 +221,23 @@ p{
 }
 
 .flip-card-front {
-    background-color: #222831;
+    background-color: #f04800;
     padding: 3%;
+    font-size: 20px;
+}
+
+.flip-card-front .gauche {
+    text-align: right;
+    font-weight: 700;
+}
+
+.flip-card-front .droite {
+    text-align: left;
+    font-weight: 600;
 }
 
 .flip-card-back {
-    background-color: #222831;
+    background-color: #f04800;
     transform: rotateY(180deg);
     padding: 3%;
 }
@@ -247,9 +248,17 @@ p{
     margin-left:35%;
     margin-bottom: 1%;
     font-size: 15px;
-    border: 2px solid #ffd369;
-    background-color: #3f5fb5;
-    color:white;
+    background-color: #f04800;
+    color:black;
+    border: none;
+    border-radius: 0.25rem;
+    font-family: Arial;
+}
+
+#confirmationLocation:hover {
+    background-color: #ffc107;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    cursor: pointer;
 }
 
 #confirmationLocation:active{
