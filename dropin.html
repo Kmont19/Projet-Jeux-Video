@@ -1,4 +1,8 @@
-<script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.js"></script>
+<!-- includes the Braintree JS client SDK -->
+<script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
+
+<!-- includes jQuery -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 
 <div id="dropin-container"></div>
 <button id="submit-button" class="button button--small button--green">Acheter</button>
@@ -13,7 +17,7 @@ braintree.dropin.create({
   button.addEventListener('click', function () {
     instance.requestPaymentMethod(function (err, payload) {
       // Submit payload.nonce to your server
-
+      
       // Ajouter un au nbre de jeux achetés aux dits jeux
       compterJeuxAchetes(id_panier);
       // Vider panier

@@ -68,7 +68,7 @@
             </div>
             <div class="shopping-cart-footer">
                 <div class="column"><a class="btn btn-outline-secondary" href="index.html"><i class="icon-arrow-left"></i>&nbsp;Retourner magasiner</a></div>
-                <div class="column"><a class="btn btn-success" target="_blank" href="dropin.html">Payer</a></div>
+                <div class="column"><a class="btn btn-success" id="pay-button" onClick="payer()" href="#">Payer</a></div>
             </div>
         </div>
         </div>
@@ -85,6 +85,13 @@
         $("#menu").load("menu.html")
         $("#footer").load("footer.html")
     })
+
+    function payer(){
+        $id_panier = sessionStorage.getItem("id_panier");
+        compterJeuxAchetes(id_panier);
+        viderPanier(id_panier);
+        alert("Bien joué");
+    }
 
     $("viderPanier").click(function (){
         $(document).ready(function (e) {
@@ -166,4 +173,64 @@
             });
         })
     }
+
+    function compterJeuxAchetes(id_panier){
+  $(document).ready(function (e) {
+            $.ajax({
+                url: "Base_de_donnees/getIdsJeuxPanier.php",
+                type: "POST",
+                dataType: "json",
+                data:{
+                    "id_panier": sessionStorage.getItem("id_panier")
+                },
+                success: function (result){
+                    alert("Le jeu a bien été acheté");
+                    for (i = 0; i < result['item'].length; i++){
+                      let jeuAchete = result['item'][i];
+                      $.ajax({
+                        url: "Base_de_donnees/updateJeuAchete.php",
+                        type: "POST",
+                        dataType: "json",
+                        data:{
+                            "id_jeu": jeuAchete
+                        },
+                        success:function(){
+                          alert("Le jeu a bien été comptabilisé");
+                        },
+                        error:function (message2, error2){
+                            console.log(message);
+                            console.log(error);
+                        }
+                      });
+                    }
+                    //location.reload();
+                },
+                error: function (message, error){
+                    console.log(message);
+                    console.log(error);
+                }
+            });
+        })
+}
+
+function viderPanier(id_panier){
+        $(document).ready(function (e) {
+            $.ajax({
+                url: "Base_de_donnees/supprimerPanier.php",
+                type: "POST",
+                dataType: "json",
+                data:{
+                    "id_panier": sessionStorage.getItem("id_panier")
+                },
+                success: function (){
+                    alert("Le panier a bien été vidé");
+                    //location.reload();
+                },
+                error: function (message, error){
+                    console.log(message);
+                    console.log(error);
+                }
+            });
+        })
+  }
 </script>
