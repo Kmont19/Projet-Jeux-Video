@@ -54,3 +54,17 @@ function verifRedirection(){
         }
     }
 }
+
+function redirectionFicheJeu(id, nom, developpeur, editeur, rating, nbrPersonnes, prix, rabais, date_de_sortie, image_lien, categorie){
+    sessionStorage.setItem('id', id);
+    sessionStorage.setItem('nom',nom);
+    sessionStorage.setItem('nom_image', image_lien);
+    sessionStorage.setItem('categorie',categorie);
+    sessionStorage.setItem('date',date_de_sortie);
+    sessionStorage.setItem('prix',prix);
+    sessionStorage.setItem('studio',developpeur);
+    sessionStorage.setItem('editeur',editeur);
+    sessionStorage.setItem('rating', rating);
+    sessionStorage.setItem('nombrePersonne', nbrPersonnes);
+    window.location.href = "Fiche-Jeu.html";
+}

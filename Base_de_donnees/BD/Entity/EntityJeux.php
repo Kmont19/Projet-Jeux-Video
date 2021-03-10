@@ -95,8 +95,8 @@
             }
         }
 
+        //Page Accueil
         public function getNbrPersonnes(string $id):array{
-            $items = array();
             try {
                 $request = "select count(id_jeu) as nbrPersonnes
                             from utilisateurs_jeux
@@ -104,6 +104,23 @@
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
                 return $items;
+            } catch (PDOException $e) {
+                echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+            }
+        }
+
+        //Page Liste de jeux
+        public function getNbrVotes($id){
+            
+            try {
+                $request = "select count(id_jeu) as nbrPersonnes
+                            from utilisateurs_jeux
+                            where id_jeu = '$id';";
+                $result = $this->connexion->prepare($request);
+                $result-> execute();
+                $count = $result->fetchColumn();
+                return intval($count);
+
             } catch (PDOException $e) {
                 echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
             }
