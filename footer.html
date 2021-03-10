@@ -2,35 +2,35 @@
 <html>
     <footer class="footer pt-4">
         <section class="footer-list-top">
-            <div class="row justify-content-center m-0">
+            <div class="row justify-content-center m-0" style="color :white;">
                 <div class="col-sm-4">
                     <ul>
                         <li><h5>À propos de nous</h5></li>
-                        <li><a target="_blank" href='/qui-sommes-nous.html'>Qui sommes-nous ?</a></li>
-                        <li><a target="_blank" href='/jeux-indes.html' >Les jeux indépendants</a></li>
-                        <li><a target="_blank" href='/partenaires.html'>Nos partenaires</a></li>            
-                        <li><a target="_blank" href='/se-lancer-dans-le-jeu-inde.html'>Faire son propre jeu</a></li>
-                        <li><a target="_blank" href='/evenements.html'>Évènements</a></li>
+                        <li><a onclick="quiSommesNous()">Qui sommes-nous ?</a></li>
+                        <li><a onclick="fonctionNonDisponible()">Les jeux indépendants</a></li>
+                        <li><a onclick="fonctionNonDisponible()">Nos partenaires</a></li>
+                        <li><a  onclick="FaireSonPropreJeu()">Faire son propre jeu</a></li>
+                        <li><a  onclick="fonctionNonDisponible()">Évènements</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">                    
                     <ul>
                         <li><h5>Les jeux de vidéo</h5></li>
-                        <li><a target="_blank" href='/tous-les-jeux.html'>Tous les jeux</a></li>
-                        <li><a target="_blank" href='/promotions.html'>Promotions</a></li>
-                        <li><a target="_blank" href='/precommandes.html'>Précommandes</a></li>
-                        <li><a target="_blank" href='/meilleures-ventes.html'>Meilleures ventes</a></li>
-                        <li><a target="_blank" href='/categories.html'>Catégories</a></li>
+                        <li><a target="_blank" href='liste-jeux.html'>Tous les jeux</a></li>
+                        <li><a target="_blank" href='liste-jeux.html'>Promotions</a></li>
+                        <li><a target="_blank" href='liste-jeux.html'>Précommandes</a></li>
+                        <li><a target="_blank" href='liste-jeux.html'>Meilleures ventes</a></li>
+                        <li><a target="_blank" href='liste-jeux.html'>Catégories</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">                    
                     <ul>
-                        <li><h5>Besoin d'aide</h5></li>
-                        <li><a href='/nous-contacter.html'>Nous contacter</a></li>
-                        <li><a href='/faq.html'>FAQ</a></li>
-                        <li id='find-a-store'><a href='/mentions-legales.html'>Mentions légales</a></li>
-                        <li id='user-registration'><a href='/politique-magasin.html'>Politiques de la boutique</a></li>
-                        <li id='order-tracking'><a href='/liens-utiles.html'>Liens utiles</a></li>
+                        <li><h5 onclick="besoinAide()">Besoin d'aide</h5></li>
+                        <li><a onclick="nousContacter()">Nous contacter</a></li>
+                        <li><a  onclick="fonctionNonDisponible()">FAQ</a></li>
+                        <li id='find-a-store' onclick="fonctionNonDisponible()"><a>Mentions légales</a></li>
+                        <li id='user-registration' onclick="fonctionNonDisponible()"><a>Politiques de la boutique</a></li>
+                        <li id='order-tracking' onclick="fonctionNonDisponible()"><a>Liens utiles</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,4 +44,29 @@
             </div>
         </section>
     </footer>
+
+
+    <script>
+        function quiSommesNous(){
+            alert("Nous sommes 3 étudiants du Cégep de Trois-Rivières qui ont fait un projet de site web de ventes de Jeux Vidéos ! Antoine St-Arnaud, Damian Camilo Montoya Rivera et Sébastien Payet");
+        }
+
+
+        function fonctionNonDisponible(){
+            alert("Cette fonction n'est pas disponible pour l'instant");
+        }
+
+        function besoinAide(){
+            alert("Si vous avez besoin d'aides, faites signes aux élèves du projet !");
+        }
+
+        function nousContacter(){
+            alert("Faites directement signes aux élèves concernées si vous avez des questions !");
+        }
+
+        function FaireSonPropreJeu(){
+            alert("Pour faire son propre jeu, il faut du temps, un peu d'expertises, mais surtout, de la patience. Regardez cette chaine Youtube si vous voulez plus d'informations : https://www.youtube.com/channel/UCC8mKcruXFI-LuaiNqpXpOA");
+        }
+    </script>
+
 </html>

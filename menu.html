@@ -55,7 +55,7 @@
                     <a class="nav-link" id="boutonConnexion" onclick="verifRedirection()" value="Ouverture connexion"><i class="material-icons">account_circle</i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="menuPanier" href="panier.html" onclick="addActive($(this))"><i class="material-icons">shopping_cart</i></a>
+                    <a class="nav-link" id="menuPanier" onclick="addActive($(this)); verifSiConnecte()"><i class="material-icons">shopping_cart</i></a>
                 </li>        
             </ul>
         </div>
@@ -72,17 +72,75 @@
                 <input type="text" placeholder="Entrez le nom d'utilisateur" name="uname" id="uname" required>
                 <label for="psw"><b>Mode de passe</b></label>
                 <input type="password" placeholder="Entrez le mot de passe" name="psw" id="psw" required>
-                <button class="btnConnexion" type="submit">Se connecter</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-                </label>
+                <input type="button" class="btnConnexion" onclick="btnConnexion()" value="Se connecter">
                 <span class="psw">Vous n'avez pas de <a href="Creation-Compte.html">compte?</a></span>
                 
             </div>
         </form>
     </div>
 
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color:white;">&times;</a>
+        <h2>Liste de jeux</h2>
+        <div id="listeJeuxMoi">
+            <div class='card text-black'>
+                <img class='card-img img-responsive' src='ImagesJeux/34ad04948f.jpg' alt='Card image'>
+                <div class='card-img-overlay d-flex justify-content-center'>
+                </div>
+            </div>
+            <div class='card text-black'>
+                <img class='card-img img-responsive' src='ImagesJeux/34ad04948f.jpg' alt='Card image'>
+                <div class='card-img-overlay d-flex justify-content-center'>
+                </div>
+            </div>
+            <div class='card text-black'>
+                <img class='card-img img-responsive' src='ImagesJeux/34ad04948f.jpg' alt='Card image'>
+                <div class='card-img-overlay d-flex justify-content-center'>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
     <script>
+        function openNav() {
+            loadMesJeux();
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function loadMesJeux(){
+            $.ajax({
+                url: "Base_de_donnees/getJeuxAMoi.php",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "email_client" : sessionStorage.getItem("email")
+                },
+                success: function(reponse) {
+                    if(reponse.length > 0) {
+                        for (i = 0; i < reponse['item'].length; i++) {
+                            let item = reponse['item'][i];
+                            $("#listeJeuxMoi").append(
+                                "<div class='card text-black'>" +
+                                "     <img class='card-img img-responsive' src='ImagesJeux/" + item["image_lien"] + "' alt='Card image'>" +
+                                "     <div class='card-img-overlay d-flex justify-content-center'>" +
+                                "     </div>" +
+                                "</div>");
+                        }
+                    }
+                },
+                error: function (message){
+                    console.log(message);
+                }
+            });
+        }
+
         $(document).ready(function() {
             checkPage();
         })
@@ -94,7 +152,43 @@
                 modal.style.display = "none";
             }
         }
-        
+
+        function btnConnexion() {
+            if (document.getElementById("uname").value === "" || document.getElementById("psw").value === "") {
+                alert("Veuillez remplir tous les champs");
+            }
+            else {
+                $(document).ready(function (){
+
+                    $.ajax({
+                        url: "Base_de_donnees/login.php",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "email": document.getElementById("uname").value,
+                            "motdepasse": document.getElementById("psw").value
+                        },
+                        success: function (reponse) {
+                            console.log((reponse["item"][0])["nbrMail"]);
+                            if ((reponse["item"][0])["nbrMail"] == 1){
+                                alert("La connexion a été effectuée");
+                                sessionStorage.setItem("email", document.getElementById("uname").value)
+                                location.reload();
+                            }
+                            else{
+                                alert("Ce compte à laquelle vous avez tenté de vous connecter n'existe pas");
+                            }
+                        },
+                        error: function (message, e) {
+                            console.log(message);
+                        }
+                    });
+
+                });
+            }
+        }
+
+
         $('#btnRecherche').click(function(e) {
             e.preventDefault()
             var nomJeu = $('#inputRecherche').val();
@@ -103,7 +197,18 @@
                 if(window.location.href !== 'liste-jeux.html')
                 location.assign('liste-jeux.html')            
             }
-        })     
+        })
+
+        function verifSiConnecte(){
+            console.log(sessionStorage.getItem("email"));
+            if (sessionStorage.getItem("email") == null) {
+                alert("Vous devez vous connecter pour effectuer cet action");
+            }
+            else{
+                window.location.replace("panier.html");
+            }
+        }
+
     </script>
 
 

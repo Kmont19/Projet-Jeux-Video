@@ -39,17 +39,17 @@ function verifRedirection(){
                 window.location.href = "Gestion-Jeu.html";
             }
             else if (confirm("Voulez-vous vous déconnecter?")){
-                sessionStorage.clear();
-                location.reload();
+                sessionStorage.removeItem("email");
+                window.location.replace("index.html");
             }
         }
         else{
             if (confirm("Voulez-vous entrer voir votre liste de jeux à vous?")){
-                /* Slide menu à droite pour les jeux de l'utilisateur */
+                openNav();
             }
             else if (confirm("Voulez-vous vous déconnecter?")){
-                sessionStorage.clear();
-                location.reload();
+                sessionStorage.removeItem("email");
+                window.location.href="index.html"
             }
         }
     }

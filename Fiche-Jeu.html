@@ -35,7 +35,7 @@
             <div class="partieGauche">
                 <h2 id="titreJeu"></h2>
                 <img onclick="ouvrirModalGrosseImage(this)" id="imageJeu" width="300px" height="300px">
-                <input class="" type="submit" id="confirmationLocation" value="Prendre ce jeu">
+                <input type="button" id="confirmationLocation" value="Prendre ce jeu" onclick="ajoutJeuPanier()">
             </div>
             <div class="partieDroite mt-5">
                 <div class="flip-card">
@@ -93,7 +93,7 @@
                         <img class="etoilesModal" id="etoileModalQuatre" onmouseover="hoverEtoile('etoileModalQuatre')" onmouseout="resetEtoiles()" onclick="setEtoiles('etoileModalQuatre')">
                         <img class="etoilesModal" id="etoileModalCinq" onmouseover="hoverEtoile('etoileModalCinq')" onmouseout="resetEtoiles()" onclick="setEtoiles('etoileModalCinq')">
                     </div>
-                    <input type="button" id="boutonEtoile">
+                    <input type="button" id="boutonEtoile" onclick="ajoutNote()">
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
         <!--Le modal de zoom sur la photo-->
         <div id="ModalImage" class="modal">
             <div class="modal-content-Image">
-                <img id="imageAgrandie">
+                <img id="imageAgrandie" onclick="fermerGrosseImage()">
             </div>
         </div>
 
@@ -188,14 +188,19 @@
 
         // Ouvre le modal de création de jeux
         function ouvrirModalNouvelleNote(){
-            var modal = document.getElementById("ModalEtoile");
-            modal.style.display = "block";
-            document.getElementById("etoileModalUn").src = "Images/etoile-blanche.png";
-            document.getElementById("etoileModalDeux").src = "Images/etoile-blanche.png";
-            document.getElementById("etoileModalTrois").src = "Images/etoile-blanche.png";
-            document.getElementById("etoileModalQuatre").src = "Images/etoile-blanche.png";
-            document.getElementById("etoileModalCinq").src = "Images/etoile-blanche.png";
-            document.getElementById("boutonEtoile").value = "Ajouter cette note";
+            if (sessionStorage.getItem("email") == null){
+                alert("Veuillez vous connecter pour effectuer cet action");
+            }
+            else{
+                var modal = document.getElementById("ModalEtoile");
+                modal.style.display = "block";
+                document.getElementById("etoileModalUn").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileModalDeux").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileModalTrois").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileModalQuatre").src = "Images/etoile-blanche.png";
+                document.getElementById("etoileModalCinq").src = "Images/etoile-blanche.png";
+                document.getElementById("boutonEtoile").value = "Ajouter cette note";
+            }
         }
 
         function ouvrirModalGrosseImage(lien_image){
@@ -211,17 +216,9 @@
             modalEtoile.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {       
-            var modalEtoile = document.getElementById("ModalEtoile");
-            var modalImage = document.getElementById("ModalImage");     
-            console.log(event)
-            if (event.target == modalEtoile) {
-                modalEtoile.style.display = "none";
-            }
-            if (event.target == modalImage) {
-                modalImage.style.display = "none";
-            }
+        function fermerGrosseImage(){
+            var modalImage = document.getElementById("ModalImage");
+            modalImage.style.display = "none";
         }
 
         /* Animations étoiles du modal */
@@ -322,6 +319,106 @@
                     break;
             }
             resetEtoiles();
+        }
+
+        function ajoutNote(){
+            $(document).ready(function (){
+               $.ajax({
+                   url: "Base_de_donnees/ajoutNote.php",
+                   type: "POST",
+                   dataType: "json",
+                   data:{
+                       "email" : sessionStorage.getItem("email"),
+                       "id_jeu" : sessionStorage.getItem("id"),
+                       "note" : etoilesModal,
+                       "avis": "Aucuns avis"
+                   },
+                   success: function () {
+                       alert("La note a bien été ajouté au jeu ! Retour à l'accueil.");
+                       window.location.replace("index.html");
+                   },
+                   error: function (message, e) {
+                       alert("Vous avez déjà remis une note dans le système, vous ne pouvez pas en entrer un nouveau pour l'instant.");
+                       console.log(message);
+                   }
+               })
+            });
+        }
+
+        function ajoutJeuPanier(){
+            if (sessionStorage.getItem("email" == null)){
+                alert("Veuillez vous connecter avant d'effectuer cet action.");
+            }
+            else{
+                $(document).ready(function (){
+                    $.ajax({
+                        url: "Base_de_donnees/getIdPanier.php",
+                        type: "POST",
+                        dataType: "json",
+                        data:{
+                            "email_client" : sessionStorage.getItem("email")
+                        },
+                        success: function (reponse) {
+                            if ((reponse["item"][0]) == null){
+                                var nbrRandom = Math.floor(Math.random() * 9999999999) + 1000000000;
+                                $.ajax({
+                                    url: "Base_de_donnees/ajoutPanier.php",
+                                    type: "POST",
+                                    dataType: "json",
+                                    data:{
+                                        "id_panier": nbrRandom,
+                                        "email_client" : sessionStorage.getItem("email")
+                                    },
+                                    success: function (reponse2) {
+                                        console.log("nouveau panier ajouté");
+                                        $.ajax({
+                                            url: "Base_de_donnees/ajoutJeuPanier.php",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data:{
+                                                "id_panier": nbrRandom,
+                                                "id_jeu": sessionStorage.getItem("id")
+                                            },
+                                            success: function (reponse) {
+                                                alert(sessionStorage.getItem("nom") + " a été ajouté au panier ! Retour à l'accueil");
+                                                window.location.replace("index.html");
+                                            },
+                                            error: function (message3, e3) {
+                                                console.log(message3);
+                                                alert("Ce jeu est déjà dans le panier");
+                                            }
+                                        });
+                                    },
+                                    error: function (message2, e2) {
+                                        console.log(message2);
+                                    }
+                                });
+                            }
+                            else{
+                               $.ajax({
+                                   url: "Base_de_donnees/ajoutJeuPanier.php",
+                                   type: "POST",
+                                   dataType: "json",
+                                   data:{
+                                       "id_panier" : (reponse["item"][0])["id_panier"],
+                                       "id_jeu" : sessionStorage.getItem("id")
+                                   },
+                                   success: function (reponse2) {
+                                       alert(sessionStorage.getItem("nom") + " a été ajouté au panier ! Retour à l'accueil");
+                                       window.location.replace("index.html");
+                                   },
+                                   error: function (message2, e2) {
+                                        console.log(message2);
+                                   }
+                               });
+                            }
+                        },
+                        error: function (message, e) {
+                            console.log(message);
+                        }
+                    });
+                });
+            }
         }
 
     </script>

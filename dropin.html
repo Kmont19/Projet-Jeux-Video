@@ -4,6 +4,8 @@
 <button id="submit-button" class="button button--small button--green">Acheter</button>
 
 <script>
+
+
     var button = document.querySelector('#submit-button');
 
 braintree.dropin.create({
@@ -14,12 +16,7 @@ braintree.dropin.create({
     instance.requestPaymentMethod(function (err, payload) {
       // Submit payload.nonce to your server
 
-      // Ajouter un au nbre de jeux achetés aux dits jeux
-      compterJeuxAchetes(id_panier);
-      // Vider panier
-      viderPanier(id_panier);
-      // Fermer fenetre paiement
-      window.close();
+
     });
   })
 });
