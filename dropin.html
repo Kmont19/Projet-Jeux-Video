@@ -1,0 +1,86 @@
+<script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.js"></script>
+
+<div id="dropin-container"></div>
+<button id="submit-button" class="button button--small button--green">Acheter</button>
+
+<script>
+    var button = document.querySelector('#submit-button');
+
+braintree.dropin.create({
+  authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
+  selector: '#dropin-container'
+}, function (err, instance) {
+  button.addEventListener('click', function () {
+    instance.requestPaymentMethod(function (err, payload) {
+      // Submit payload.nonce to your server
+
+      // Ajouter un au nbre de jeux achetés aux dits jeux
+      compterJeuxAchetes(id_panier);
+      // Vider panier
+      viderPanier(id_panier);
+      // Fermer fenetre paiement
+      window.close();
+    });
+  })
+});
+
+function compterJeuxAchetes(id_panier){
+  $(document).ready(function (e) {
+            $.ajax({
+                url: "Base_de_donnees/getIdsJeuxPanier.php",
+                type: "POST",
+                dataType: "json",
+                data:{
+                    "id_panier": sessionStorage.getItem("id_panier")
+                },
+                success: function (result){
+                    alert("Le jeu a bien été acheté");
+                    for (i = 0; i < result['item'].length; i++){
+                      let jeuAchete = result['item'][i];
+                      $.ajax({
+                        url: "Base_de_donnees/updateJeuAchete.php",
+                        type: "POST",
+                        dataType: "json",
+                        data:{
+                            "id_jeu": jeuAchete
+                        },
+                        success:function(){
+                          alert("Le jeu a bien été comptabilisé");
+                        },
+                        error:function (message2, error2){
+                            console.log(message);
+                            console.log(error);
+                        }
+                      });
+                    }
+                    //location.reload();
+                },
+                error: function (message, error){
+                    console.log(message);
+                    console.log(error);
+                }
+            });
+        })
+}
+
+function viderPanier(id_panier){
+        $(document).ready(function (e) {
+            $.ajax({
+                url: "Base_de_donnees/supprimerPanier.php",
+                type: "POST",
+                dataType: "json",
+                data:{
+                    "id_panier": sessionStorage.getItem("id_panier")
+                },
+                success: function (){
+                    alert("Le panier a bien été vidé");
+                    //location.reload();
+                },
+                error: function (message, error){
+                    console.log(message);
+                    console.log(error);
+                }
+            });
+        })
+  }
+</script>

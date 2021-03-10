@@ -29,4 +29,16 @@ class EntityPanier
         }
     }
 
+    public function getIdsJeuxPanier (string $id_panier){
+        try {
+            $stmt = $this->connexion->prepare("select id_jeu from paniers_jeux 
+                                                where id_panier = '$id_panier';");
+            $stmt->execute();
+            $jeux = $stmt->fetchAll();
+            return $jeux;
+        } catch (PDOException $e) {
+            echo "Échec lors de la connexion à la base de données: " . $e->getMessage();
+        }
+    }
+
 }
