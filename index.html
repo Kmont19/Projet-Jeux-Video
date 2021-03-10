@@ -69,7 +69,6 @@
                                     "     <span class='discount-badge'>" + item["rabais"] + "%</span>" +
                                     "     <img class='card-img img-responsive' src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "' alt='Card image'>" +
                                     "     <div class='card-img-overlay d-flex justify-content-center'>" +
-                                    "          <button class='btn'>Voir détails</button>" +
                                     "     </div>" +
                                     "</div>"
                                 );
@@ -149,24 +148,44 @@
                         success: function (result2){
                             for (i = 0; i < result2['item'].length; i++){
                                 let item2 = result2['item'][i];
-                                $("#listeJeuxMeilleuresVentes").append(
-                                    "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
-                                    "   <div class=\"card\">" +
-                                    "       <div class=\"row no-gutters\">" +
-                                    "           <div class=\"col-4\">" +
-                                    "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
-                                    "           </div>" +
-                                    "           <div class=\"col-8 pl-3\">" +
-                                    "               <div class=\"card-body px-2\">" +
-                                    "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
-                                    "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
-                                    "                   <span class=\"previous-price\">" + item["prix"] + "</span><span class=\"previous-currency\">CAD</span><span class=\"discount\">-" + item["rabais"] + "%</span>" +
-                                    "               </div>" +
-                                    "           </div>" +
-                                    "       </div>" +
-                                    "   </div>" +
-                                    "</div>"
-                                );
+                                if(item["rabais"] > 0) {
+                                    $("#listeJeuxMeilleuresVentes").append(
+                                        "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                        "   <div class=\"card\">" +
+                                        "       <div class=\"row no-gutters\">" +
+                                        "           <div class=\"col-4\">" +
+                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "           </div>" +
+                                        "           <div class=\"col-8 pl-3\">" +
+                                        "               <div class=\"card-body px-2\">" +
+                                        "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
+                                        "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                        "                   <span class=\"previous-price\">" + item["prix"] + "</span><span class=\"previous-currency\">CAD</span><span class=\"discount\">-" + item["rabais"] + "%</span>" +
+                                        "               </div>" +
+                                        "           </div>" +
+                                        "       </div>" +
+                                        "   </div>" +
+                                        "</div>"
+                                    );
+                                } else {
+                                    $("#listeJeuxMeilleuresVentes").append(
+                                        "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                        "   <div class=\"card\">" +
+                                        "       <div class=\"row no-gutters\">" +
+                                        "           <div class=\"col-4\">" +
+                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "           </div>" +
+                                        "           <div class=\"col-8 pl-3\">" +
+                                        "               <div class=\"card-body px-2\">" +
+                                        "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
+                                        "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                        "               </div>" +
+                                        "           </div>" +
+                                        "       </div>" +
+                                        "   </div>" +
+                                        "</div>"
+                                    );
+                                }
                             }
                         },
                         error: function (message2, error2){
@@ -200,7 +219,8 @@
                         success: function (result2){
                             for (i = 0; i < result2['item'].length; i++){
                                 let item2 = result2['item'][i];
-                                $("#listeJeuxDernieresNouveautees").append(
+                                if(item["rabais"] > 0) {
+                                    $("#listeJeuxDernieresNouveautees").append(
                                     "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
                                     "   <div class=\"card\">" +
                                     "       <div class=\"row no-gutters\">" +
@@ -217,7 +237,27 @@
                                     "       </div>" +
                                     "   </div>" +
                                     "</div>"
-                                );
+                                    );
+                                } else {
+                                    $("#listeJeuxDernieresNouveautees").append(
+                                    "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                    "   <div class=\"card\">" +
+                                    "       <div class=\"row no-gutters\">" +
+                                    "           <div class=\"col-4\">" +
+                                    "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                    "           </div>" +
+                                    "           <div class=\"col-8 pl-3\">" +
+                                    "               <div class=\"card-body px-2\">" +
+                                    "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
+                                    "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +                                    
+                                    "               </div>" +
+                                    "           </div>" +
+                                    "       </div>" +
+                                    "   </div>" +
+                                    "</div>"
+                                    );
+                                }
+                                
                             }
                         },
                         error: function (message2, error2){
@@ -251,23 +291,44 @@
                         success: function (result2){
                             for (i = 0; i < result2['item'].length; i++){
                                 let item2 = result2['item'][i];
-                                $("#listeJeuxPrecommandes").append(
-                                    "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
-                                    "   <div class=\"card\">" +
-                                    "       <div class=\"row no-gutters\">" +
-                                    "           <div class=\"col-4\">" +
-                                    "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
-                                    "           </div>" +
-                                    "           <div class=\"col-8 pl-3\">" +
-                                    "               <div class=\"card-body px-2\">" +
-                                    "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
-                                    "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
-                                    "               </div>" +
-                                    "           </div>" +
-                                    "       </div>" +
-                                    "   </div>" +
-                                    "</div>"
-                                );
+                                if(item["rabais"] > 0) {
+                                    $("#listeJeuxPrecommandes").append(
+                                        "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                        "   <div class=\"card\">" +
+                                        "       <div class=\"row no-gutters\">" +
+                                        "           <div class=\"col-4\">" +
+                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "           </div>" +
+                                        "           <div class=\"col-8 pl-3\">" +
+                                        "               <div class=\"card-body px-2\">" +
+                                        "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
+                                        "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                        "                   <span class=\"previous-price\">" + item["prix"] + "</span><span class=\"previous-currency\">CAD</span><span class=\"discount\">-" + item["rabais"] + "%</span>" +
+                                        "               </div>" +
+                                        "           </div>" +
+                                        "       </div>" +
+                                        "   </div>" +
+                                        "</div>"
+                                    );
+                                } else {
+                                    $("#listeJeuxPrecommandes").append(
+                                        "<div class=\"row no-gutters\"  onclick='redirectionFicheJeu(\"" + item["id_jeu"] + "\",\"" + item["nom"] + "\",\"" + item["developpeur"] + "\",\"" + item["editeur"] + "\",\"" + item["rating"] + "\",\"" + item2["nbrPersonnes"] + "\",\"" + item["prix"] + "\",\"" + item["rabais"] + "\",\"" + item["date_de_sortie"] + "\",\"" + item["image_lien"] + "\",\"" + item["categorie"] + "\")'>" +
+                                        "   <div class=\"card\">" +
+                                        "       <div class=\"row no-gutters\">" +
+                                        "           <div class=\"col-4\">" +
+                                        "               <img class=\"card-img\" src='http://cours.cegep3r.info/H2021/420617RI/Equipe_1/ImagesJeux/" + item["image_lien"] + "'>" +
+                                        "           </div>" +
+                                        "           <div class=\"col-8 pl-3\">" +
+                                        "               <div class=\"card-body px-2\">" +
+                                        "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
+                                        "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                        "               </div>" +
+                                        "           </div>" +
+                                        "       </div>" +
+                                        "   </div>" +
+                                        "</div>"
+                                    );
+                                }
                             }
                         },
                         error: function (message2, error2){

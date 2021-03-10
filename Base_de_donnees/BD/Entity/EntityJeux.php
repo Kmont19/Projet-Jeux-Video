@@ -304,13 +304,11 @@
         public function getJeuxMeilleuresVentes(): array
         {
             try {
-                $request = "select j.id_jeu, nom, developpeur, editeur, rating, prix, rabais, date_de_sortie, image_lien, categorie
-                        from jeux j
-                        inner join jeux_categories c 
-                        on j.id_jeu = c.id_jeu
-                        where fois_achete > 0
-                        order by fois_achete,rabais
-                        limit 3;";
+                $request = "SELECT * FROM jeux j
+                            INNER JOIN jeux_categories jc
+                            ON j.id_jeu = jc.id_jeu 
+                            ORDER BY fois_achete DESC, date_de_sortie
+                            LIMIT 3;";
                 $result = $this->connexion->query($request);
                 $items = $result->fetchAll();
                 return $items;
