@@ -80,6 +80,36 @@ class ModelJeux
         }
     }
 
+    public function updateJeuAchete(string $id_jeu): bool
+    {
+        try {
+            $stmt = $this->connexion->prepare(
+                "UPDATE FROM jeux SET fois_achete = fois_achete + 1 WHERE id_jeu=:id_jeu");
+            $stmt->bindParam(':id_jeu', $id_jeu);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
+
+    public function updateJeuxAchetes(string[] $jeuxAchetes): bool
+    {
+        try {
+            while ($donnees = $jeuxAchetes->fetch()) {
+                $stmt = $this->connexion->prepare(
+                    "UPDATE FROM jeux SET fois_achete = fois_achete + 1 WHERE id_jeu=:id_jeu");
+                $stmt->bindParam(':id_jeu', $donnees['id_jeu']);
+                $stmt->execute();
+            }
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
+
     public function updateJeu(string $id_jeu, string $nom, string $developpeur, string $editeur, float $prix, float $rabais, string $date_de_sortie, string $image_lien) :bool
     {
         try {
