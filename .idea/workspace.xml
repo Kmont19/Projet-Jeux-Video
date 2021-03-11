@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84e7faec-4b33-4d82-81a5-28e34675ed63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityUtilisateur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutFacture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutJeuDansFacture.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutJeuPanier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutNote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/ajoutPanier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/getIdPanier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/getJeuxAMoi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/getTotalArgentPanier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Base_de_donnees/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityJeux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityPanier.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Entity/EntityPanier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeux.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelJeux.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelPanier.php" beforeDir="false" afterPath="$PROJECT_DIR$/Base_de_donnees/BD/Models/ModelPanier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_de_donnees/getDernièresNouveautees.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creation-Compte.html" beforeDir="false" afterPath="$PROJECT_DIR$/Creation-Compte.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creation-Compte/CreationCompte.css" beforeDir="false" afterPath="$PROJECT_DIR$/Creation-Compte/CreationCompte.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fiche-Jeu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Fiche-Jeu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fiche_Jeu/Style-Fiche-Jeu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Fiche_Jeu/Style-Fiche-Jeu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gestion-Jeu.html" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-Jeu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImagesJeux/07a360df5b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/Menu/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menu/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dropin.html" beforeDir="false" afterPath="$PROJECT_DIR$/dropin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dropin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dropin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/panier.html" beforeDir="false" afterPath="$PROJECT_DIR$/panier.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bin/php/php7.0.33/php.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Session2021Web" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -91,6 +62,8 @@
       <workItem from="1615275896246" duration="92000" />
       <workItem from="1615358806070" duration="43000" />
       <workItem from="1615358849820" duration="18054000" />
+      <workItem from="1615382987617" duration="982000" />
+      <workItem from="1615411932894" duration="27000" />
     </task>
     <servers />
   </component>
@@ -107,6 +80,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

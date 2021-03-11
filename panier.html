@@ -138,7 +138,7 @@
                                         "</div>" +
                                     "</div>" +
                                 "</td>" +
-                                "<td class=\"text-center text-lg text-medium\">CAD$" + (item["prix"]-(item["prix"] * (item["rabais"] * 0.01))) + "</td>" +
+                                "<td class=\"text-center text-lg text-medium\">CAD$" + Math.round((item["prix"]-(item["prix"] * (item["rabais"] * 0.01)))) + "</td>" +
                                 "<td class=\"text-center text-lg text-medium\">" + item["rabais"] + "%</td>" +
                                 "<td class=\"text-center\"><a class=\"remove-from-cart\" data-toggle=\"tooltip\" data-original-title=\"Remove item\" onclick=\"supprimerJeuPanier('" + item["id_jeu"] + "')\"><i class=\"fa fa-trash\"></i></a></td>" +
                             "</tr>"
@@ -190,7 +190,7 @@
                 success: function (result){
                     for (i = 0; i < result['item'].length; i++) {
                         let item = result['item'][i];
-                        totalArgent = totalArgent + (item["prix"]-(item["prix"] * (item["rabais"] * 0.01)));
+                        totalArgent = totalArgent + Math.round((item["prix"]-(item["prix"] * (item["rabais"] * 0.01))));
                     }
                     document.getElementById("totalArgentPanier").innerHTML = "Total : " + totalArgent + "$";
                 },

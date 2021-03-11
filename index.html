@@ -120,7 +120,7 @@
                                     "   <img class=\"card-img-top\" src='ImagesJeux/" + item["image_lien"] + "'>" +
                                     "   <div class=\"card-body\">" +
                                     "       <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
-                                    "       <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                    "       <span class=\"current-price\">" + (item["prix"] - Math.round((item["prix"] * (item["rabais"]* 0.01)))) + "</span><span class=\"current-currency\">CAD</span><br>" +
                                     "       <span class=\"previous-price\">" + item["prix"] + "</span><span class=\"previous-currency\">CAD</span><span class=\"discount\">-" + item["rabais"] + "%</span>" +
                                     "   </div>" +
                                     "</div>"
@@ -169,7 +169,7 @@
                                         "           <div class=\"col-8 pl-3\">" +
                                         "               <div class=\"card-body px-2\">" +
                                         "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
-                                        "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                        "                   <span class=\"current-price\">" + Math.round((item["prix"] - (item["prix"] * (item["rabais"]* 0.01)))) + "</span><span class=\"current-currency\">CAD</span><br>" +
                                         "                   <span class=\"previous-price\">" + item["prix"] + "</span><span class=\"previous-currency\">CAD</span><span class=\"discount\">-" + item["rabais"] + "%</span>" +
                                         "               </div>" +
                                         "           </div>" +
@@ -188,7 +188,7 @@
                                         "           <div class=\"col-8 pl-3\">" +
                                         "               <div class=\"card-body px-2\">" +
                                         "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
-                                        "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                        "                   <span class=\"current-price\">" + Math.round((item["prix"] - (item["prix"] * (item["rabais"]* 0.01)))) + "</span><span class=\"current-currency\">CAD</span><br>" +
                                         "               </div>" +
                                         "           </div>" +
                                         "       </div>" +
@@ -240,7 +240,7 @@
                                     "           <div class=\"col-8 pl-3\">" +
                                     "               <div class=\"card-body px-2\">" +
                                     "                   <h5 class=\"card-title\">" + item["nom"] + "</h5>" +
-                                    "                   <span class=\"current-price\">" + (item["prix"] - (item["prix"] * (item["rabais"]* 0.01))) + "</span><span class=\"current-currency\">CAD</span><br>" +
+                                    "                   <span class=\"current-price\">" + Math.round((item["prix"] - (item["prix"] * (item["rabais"]* 0.01)))) + "</span><span class=\"current-currency\">CAD</span><br>" +
                                     "                   <span class=\"previous-price\">" + item["prix"] + "</span><span class=\"previous-currency\">CAD</span><span class=\"discount\">-" + item["rabais"] + "%</span>" +
                                     "               </div>" +
                                     "           </div>" +
